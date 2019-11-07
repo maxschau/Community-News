@@ -1,0 +1,12 @@
+.front {
+    border: 1px solid black;
+    text-align: center;
+    width: 50%;
+    margin: auto;
+}
+
+@media only screen and (max-width: 600px) {
+    .front {
+        width: 100%;
+    }
+}

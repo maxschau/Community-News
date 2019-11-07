@@ -1,0 +1,16 @@
+#otherImg {
+    width: 23vw;
+    height: 20vw;
+    object-fit: cover;
+}
+
+@media only screen and (max-width: 600px) {
+    #otherImg {
+        width: 95%;
+        height: 27vw;
+        object-fit: cover;
+    }
+}
+
+
+

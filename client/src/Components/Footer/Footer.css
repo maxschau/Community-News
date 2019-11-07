@@ -1,0 +1,12 @@
+.mainFooter {
+    background-color: #1F2833;
+    color: white;
+    bottom: 0;
+    width: 100%;
+
+}
+
+.mainFooter p {
+    color: white;
+    font-weight: bold;
+}

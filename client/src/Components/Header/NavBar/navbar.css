@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+.navbar-dark-color {
+    background-color: #1F2833;
+}
+
+.link {
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-size: 100%;
+}
+
+.link:hover {
+    color: grey;
+    text-decoration: underline;
+}
+
+.navigationMain a{
+    color:white;
+    font-size: 100%;
+}

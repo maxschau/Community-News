@@ -1,0 +1,15 @@
+#mainDiv h1 {
+    color: black;
+}
+
+#mainDiv h1:hover {
+    text-decoration: none;
+}
+
+
+#imgMain {
+    /*
+    Burde jeg endre bredden til noe annet??
+    */
+    width: 100%;
+}

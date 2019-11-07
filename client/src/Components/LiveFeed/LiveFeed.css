@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.mainLiveFeed {
+    display: flex;
+    width: auto;
+}
+
+.ticker {
+    box-sizing: border-box;
+    display: flex;
+    white-space: nowrap;
+    width: 100%;
+    /*scrollbar-width: none;*/
+    overflow: hidden;
+    padding: 0px;
+}
+
+.ticker:hover{
+    overflow-x: scroll;
+}
+
+.mainLiveFeed {
+    border: 1px solid black;
+}

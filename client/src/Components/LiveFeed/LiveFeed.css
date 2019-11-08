@@ -24,7 +24,3 @@
 .ticker:hover{
     overflow-x: scroll;
 }
-
-.mainLiveFeed {
-    border: 1px solid black;
-}

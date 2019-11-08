@@ -16,14 +16,13 @@ class LiveFeed extends Component {
     render() {
 
         return(
-            <marquee behavior="scroll" width="100%">
-            <div className="container-fluid ticker mainLiveFeed">
-                <div className="mainLiveFeed row flex-row flex-nowrap">
+            <marquee behavior="scroll">
+                <div className="row flex-row flex-nowrap">
                     {this.state.artikler.map(artikkel => {
                         return (<div className="col" key={artikkel.id}><LiveFeedElement key = {artikkel.id} id = {artikkel.id} overskrift = {artikkel.overskrift} tidspunkt ={artikkel.tidspunkt} /> </div>)
                     })}
                 </div>
-            </div>
+            
             </marquee>
         );
     }

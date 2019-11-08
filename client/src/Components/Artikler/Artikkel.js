@@ -3,6 +3,8 @@ import React, {Component} from 'react';
 import ArticleService, {Article} from '../../services/articleService';
 import {Column, Row, Card} from '../../Components/widgets';
 import {Link} from "react-router-dom";
+import {faThumbsUp, faThumbsDown }  from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './Artikkel.css';
 
 class Artikkel extends Component {
@@ -16,9 +18,38 @@ class Artikkel extends Component {
             bilde:"",
             viktighet:"",
             tidspunkt:"",
-            forfatter:""
+            forfatter:"",
+            likes : ""
         };
     }
+
+    handleThumbsUp = () => {
+        let number = this.state.likes + 1;
+        this.setState({
+            likes : number
+        });
+        this.updateLikes();
+    };
+
+    handleThumbsDown = () => {
+        let number = this.state.likes - 1;
+        this.setState({
+            likes: number
+        });
+        this.updateLikes();
+    };
+
+    updateLikes = () => {
+        let articleService = new ArticleService();
+        articleService.updateLikes(this.props.match.params.id, {likes: this.state.likes})
+            .then(() => {
+                console.log("Updating likes")
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+    };
+
     render() {
         return(
             <div className="d-flex justify-content-center" id="container">
@@ -40,9 +71,19 @@ class Artikkel extends Component {
                         </Column>
                     </Row>
                     <Row>
-                    <Column width={document.body.clientWidth}>
-                        <h5 className={"tidTekst"}><b>Publisert: </b> {this.state.tidspunkt} av {this.state.forfatter}</h5>
-                    </Column>
+                        <Column width={document.body.clientWidth}>
+                            <h5 className={"tidTekst"}><b>Publisert: </b> {this.state.tidspunkt} av {this.state.forfatter}</h5>
+                        </Column>
+                        <Column>
+                            <p onClick={this.handleThumbsUp}><FontAwesomeIcon icon={faThumbsUp} size="2x"/></p>
+                        </Column>
+                        <Column>
+                            <p onClick={this.handleThumbsDown}><FontAwesomeIcon icon={faThumbsDown} size={"2x"}/></p>
+                        </Column>
+                        <Column>
+                            <p> <b>Likes: </b> {this.state.likes}</p>
+                        </Column>
+
                     </Row>
                     <Row>
                         <Column>
@@ -76,7 +117,8 @@ class Artikkel extends Component {
                     bilde:article.data[0].bilde,
                     viktighet:article.data[0].viktighet,
                     tidspunkt: tidspunkt,
-                    forfatter: article.data[0].forfatter
+                    forfatter: article.data[0].forfatter,
+                    likes : article.data[0].likes
                 })
             })
             .catch((error => console.error(error)))

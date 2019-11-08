@@ -21,8 +21,8 @@ class FrontPage extends Component {
     }
 
     pageNumbers = {
-        1 : [0 , 6],
-        2 : [6, 13],
+        1 : [1 , 7],
+        2 : [7, 13],
         3 : [13, 19]
     };
 
@@ -74,7 +74,7 @@ class FrontPage extends Component {
 
     componentDidMount() {
         let articleService = new ArticleService();
-        articleService.getAllArticles()
+        articleService.getAllArticlesFrontPage()
             .then((articles) => {
                 this.setState({
                     mainArticle: articles.data[0],

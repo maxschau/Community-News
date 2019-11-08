@@ -10,7 +10,14 @@ module.exports = class NyhetssakDao extends dao {
 
     getOne(id, callback) {
         super.query(
-            "SELECT overskrift, ingress ,innhold, tidspunkt, bilde, kategori, viktighet, forfatter from nyhetssak where id = (?)", [id], callback
+            "SELECT overskrift, ingress ,innhold, tidspunkt, bilde, kategori, viktighet, forfatter, likes from nyhetssak where id = (?)", [id], callback
+        );
+    }
+
+
+
+    getAllFrontPage(callback) {
+        super.query("SELECT id, overskrift, ingress, innhold, tidspunkt, bilde, kategori, viktighet, forfatter from nyhetssak where viktighet = 1 order by tidspunkt desc", [], callback
         );
     }
 
@@ -59,13 +66,17 @@ module.exports = class NyhetssakDao extends dao {
     }
 
     updateOne(id, json, callback) {
-        let today = new Date();
-        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        let dateTime = date+' '+time;
-        const val = [json.overskrift, json.ingress, json.innhold, dateTime, json.bilde, json.kategori, json.viktighet, id];
+        const val = [json.overskrift, json.ingress, json.innhold, json.bilde, json.kategori, json.viktighet, id];
         super.query(
-            "UPDATE nyhetssak SET overskrift=?, ingress=?, innhold=?, tidspunkt=?, bilde=?, kategori=?, viktighet=? where id=?",
+            "UPDATE nyhetssak SET overskrift=?, ingress=?, innhold=?,  bilde=?, kategori=?, viktighet=? where id=?",
+            val,
+            callback
+        );
+    }
+    updateLikes(id, json, callback) {
+        const val = [json.likes, id];
+        super.query(
+            "UPDATE nyhetssak SET likes = ? where id=?",
             val,
             callback
         );

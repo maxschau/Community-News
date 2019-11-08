@@ -89,7 +89,8 @@ class KategoriVisning extends Component {
                 .then((articles) => {
                     this.setState({
                         id: this.props.match.params.id,
-                        articles: articles.data
+                        articles: articles.data,
+                        pageNumber : 1
                     });
                 })
                 .catch((error) => console.error(error));

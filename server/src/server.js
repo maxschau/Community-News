@@ -63,6 +63,13 @@ app.delete("/nyheter/:id", (req, res) => {
    });
 });
 
+app.put("/nyheter/likes/:id", (req, res) => {
+    nyhetssakDao.updateLikes(req.params.id, req.body,  (status, data) => {
+        res.status(status);
+        res.json(data);
+    })
+});
+
 //Endre en nyhetssak
 app.put("/nyheter/:id", (req, res) => {
     nyhetssakDao.updateOne(req.params.id, req.body, (status, data) => {
@@ -104,13 +111,20 @@ app.get("/nyheter/kategorier/:id", (req, res) => {
     })
 });
 
+app.get("/frontpage", (req, res) => {
+    nyhetssakDao.getAllFrontPage((status, data) => {
+        res.status(status);
+        res.json(data);
+    });
+});
+
 
 app.get("/nyheter/finnAntall/:antall", (req, res) => {
     nyhetssakDao.getAmountOfNews(parseInt(req.params.antall), (status, data) => {
         res.status(status);
         res.json(data);
-    })
-})
+    });
+});
 
 
 var server = app.listen(8080);

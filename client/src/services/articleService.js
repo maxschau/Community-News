@@ -29,6 +29,10 @@ class ArticleService {
         return Axios.get("http://localhost:8080/nyheter");
     }
 
+    getAllArticlesFrontPage() : Promise<Article[]> {
+        return Axios.get("http://localhost:8080/frontpage");
+    }
+
     createNewArticle(article : Article) : Promise<void>{
         return Axios.post("http://localhost:8080/nyheter", article)
     }
@@ -39,6 +43,10 @@ class ArticleService {
 
     updateOneArticle(id : number, article : Article) : Promise<void> {
         return Axios.put("http://localhost:8080/nyheter/" + id, article)
+    }
+    
+    updateLikes(id : number, likes: number) : Promise<void> {
+        return Axios.put("http://localhost:8080/nyheter/likes/" + id, likes)
     }
 
     deleteOneArticle(id : number) : Promise<void> {

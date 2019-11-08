@@ -4,7 +4,7 @@ const dao = require('./dao.js');
 
 module.exports = class NyhetssakDao extends dao {
     getAll(callback) {
-        super.query("SELECT overskrift, ingress innhold, tidspunkt, bilde, kategori, viktighet, forfatter from nyhetssak", [], callback
+        super.query("SELECT id, overskrift, ingress innhold, tidspunkt, bilde, kategori, viktighet, forfatter from nyhetssak order by tidspunkt desc", [], callback
         );
     }
 

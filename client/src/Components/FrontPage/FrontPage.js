@@ -4,6 +4,8 @@ import OtherArticle from './OtherArticle'
 import ArticleService from '../../services/articleService';
 import LiveFeed from '../LiveFeed/LiveFeed';
 import './FrontPage.css'
+import {faForward, faBackward}  from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Row, Column} from '../widgets'
 
 
@@ -13,9 +15,16 @@ class FrontPage extends Component {
         super(props);
         this.state = {
             mainArticle: "",
-            articles: []
+            articles: [],
+            pageNumber : 1  
         }
     }
+
+    pageNumbers = {
+        1 : [0 , 6],
+        2 : [6, 13],
+        3 : [13, 19]
+    };
 
     render() {
         return (
@@ -24,20 +33,48 @@ class FrontPage extends Component {
                 <MainArticle id={this.state.mainArticle.id} overskrift={this.state.mainArticle.overskrift} bilde={this.state.mainArticle.bilde}/>
                 <hr />
                 <Row className="justify-content-center">
-                {this.state.articles.slice(1).map((article) => {
+                {this.state.articles.slice(this.pageNumbers[this.state.pageNumber][0], this.pageNumbers[this.state.pageNumber][1]).map((article) => {
                     return (
                         <OtherArticle key={article.id} id={article.id} overskrift={article.overskrift}
                                       bilde={article.bilde}/>
                     )
                 })}
                 </Row>
+                <Row>
+                    <Column>
+                        <p onClick={this.handleLastPage}><FontAwesomeIcon icon={faBackward} /> </p>
+                    </Column>
+                    <Column>
+                        <p>Page {this.state.pageNumber}</p>
+                    </Column>
+                    <Column>
+                        <p onClick={this.handleNextPage}><FontAwesomeIcon icon={faForward} /> </p>
+                    </Column>
+                </Row>
             </div>
         );
     }
 
+        handleNextPage = () => {
+    
+        let number = this.state.pageNumber + 1;
+        this.setState({
+            pageNumber : number
+        })
+    };
+
+    handleLastPage = () => {
+        if (this.state.pageNumber > 1) {
+            let number = this.state.pageNumber - 1;
+            this.setState({
+                pageNumber : number
+            })
+        }
+    };
+
     componentDidMount() {
         let articleService = new ArticleService();
-        articleService.getAmountOfArticles(11)
+        articleService.getAllArticles()
             .then((articles) => {
                 this.setState({
                     mainArticle: articles.data[0],

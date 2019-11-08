@@ -128,7 +128,7 @@ class RegistrerSak extends Component {
                         </Row>
                     </div>
                     <button type="button" className="btn btn-secondary" onClick={() => this.save()}>
-                        Submit
+                        Registrer sak
                     </button>
                 </form>
             </div>

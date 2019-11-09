@@ -10,8 +10,19 @@ import createHashHistory from 'history/createHashHistory';
 
 //const history = createHashHistory(); // Use history.push(...) to programmatically change path, for instance after successfully saving a student
 
+type State = {
+    overskrift: string,
+    ingress : string,
+    innhold: string,
+    kategori: number,
+    bilde: string,
+    viktighet: number,
+    tidspunkt: string,
+    forfatter: string,
+    kategorier: Kategori[]
+}
 
-class RegistrerSak extends Component {
+class RegistrerSak extends Component<State> {
 
     constructor(props) {
         super(props);
@@ -28,7 +39,7 @@ class RegistrerSak extends Component {
         };
     }
 
-    handleChange = (e) => {
+    handleChange : void = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -37,7 +48,7 @@ class RegistrerSak extends Component {
 
 
     //BØR KANSKJE GJØRES SLIK AT MAN KOMMER RETT TIL ARTIKKELEN???
-    save() {
+    save() : void{
         let articleService = new ArticleService();
         let a1 = new Article(this.state.overskrift, this.state.ingress, this.state.innhold, this.state.kategori, this.state.bilde, this.state.viktighet, this.state.forfatter);
         articleService.createNewArticle(a1)

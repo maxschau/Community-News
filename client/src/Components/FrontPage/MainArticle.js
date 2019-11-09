@@ -1,16 +1,16 @@
-// HA MED FLOW FOR FÆÆÆM
-///!!!!
-// HA MED FLOW FOR FÆÆÆM
-///!!!!
-// HA MED FLOW FOR FÆÆÆM
-///!!!!
+// @flow
 
 import React, {Component} from 'react';
 import ArticleService, {Article} from '../../services/articleService';
 import './MainArticle.css';
 import {Link} from "react-router-dom";
 
-class MainArticle extends Component {
+type Props = {
+    id : number,
+    overskrift : string,
+    bilde : string
+}
+class MainArticle extends Component<Props> {
 
     render() {
         return(

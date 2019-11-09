@@ -9,7 +9,7 @@ import { withToastManager } from 'react-toast-notifications';
 /**
  * Renders alert messages using Bootstrap classes.
  */
-export class Alert extends Component {
+export class Alert extends Component<Props> {
     alerts: { id: number, text: React.Node, type: string }[] = [];
     static nextId = 0;
 

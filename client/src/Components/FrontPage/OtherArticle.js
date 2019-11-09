@@ -5,7 +5,13 @@ import {Column} from '../widgets'
 import {Link} from "react-router-dom";
 import './OtherArticle.css'
 
-class OtherArticle extends Component {
+type Props = {
+    id : number,
+    overskrift : string,
+    bilde : string
+}
+
+class OtherArticle extends Component<Props> {
     render() {
         return (
             <Column width={6}>

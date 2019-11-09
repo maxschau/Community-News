@@ -1,10 +1,15 @@
+// @flow
+
 import React, {Component} from 'react';
 import './navbar.css';
 import {Link} from "react-router-dom";
 import KategoriService from '../../../services/kategoriService';
 
 
-class NavBar extends Component {
+type State = {
+    kategorier : Kategori[]
+}
+class NavBar extends Component<State> {
     //ToDo:
 
     constructor(props) {

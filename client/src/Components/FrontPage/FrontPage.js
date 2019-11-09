@@ -1,3 +1,5 @@
+// @flow
+
 import React, {Component} from 'react'
 import MainArticle from './MainArticle'
 import OtherArticle from './OtherArticle'
@@ -8,8 +10,13 @@ import {faForward, faBackward}  from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Row, Column} from '../widgets'
 
+type State= {
+    mainArticle : Article,
+    articles : Article[],
+    pageNumber : number
+}
 
-class FrontPage extends Component {
+class FrontPage extends Component<State> {
 
     constructor(props) {
         super(props);

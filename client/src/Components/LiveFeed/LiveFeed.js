@@ -5,7 +5,11 @@ import LiveFeedElement from './LiveFeedElement'
 import ArticleService from '../../services/articleService'
 import './LiveFeed.css';
 
-class LiveFeed extends Component {
+type State = {
+    artikler: Article[]
+}
+
+class LiveFeed extends Component<State> {
     constructor(props) {
         super(props);
         this.state = {

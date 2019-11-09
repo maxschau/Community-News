@@ -7,7 +7,24 @@ import {faThumbsUp, faThumbsDown }  from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './Artikkel.css';
 
-class Artikkel extends Component {
+//Setting the types of the state
+type State = {
+    overskrift : string,
+    ingress : string,
+    innhold : string,
+    kategori: number,
+    bilde : string, 
+    viktighet: number,
+    tidspunkt : string, 
+    forfatter : string,
+    likes : number
+}
+
+type Props = {
+    id : number
+}
+
+class Artikkel extends Component<State, Props> {
     constructor(props) {
         super(props);
         this.state = {
@@ -24,15 +41,17 @@ class Artikkel extends Component {
     }
 
     handleThumbsUp = () => {
-        let number = this.state.likes + 1;
+        //let number =
+        //console.log("number: " + number);
         this.setState({
-            likes : number
+            likes : this.state.likes + 1
         });
         this.updateLikes();
     };
 
     handleThumbsDown = () => {
         let number = this.state.likes - 1;
+        console.log("number: " + number);
         this.setState({
             likes: number
         });
@@ -41,6 +60,7 @@ class Artikkel extends Component {
 
     updateLikes = () => {
         let articleService = new ArticleService();
+        console.log("likes from state: " + this.state.likes);
         articleService.updateLikes(this.props.match.params.id, {likes: this.state.likes})
             .then(() => {
                 console.log("Updating likes")
@@ -75,13 +95,11 @@ class Artikkel extends Component {
                             <h5 className={"tidTekst"}><b>Publisert: </b> {this.state.tidspunkt} av {this.state.forfatter}</h5>
                         </Column>
                         <Column>
-                            <p onClick={this.handleThumbsUp}><FontAwesomeIcon icon={faThumbsUp} size="2x"/></p>
+                            <p onClick={() => this.handleThumbsUp()}><FontAwesomeIcon icon={faThumbsUp} size="2x"/></p>
+                            <p> <b>{this.state.likes}</b></p>
                         </Column>
                         <Column>
-                            <p onClick={this.handleThumbsDown}><FontAwesomeIcon icon={faThumbsDown} size={"2x"}/></p>
-                        </Column>
-                        <Column>
-                            <p> <b>Likes: </b> {this.state.likes}</p>
+                            <p onClick={() => this.handleThumbsDown()}><FontAwesomeIcon icon={faThumbsDown} size={"2x"}/></p>
                         </Column>
 
                     </Row>
@@ -119,7 +137,8 @@ class Artikkel extends Component {
                     tidspunkt: tidspunkt,
                     forfatter: article.data[0].forfatter,
                     likes : article.data[0].likes
-                })
+                });
+                console.log(article.data[0].likes);
             })
             .catch((error => console.error(error)))
 

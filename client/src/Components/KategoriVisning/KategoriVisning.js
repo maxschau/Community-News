@@ -1,3 +1,5 @@
+// @flow
+
 import React, {Component} from 'react';
 import {Row, Column} from '../widgets'
 import ArticleService from '../../services/articleService';
@@ -8,10 +10,14 @@ import KategoriService from '../../services/kategoriService';
 import {faForward, faBackward}  from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-/*
-    Må fikse sånn at 
-*/
-class KategoriVisning extends Component {
+
+type State = {
+    id : number,
+    articles : Article[],
+    kategori : number,
+    pageNumber : number
+}
+class KategoriVisning extends Component<State> {
 
     constructor(props) {
         super(props);
@@ -22,7 +28,9 @@ class KategoriVisning extends Component {
             pageNumber: 1
         }
     }
-    //Denne bør ikke være hardkodet
+    //Denne bør ikke være hardkodet!!!
+
+    ///!!!!!
     pageNumbers = {
         1 : [0 , 6],
         2 : [6, 13],
@@ -30,7 +38,6 @@ class KategoriVisning extends Component {
     };
 
     render() {
-        //console.log(this.pageNumbers[2][0]);
         return (
             <div className="main">
                 <Row>
@@ -60,7 +67,7 @@ class KategoriVisning extends Component {
         );
     }
 
-    handleNextPage = () => {
+    handleNextPage : void = () => {
     
         let number = this.state.pageNumber + 1;
         this.setState({
@@ -68,7 +75,7 @@ class KategoriVisning extends Component {
         })
     };
 
-    handleLastPage = () => {
+    handleLastPage : void = () => {
         if (this.state.pageNumber > 1) {
             let number = this.state.pageNumber - 1;
             this.setState({
@@ -78,7 +85,7 @@ class KategoriVisning extends Component {
     };
 
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps, prevState) : void {
         if (this.state.pageNumber !== prevState.pageNumber) {
             console.log("WTF IS GOING ON, THE STATE HAS CHANGED")
         }

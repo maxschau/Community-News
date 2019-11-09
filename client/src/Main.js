@@ -1,3 +1,5 @@
+// @flow
+
 import React, {Component} from 'react';
 import Header from './Components/Header/Header'
 import {HashRouter, Route} from "react-router-dom";

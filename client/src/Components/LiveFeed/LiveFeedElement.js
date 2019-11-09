@@ -4,8 +4,12 @@ import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import './LiveFeedElement.css';
 
-
-class LiveFeedElement extends Component {
+type State = {
+    id : number,
+    overskrift : string,
+    tidspunkt: string
+}
+class LiveFeedElement extends Component<State> {
     constructor(props) {
         super(props);
         this.state = {

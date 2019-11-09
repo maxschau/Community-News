@@ -1,12 +1,28 @@
+// @flow
+
 import React, {Component} from 'react'
 import {Row, Column} from '../widgets';
 import ArticleService, {Article} from '../../services/articleService';
 import KategoriService from '../../services/kategoriService';
 
+//Setting the types of the state
+type State = {
+    overskrift : string,
+    ingress : string,
+    innhold : string,
+    kategori: number,
+    bilde : string, 
+    viktighet: number,
+    tidspunkt : string, 
+    forfatter : string,
+    likes : number
+}
 
+type Props = {
+    id : number
+}
 
-class EndreArtikkel extends Component {
-    deleted = false;
+class EndreArtikkel extends Component<State, Props> {
     constructor(props) {
         super(props);
 
@@ -23,7 +39,7 @@ class EndreArtikkel extends Component {
         }
     }
 
-    save() {
+    save() : void {
         let articleService = new ArticleService();
         let newArticle = new Article(this.state.overskrift, this.state.ingress, this.state.innhold, this.state.kategori, this.state.bilde, this.state.viktighet, this.state.forfatter);
         articleService.updateOneArticle(this.props.match.params.id, newArticle)
@@ -33,7 +49,7 @@ class EndreArtikkel extends Component {
             .catch((error) => console.error(error))
     }
 
-    delete() {
+    delete() : void {
         let articleService = new ArticleService();
         articleService.deleteOneArticle(this.props.match.params.id)
             .then(() => {
@@ -42,7 +58,7 @@ class EndreArtikkel extends Component {
             .catch((error) => console.error(error))
     }
 
-    handleChange = (e) => {
+    handleChange : void = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         });
@@ -108,13 +124,6 @@ class EndreArtikkel extends Component {
                             </Column>
                         </Row>
                     </div>
-                    {/*}
-                    <div className="form-group">
-                        <input type="number" className="form-control"
-                               id="fname" value = {this.state.viktighet} placeholder="Skriv inn viktighet (1/2)"
-                               name="viktighet" onChange={this.handleChange} required/>
-                    </div>
-                    {*/}
                     <Row>
                         <Column>
                             <button type="button" className="btn btn-secondary" onClick={() => this.save()}>

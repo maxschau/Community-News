@@ -5,6 +5,8 @@ services:
 
 # Configure test-database
 variables:
+  Host: mysql,
+  User: root
   MYSQL_DATABASE: "School"
   MYSQL_ROOT_PASSWORD: "root123"
 

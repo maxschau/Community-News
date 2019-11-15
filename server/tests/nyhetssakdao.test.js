@@ -46,6 +46,36 @@ test("Receive one article by id from database", done => {
   nyhetssakDao.getOne(2, callback);
 })
 
+test("Receive all articles from database", done => {
+  function callback(status, data) {
+    console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
+    expect(data.length).toBe(4);
+    done();
+  }
+  nyhetssakDao.getAll(callback);
+})
+
+test("get a specific amount of news (2)", done => {
+  function callback(status, data) {
+    console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
+    expect(data.length).toBe(2);
+    done();
+  }
+  nyhetssakDao.getAmountOfNews(2, callback);
+})
+
+test("test that we create a new article", done => {
+  function callback(status, data) {
+    console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
+    expect(data.affectedRows).toBeGreaterThanOrEqual(1);
+  }
+  nyhetssakDao.createOne(
+    {
+      overskrift : "Ny overskrift", ingress: "ny ingress", innhold: "ny innhold", tidspunkt: "2019-11-05 12:43:59", bilde: "dummylink.no/", kategori: 2, viktighet: 1, forfatter: "max"
+    }, callback
+  );
+})
+
 
 afterAll(() => {
   pool.end();

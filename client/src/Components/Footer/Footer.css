@@ -1,9 +1,10 @@
+
 .mainFooter {
     background-color: #1F2833;
     color: white;
     bottom: 0;
     width: 100%;
-
+    min-height: calc(100vh - 790px);
 }
 
 .mainFooter p {

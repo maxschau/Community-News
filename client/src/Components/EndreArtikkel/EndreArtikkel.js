@@ -4,6 +4,7 @@ import React, {Component} from 'react'
 import {Row, Column} from '../widgets';
 import ArticleService, {Article} from '../../services/articleService';
 import KategoriService from '../../services/kategoriService';
+import {toast} from 'react-toastify';
 
 //Setting the types of the state
 type State = {
@@ -39,11 +40,18 @@ class EndreArtikkel extends Component<State, Props> {
         }
     }
 
+    notifyChange: void = () => {
+        toast("Endring av artikkel vellykket", {type: toast.TYPE.SUCCESS, position: toast.POSITION.BOTTOM_LEFT});
+    }
+
+    notifyDelete: void = () => toast("Sletting gikk bra", {type: toast.TYPE.SUCCESS, position: toast.POSITION.BOTTOM_LEFT});
+
     save() : void {
         let articleService = new ArticleService();
         let newArticle = new Article(this.state.overskrift, this.state.ingress, this.state.innhold, this.state.kategori, this.state.bilde, this.state.viktighet, this.state.forfatter);
         articleService.updateOneArticle(this.props.match.params.id, newArticle)
             .then(() => {
+                this.notifyChange();
                 window.location.hash = '/nyheter/' + this.props.match.params.id
             })
             .catch((error) => console.error(error))
@@ -53,6 +61,7 @@ class EndreArtikkel extends Component<State, Props> {
         let articleService = new ArticleService();
         articleService.deleteOneArticle(this.props.match.params.id)
             .then(() => {
+                this.notifyDelete();
                 window.location.hash = '/home';
             })
             .catch((error) => console.error(error))

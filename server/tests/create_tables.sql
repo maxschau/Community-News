@@ -1,5 +1,3 @@
-use School;
-
 DROP TABLE IF EXISTS nyhetssak;
 
 CREATE TABLE nyhetssak (

@@ -55,6 +55,7 @@ test("Receive all articles from database", done => {
   nyhetssakDao.getAll(callback);
 })
 
+/*
 test("get a specific amount of news (2)", done => {
   function callback(status, data) {
     console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
@@ -63,6 +64,7 @@ test("get a specific amount of news (2)", done => {
   }
   nyhetssakDao.getAmountOfNews(2, callback);
 })
+*/
 
 test("test that we create a new article", done => {
   function callback(status, data) {

@@ -69,7 +69,8 @@ test("get a specific amount of news (2)", done => {
 test("test that we create a new article", done => {
   function callback(status, data) {
     console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
-    expect(data.affectedRows).toBe(1);
+    expect(data.affectedRows).toBeGreaterThanOrEqual(1);
+    done();
   }
   nyhetssakDao.createOne(
     {

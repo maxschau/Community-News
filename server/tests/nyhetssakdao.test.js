@@ -73,7 +73,7 @@ test("test that we create a new article", done => {
   }
   nyhetssakDao.createOne(
     {
-      overskrift : "Ny overskrift", ingress: "ny ingress", innhold: "ny innhold", tidspunkt: "2019-11-05 12:43:59", bilde: "dummylink.no/", kategori: 2, viktighet: 1, forfatter: "max"
+      overskrift : "Ny overskrift", ingress: "ny ingress", innhold: "ny innhold", bilde: "dummylink.no/", kategori: 2, viktighet: 1, forfatter: "max"
     }, callback
   );
 })

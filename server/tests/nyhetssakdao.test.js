@@ -107,7 +107,7 @@ test("test that we can update one article", done => {
     let newOverskrift = "";
     nyhetssakDao.getOne(2, (status, data) => {
       console.log("DATA: " + data[0])
-      expect(data[0].overskrift).toBe("Denne er blitt endret"));
+      expect(data[0].overskrift).toBe("Denne er blitt endret");
       done();
     });
   }

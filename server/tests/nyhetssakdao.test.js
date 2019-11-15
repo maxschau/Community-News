@@ -85,6 +85,7 @@ test("test that we get all articles from one kategori", done => {
     expect(data.length).toBe(2)
   }
   nyhetssakDao.getArtiklerByCategory(1, callback);
+  done();
 })
 
 test("test that we can delete one article", done => {

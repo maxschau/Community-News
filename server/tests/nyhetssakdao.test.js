@@ -84,7 +84,7 @@ test("test that we get all articles from one kategori", done => {
     console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
     expect(data.length).toBe(2)
   }
-  nyhetssakDao.getArtiklerByCategory(3, callback);
+  nyhetssakDao.getArtiklerByCategory(1, callback);
 })
 
 test("test that we can delete one article", done => {

@@ -106,6 +106,7 @@ test("test that we can update one article", done => {
     console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
     let newOverskrift = "";
     nyhetssakDao.getOne(1, (status, data) => {
+      console.log("DATA: " + data)
       expect(JSON.stringify(data[0].overskrift).toMatch("Denne er blitt endret"));
       done();
     });

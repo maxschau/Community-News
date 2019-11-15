@@ -101,6 +101,22 @@ test("test that we can delete one article", done => {
   nyhetssakDao.deleteOne(1, callback);
 })
 
+test("test that we can update one article", done => {
+  function callback(status, data) {
+    console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
+    let newOverskrift = "";
+    nyhetssakDao.getOne(1, (status, data) => {
+      expect(JSON.stringify(data[0].overskrift).toMatch("Denne er blitt endret"));
+      done();
+    });
+  }
+  nyhetssakDao.updateOne(
+    1,
+    {overskrift : "Denne er blitt endret", ingress: "ny ingress", innhold: "ny innhold", bilde: "dummylink.no/", kategori: 2, viktighet: 1, forfatter: "max"},
+    callback
+  );
+})
+
 
 
 afterAll(() => {

@@ -13,6 +13,7 @@
     "bootstrap": "^4.3.1",
     "bootstrap-jquery": "^3.3.2",
     "cors": "^2.8.5",
+    "mdbreact": "^4.22.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-native": "^0.61.4",
@@ -20,7 +21,8 @@
     "react-redux-toastr": "^7.6.1",
     "react-scripts": "3.2.0",
     "react-toast-notifications": "^2.2.5",
-    "react-toastify": "^5.4.0"
+    "react-toastify": "^5.4.0",
+    "reactstrap": "^8.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

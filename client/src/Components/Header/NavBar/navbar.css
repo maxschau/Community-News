@@ -1,12 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
 .navbar-dark-color {
+    background-color: #1F2833;
+}
+
+.mainDiv {
     background-color: #1F2833;
 }
 
 .link {
     font-family: 'Lato', sans-serif;
     color: white;
-    font-size: 100%;
+    font-size: 30vm;
+    margin-right: 20px;
+    justify-content: center;
 }
 
 .link:hover {
@@ -14,7 +21,11 @@
     text-decoration: underline;
 }
 
-.navigationMain a{
-    color:white;
+.navigationMain a {
+    color: white;
     font-size: 100%;
+}
+
+.kategori:hover{
+    background-color: #1F2833;
 }

@@ -4,6 +4,7 @@ import ArticleService, {Article} from '../../services/articleService';
 import KategoriService from '../../services/kategoriService';
 import './RegistrerSak.css'
 import {Row, Column} from '../widgets';
+import {toast} from 'react-toastify';
 
 
 import createHashHistory from 'history/createHashHistory';
@@ -12,7 +13,7 @@ import createHashHistory from 'history/createHashHistory';
 
 type State = {
     overskrift: string,
-    ingress : string,
+    ingress: string,
     innhold: string,
     kategori: number,
     bilde: string,
@@ -28,7 +29,7 @@ class RegistrerSak extends Component<State> {
         super(props);
         this.state = {
             overskrift: "",
-            ingress : "",
+            ingress: "",
             innhold: "",
             kategori: "",
             bilde: "",
@@ -39,23 +40,32 @@ class RegistrerSak extends Component<State> {
         };
     }
 
-    handleChange : void = (e) => {
+    notifySuccess: void = () => {
+        toast("Registrering vellykket", {type: toast.TYPE.SUCCESS, position: toast.POSITION.BOTTOM_LEFT});
+    }
+
+    notifyFailure: void = () => toast("Noe gikk galt", {type: toast.TYPE.ERROR, position: toast.POSITION.BOTTOM_LEFT});
+
+    handleChange: void = (e) => {
         this.setState({
             [e.target.name]: e.target.value
         })
     };
 
 
-
     //BØR KANSKJE GJØRES SLIK AT MAN KOMMER RETT TIL ARTIKKELEN???
-    save() : void{
+    save(): void {
         let articleService = new ArticleService();
         let a1 = new Article(this.state.overskrift, this.state.ingress, this.state.innhold, this.state.kategori, this.state.bilde, this.state.viktighet, this.state.forfatter);
         articleService.createNewArticle(a1)
             .then(() => {
+                this.notifySuccess();
                 window.location.hash = '/home';
             })
-            .catch((error) => console.error(error))
+            .catch((error) => {
+                console.error(error);
+                this.notifyFailure();
+            })
     };
 
     render() {
@@ -116,8 +126,8 @@ class RegistrerSak extends Component<State> {
                             <Row>
                                 <Column>
                                     <input type="text" className="form-control"
-                                    id="fname" placeholder="Hvem er du?"
-                                    name="forfatter" onChange={this.handleChange} required/>
+                                           id="fname" placeholder="Hvem er du?"
+                                           name="forfatter" onChange={this.handleChange} required/>
                                 </Column>
                             </Row>
 

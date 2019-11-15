@@ -28,6 +28,15 @@ class FrontPage extends Component<State> {
     }
 
     pageNumbers = {
+
+        /*
+           {let start = {this.state.pageNumber}
+        let end = start + 6;
+        for (let i = 2; i <= this.state.pagenumber; i++) {
+            start = end;
+            end = end + 6;
+        }
+        }*/
         1 : [1 , 7],
         2 : [7, 13],
         3 : [13, 19]

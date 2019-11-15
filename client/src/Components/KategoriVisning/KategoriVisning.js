@@ -68,7 +68,6 @@ class KategoriVisning extends Component<State> {
     }
 
     handleNextPage : void = () => {
-    
         let number = this.state.pageNumber + 1;
         this.setState({
             pageNumber : number

@@ -1,0 +1,36 @@
+services:
+  - mysql: 5.5
+
+variables:
+  MYSQL_DATABASE: "School"
+  MYSQL_ROOT_PASSWORD: "root123"
+
+
+before_script:
+  - npm install
+
+run_tests:
+  stage: test
+  script: ¨
+    - npm test
+  artifacts:
+    paths:
+      - coverage/
+
+# Publish coverage report on gitlab-pages
+pages:
+  stage: deploy
+  dependencies:
+    - run_tests
+  script:
+    - mkdir .public
+    - cp -r coverage/* .public
+    - mv .public public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
+
+
+

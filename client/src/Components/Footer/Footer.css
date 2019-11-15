@@ -3,9 +3,23 @@
     color: white;
     bottom: 0;
     width: 100%;
+
 }
 
 .mainFooter p {
     color: white;
     font-weight: bold;
+}
+
+#imgLogo {
+    width: 4vw;
+    padding: 1vw;
+}
+
+@media only screen and (max-width: 600px) {
+    #imgLogo {
+        width: 10vw;
+        padding: 2vw;
+        margin: auto;
+    }
 }

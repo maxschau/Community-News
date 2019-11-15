@@ -7,24 +7,7 @@ import {faThumbsUp, faThumbsDown }  from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './Artikkel.css';
 
-//Setting the types of the state
-type State = {
-    overskrift : string,
-    ingress : string,
-    innhold : string,
-    kategori: number,
-    bilde : string, 
-    viktighet: number,
-    tidspunkt : string, 
-    forfatter : string,
-    likes : number
-}
-
-type Props = {
-    id : number
-}
-
-class Artikkel extends Component<State, Props> {
+class Artikkel extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -41,8 +24,6 @@ class Artikkel extends Component<State, Props> {
     }
 
     handleThumbsUp = () => {
-        //let number =
-        //console.log("number: " + number);
         this.setState({
             likes : this.state.likes + 1
         });
@@ -96,7 +77,7 @@ class Artikkel extends Component<State, Props> {
                         </Column>
                         <Column>
                             <p onClick={() => this.handleThumbsUp()}><FontAwesomeIcon icon={faThumbsUp} size="2x"/></p>
-                            <p> <b>{this.state.likes}</b></p>
+                            <p> <b>Likes: </b> {this.state.likes}</p>
                         </Column>
                         <Column>
                             <p onClick={() => this.handleThumbsDown()}><FontAwesomeIcon icon={faThumbsDown} size={"2x"}/></p>

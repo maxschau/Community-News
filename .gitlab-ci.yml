@@ -10,7 +10,6 @@ variables:
 
 #Install node libraries
 before_script:
-  - npm install
   - cd server &&  npm install
   - ../cd client && npm install
 

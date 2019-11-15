@@ -1,6 +1,6 @@
 var mysql = require("mysql");
 
-const NyhetssakDao = require("C:/Programmering/NTNU/Systemutvikling 2/miniprosjekt/server/src/dao/nyhetssakdao.js");
+const NyhetssakDao = require("../src/dao/nyhetssakdao");
 const runsqlfile = require("./runsqlfile.js");
 /*
 var pool = mysql.createPool({

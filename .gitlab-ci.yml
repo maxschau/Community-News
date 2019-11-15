@@ -13,7 +13,7 @@ variables:
 #Install node libraries
 before_script:
   - cd client &&  npm install
-  - ../cd server && npm install
+  - cd ../server && npm install
 
 # Run JEST tests
 run_tests:

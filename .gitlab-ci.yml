@@ -5,10 +5,10 @@ services:
 
 # Configure test-database
 variables:
-  Host: mysql,
+  Host: mysql
   User: root
-  MYSQL_DATABASE: School
-  MYSQL_ROOT_PASSWORD: root123
+  MYSQL_DATABASE: "School"
+  MYSQL_ROOT_PASSWORD: "root123"
 
 #Install node libraries
 before_script:

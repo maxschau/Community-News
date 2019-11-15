@@ -34,6 +34,10 @@ beforeAll(done => {
     });
 });
 
+test("test that one plus one is teo", done => {
+  expect(1+1).toBe(2);
+})
+/*
 test("Receive one article by id from database", done => {
   function callback(status, data) {
     console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
@@ -43,6 +47,7 @@ test("Receive one article by id from database", done => {
   }
   nyhetssakDao.getOne(2, callback);
 })
+*/
 
 afterAll(() => {
   pool.end();

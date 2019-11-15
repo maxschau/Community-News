@@ -5,14 +5,12 @@ services:
 
 # Configure test-database
 variables:
-  Host: "mysql"
-  User: "root"
   MYSQL_DATABASE: "school"
   MYSQL_ROOT_PASSWORD: "root123"
 
 #Install node libraries
 before_script:
-  #- cd client &&  yarn install
+  #- cd client &&  npm install
   - cd server && npm install
 
 # Run JEST tests

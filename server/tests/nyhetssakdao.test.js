@@ -35,7 +35,7 @@ beforeAll(done => {
 });
 
 test("test that one plus one is teo", done => {
-  expect(1+1).toBe(2);
+  expect(2).toBe(2);
 })
 //
 /*

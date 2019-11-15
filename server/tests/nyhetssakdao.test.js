@@ -19,7 +19,7 @@ var pool = mysql.createPool({
   host: "mysql",
   user: "root",
   password: "root123",
-  database: "School",
+  database: "school",
   debug: false,
   multipleStatements: true
 })

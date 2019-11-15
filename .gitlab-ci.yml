@@ -5,8 +5,8 @@ services:
 
 # Configure test-database
 variables:
-  MYSQL_DATABASE: "school"
-  MYSQL_ROOT_PASSWORD: "root123"
+  MYSQL_DATABASE: school
+  MYSQL_ROOT_PASSWORD: root123
 
 #Install node libraries
 before_script:
@@ -20,7 +20,7 @@ run_tests:
     - npm test
   artifacts:
     paths:
-      - coverage/
+      - coverage
 
 # Publish coverage report on gitlab-pages
 pages:

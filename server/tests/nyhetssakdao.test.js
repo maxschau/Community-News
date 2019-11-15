@@ -13,7 +13,7 @@ var pool = mysql.createPool({
   multipleStatements: true
 });
 */
-// test
+
 var pool = mysql.createPool({
   connectionLimit : 1,
   host: "mysql",

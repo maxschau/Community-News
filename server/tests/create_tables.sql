@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS kategorier;
 CREATE TABLE kategorier (
-  "id" int(11) NOT NULL,
-  "navn" varchar(30) NOT NULL
+  id int(11) NOT NULL,
+  navn varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS nyhetssak;

@@ -1,7 +1,7 @@
-create 
-DROP TABLE IF EXISTS testNyhetssak;
 
-CREATE TABLE testNyhetssak (
+DROP TABLE IF EXISTS nyhetssak;
+
+CREATE TABLE nyhetssak (
     `id` int(11) NOT NULL AUTO_INCREMENT,
     `overskrift` varchar(60) NOT NULL,
     `ingress` varchar(100) NOT NULL,

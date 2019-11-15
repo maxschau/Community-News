@@ -7,13 +7,13 @@ services:
 variables:
   Host: mysql,
   User: root
-  MYSQL_DATABASE: "School"
-  MYSQL_ROOT_PASSWORD: "root123"
+  MYSQL_DATABASE: School
+  MYSQL_ROOT_PASSWORD: root123
 
 #Install node libraries
 before_script:
   #- cd client &&  yarn install
-  - cd server && yarn install
+  - cd server && npm install
 
 # Run JEST tests
 run_tests:

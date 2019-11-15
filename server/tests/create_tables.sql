@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS kategorier;
 CREATE TABLE kategorier (
-  id int(11) NOT NULL,
+  id int(11) NOT NULL AUTO_INCREMENT ,
   navn varchar(30) NOT NULL,
   PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

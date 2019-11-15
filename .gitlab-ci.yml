@@ -12,8 +12,8 @@ variables:
 
 #Install node libraries
 before_script:
-  - cd client &&  npm install
-  - cd ../server && npm install
+  #- cd client &&  yarn install
+  - cd server && yarn install
 
 # Run JEST tests
 run_tests:

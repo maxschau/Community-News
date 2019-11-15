@@ -20,7 +20,7 @@ var pool = mysql.createPool({
   user: "root",
   password: "root123",
   database: "School",
-  debug: false,
+  debug: true,
   multipleStatements: true
 })
 

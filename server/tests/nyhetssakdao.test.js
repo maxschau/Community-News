@@ -13,7 +13,7 @@ var pool = mysql.createPool({
   multipleStatements: true
 });
 */ 
-//sdfsdf
+//dosiijfdsiojfpodsf
 
 var pool = mysql.createPool({
   connectionLimit : 1,
@@ -37,7 +37,7 @@ beforeAll(done => {
 test("test that one plus one is teo", done => {
   expect(1+1).toBe(2);
 })
-//***** */
+//
 /*
 test("Receive one article by id from database", done => {
   function callback(status, data) {

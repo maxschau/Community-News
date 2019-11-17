@@ -29,3 +29,12 @@
 .kategori:hover{
     background-color: #1F2833;
 }
+.imgLogo {
+    width: 5vw;
+}
+
+@media only screen and (max-width: 600px) {
+    .imgLogo {
+        width: 15vw;
+    }
+}

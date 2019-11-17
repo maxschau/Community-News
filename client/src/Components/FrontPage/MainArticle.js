@@ -8,11 +8,14 @@ import {Link} from "react-router-dom";
 type Props = {
     id : number,
     overskrift : string,
-    bilde : string
+    bilde : string,
+    show : boolean
 }
 class MainArticle extends Component<Props> {
-
     render() {
+        if (!(this.props.show)) {
+            return <div id="mainDiv"></div>
+        }
         return(
             <div id="mainDiv">
                 <Link to={"nyheter/" + this.props.id}><img src={this.props.bilde} id="imgMain"alt={this.props.overskrift} /> </Link>

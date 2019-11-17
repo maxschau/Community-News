@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import LiveFeedElement from './LiveFeedElement'
-import ArticleService from '../../services/articleService'
+import {ArticleService, Article} from '../../services/articleService'
 import './LiveFeed.css';
 
 type State = {
@@ -16,7 +16,6 @@ class LiveFeed extends Component<State> {
             artikler : []
         }
     }
-    
     render() {
 
         return(
@@ -26,7 +25,6 @@ class LiveFeed extends Component<State> {
                         return (<div className="col" key={artikkel.id}><LiveFeedElement key = {artikkel.id} id = {artikkel.id} overskrift = {artikkel.overskrift} tidspunkt ={artikkel.tidspunkt} /> </div>)
                     })}
                 </div>
-            
             </marquee>
         );
     }

@@ -3,17 +3,21 @@
 import React, {Component} from 'react'
 import MainArticle from './MainArticle'
 import OtherArticle from './OtherArticle'
-import ArticleService from '../../services/articleService';
+import ArticleService, {Article} from '../../services/articleService';
 import LiveFeed from '../LiveFeed/LiveFeed';
 import './FrontPage.css'
 import {faForward, faBackward}  from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Row, Column} from '../widgets'
+import {toast} from 'react-toastify';
 
 type State= {
     mainArticle : Article,
     articles : Article[],
-    pageNumber : number
+    pageNumber : number,
+    maxPage : number,
+    limitPerPage : number,
+    frontPage : boolean
 }
 
 class FrontPage extends Component<State> {
@@ -23,30 +27,26 @@ class FrontPage extends Component<State> {
         this.state = {
             mainArticle: "",
             articles: [],
-            pageNumber : 1  
+            pageNumber : 0,
+            maxPage : "",
+            limitPerPage : 6,
+            frontPage : true
         }
     }
 
-    pageNumbers = {
 
-        /*
-           {let start = {this.state.pageNumber}
-        let end = start + 6;
-        for (let i = 2; i <= this.state.pagenumber; i++) {
-            start = end;
-            end = end + 6;
-        }
-        }*/
-        1 : [1 , 7],
-        2 : [7, 13],
-        3 : [13, 19]
+    pageNumbers = {
+        0 : [1 , 7],
+        1 : [7, 13],
+        2 : [13, 19],
+        3 : [19, 25]
     };
 
     render() {
         return (
             <div className="front">
                 <LiveFeed/>
-                <MainArticle id={this.state.mainArticle.id} overskrift={this.state.mainArticle.overskrift} bilde={this.state.mainArticle.bilde}/>
+                <MainArticle show = {this.state.frontPage} id={this.state.mainArticle.id} overskrift={this.state.mainArticle.overskrift} bilde={this.state.mainArticle.bilde}/>
                 <hr />
                 <Row className="justify-content-center">
                 {this.state.articles.slice(this.pageNumbers[this.state.pageNumber][0], this.pageNumbers[this.state.pageNumber][1]).map((article) => {
@@ -71,21 +71,38 @@ class FrontPage extends Component<State> {
         );
     }
 
-        handleNextPage = () => {
-    
-        let number = this.state.pageNumber + 1;
+        handleNextPage : void = () => {
+        let number = (this.state.pageNumber + 1)%(this.state.maxPage)
+        if (number > 0) {
+            this.setState({
+                frontPage : false
+            });
+        }
+        console.log("number: " + number)
+        if (number == 0) {
+            this.setState({
+                frontPage : true
+            })
+        }
+
         this.setState({
             pageNumber : number
         })
     };
 
     handleLastPage = () => {
-        if (this.state.pageNumber > 1) {
+        if (this.state.pageNumber > 0) {
             let number = this.state.pageNumber - 1;
+            if (number == 0) {
+                this.setState({
+                    frontPage: true
+                })
+            }
             this.setState({
                 pageNumber : number
             })
         }
+        
     };
 
     componentDidMount() {
@@ -94,7 +111,8 @@ class FrontPage extends Component<State> {
             .then((articles) => {
                 this.setState({
                     mainArticle: articles.data[0],
-                    articles: articles.data
+                    articles: articles.data,
+                    maxPage : Math.floor((articles.data.length / this.state.limitPerPage))
                 })
             })
     }

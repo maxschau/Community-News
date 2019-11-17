@@ -9,6 +9,7 @@
 .mainLiveFeed {
     display: flex;
     width: auto;
+    width: 100%;
 }
 
 .ticker {

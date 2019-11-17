@@ -73,11 +73,10 @@ module.exports = class NyhetssakDao extends dao {
             callback
         );
     }
-    updateLikes(id, json, callback) {
-        const val = [json.likes, id];
+    updateLikes(id, callback) {
         super.query(
-            "UPDATE nyhetssak SET likes = ? where id=?",
-            val,
+            "UPDATE nyhetssak SET likes = likes+1 where id=?",
+            id,
             callback
         );
     }

@@ -9,6 +9,11 @@ type State = {
     overskrift : string,
     tidspunkt: string
 }
+
+type Props = {
+    id: number,
+    tidspunkt : string
+}
 class LiveFeedElement extends Component<State> {
     constructor(props) {
         super(props);

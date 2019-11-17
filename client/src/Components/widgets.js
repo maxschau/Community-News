@@ -6,6 +6,8 @@ import * as React from 'react';
 import { NavLink } from 'react-router-dom';
 import { withToastManager } from 'react-toast-notifications';
 
+type Props = {}
+
 /**
  * Renders alert messages using Bootstrap classes.
  */

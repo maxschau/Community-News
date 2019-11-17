@@ -14,7 +14,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 
-class Main extends Component {
+class Main extends Component<> {
 
 
     render() {

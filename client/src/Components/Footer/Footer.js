@@ -12,17 +12,17 @@ import instagram_logo from "C:/Programmering/NTNU/Systemutvikling 2/miniprosjekt
 
 
 
-class Footer extends Component {
+class Footer extends Component<> {
     render() {
         return(
             <div className="mainFooter row justify-content-center">
                 <div className="mainFooter row justify-content-center">
                     <div id="col">
-                        <img src={facebook_logo} alt="fbook" id="imgLogo" />
-                        <img src={twitter_logo} alt="twitter" id="imgLogo" />
-                        <img src={flickr_logo} alt="flickr" id="imgLogo" />
-                        <img src={instagram_logo} alt="insta" id="imgLogo" />
-                        <img src={youtube_logo} alt="youtube" id="imgLogo" />
+                        <a href="http://www.facebook.com" target="_blank"><img src={facebook_logo} alt="fbook" id="imgLogo" /></a>
+                        <a href="http://www.twitter.com" target="_blank"><img src={twitter_logo} alt="twitter" id="imgLogo" /></a>
+                        <a href="http://www.flickr.com" target="_blank"><img src={flickr_logo} alt="flickr" id="imgLogo" /></a>
+                        <a href="http://www.instagram.com" target="_blank"><img src={instagram_logo} alt="insta" id="imgLogo" /></a>
+                        <a href="http://www.youtube.com" target="_blank"><img src={youtube_logo} alt="youtube" id="imgLogo" /></a>
                     </div>
                 </div>
                 <div className="row justify-content-center">

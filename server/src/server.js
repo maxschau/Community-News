@@ -64,7 +64,7 @@ app.delete("/nyheter/:id", (req, res) => {
 });
 
 app.put("/nyheter/likes/:id", (req, res) => {
-    nyhetssakDao.updateLikes(req.params.id, req.body,  (status, data) => {
+    nyhetssakDao.updateLikes(req.params.id, (status, data) => {
         res.status(status);
         res.json(data);
     })

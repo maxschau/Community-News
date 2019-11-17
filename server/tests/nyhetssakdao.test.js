@@ -2,18 +2,7 @@ var mysql = require("mysql");
 
 const NyhetssakDao = require("../src/dao/nyhetssakdao");
 const runsqlfile = require("./runsqlfile.js");
-/*
-var pool = mysql.createPool({
-  connectionLimit: 1,
-  host: "mysql.stud.iie.ntnu.no",
-  user: "maxts",
-  password: "Ecax0rJT",
-  database: "maxts",
-  debug: false,
-  multipleStatements: true
-});
-*/ 
-//dosiijfdsiojfpodsf
+
 
 var pool = mysql.createPool({
   connectionLimit : 1,

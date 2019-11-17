@@ -1,7 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import ArticleService, {Article} from '../../services/articleService';
-import KategoriService from '../../services/kategoriService';
+import KategoriService, {Kategori} from '../../services/kategoriService';
 import './RegistrerSak.css'
 import {Row, Column} from '../widgets';
 import {toast} from 'react-toastify';

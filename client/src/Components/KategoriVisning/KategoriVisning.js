@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import {Row, Column} from '../widgets'
-import ArticleService from '../../services/articleService';
+import {ArticleService, Article} from '../../services/articleService';
 import OtherArticle from "../FrontPage/OtherArticle";
 import './KategoriVisning.css';
 import {Link} from "react-router-dom";
@@ -15,7 +15,9 @@ type State = {
     id : number,
     articles : Article[],
     kategori : number,
-    pageNumber : number
+    pageNumber : number,
+    maxPage : number,
+    limitPerPage : number
 }
 class KategoriVisning extends Component<State> {
 
@@ -25,16 +27,19 @@ class KategoriVisning extends Component<State> {
             id : "",
             articles: [],
             kategori: "",
-            pageNumber: 1
+            pageNumber: 0,
+            maxPage : "",
+            limitPerPage : 6
         }
     }
     //Denne bør ikke være hardkodet!!!
 
     ///!!!!!
     pageNumbers = {
-        1 : [0 , 6],
-        2 : [6, 13],
-        3 : [13, 19]
+        0 : [0 , 6],
+        1: [6, 12],
+        2 : [12, 18],
+        3 : [18, 24]
     };
 
     render() {
@@ -57,7 +62,7 @@ class KategoriVisning extends Component<State> {
                         <p onClick={this.handleLastPage}><FontAwesomeIcon icon={faBackward} /> </p>
                     </Column>
                     <Column>
-                        <p>Page {this.state.pageNumber}</p>
+                        <p>Page {this.state.pageNumber + 1}</p>
                     </Column>
                     <Column>
                         <p onClick={this.handleNextPage}><FontAwesomeIcon icon={faForward} /> </p>
@@ -68,14 +73,14 @@ class KategoriVisning extends Component<State> {
     }
 
     handleNextPage : void = () => {
-        let number = this.state.pageNumber + 1;
+        let number = (this.state.pageNumber + 1)%(this.state.maxPage)
         this.setState({
             pageNumber : number
         })
     };
 
     handleLastPage : void = () => {
-        if (this.state.pageNumber > 1) {
+        if (this.state.pageNumber > 0) {
             let number = this.state.pageNumber - 1;
             this.setState({
                 pageNumber : number
@@ -96,7 +101,8 @@ class KategoriVisning extends Component<State> {
                     this.setState({
                         id: this.props.match.params.id,
                         articles: articles.data,
-                        pageNumber : 1
+                        maxPage : Math.floor((articles.data.length / this.state.limitPerPage)) + 1,
+                        pageNumber : 0
                     });
                 })
                 .catch((error) => console.error(error));
@@ -117,7 +123,8 @@ class KategoriVisning extends Component<State> {
             .then((articles) => {
                 this.setState({
                     id: this.props.match.params.id,
-                    articles: articles.data
+                    articles: articles.data,
+                    maxPage : Math.floor((articles.data.length / this.state.limitPerPage)) + 1
                 });
             })
             .catch((error) => console.error(error))

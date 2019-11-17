@@ -24,7 +24,7 @@ export class Article {
 
 }
 
-class ArticleService {
+export class ArticleService {
     getAllArticles() : Promise<Article[]> {
         return Axios.get("http://localhost:8080/nyheter");
     }
@@ -44,9 +44,9 @@ class ArticleService {
     updateOneArticle(id : number, article : Article) : Promise<void> {
         return Axios.put("http://localhost:8080/nyheter/" + id, article)
     }
-    
-    updateLikes(id : number, likes: number) : Promise<void> {
-        return Axios.put("http://localhost:8080/nyheter/likes/" + id, likes)
+
+    updateLikes(id : number) : Promise<void> {
+        return Axios.put("http://localhost:8080/nyheter/likes/" + id)
     }
 
     deleteOneArticle(id : number) : Promise<void> {

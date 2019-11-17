@@ -6,8 +6,23 @@ import {Link} from "react-router-dom";
 import {faThumbsUp, faThumbsDown }  from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './Artikkel.css';
+import {toast} from 'react-toastify';
 
-class Artikkel extends Component {
+
+type Props = {
+    overskrift: string,
+    ingress: string,
+    innhold: string,
+    kategori: number,
+    bilde: string,
+    viktighet:number,
+    tidspunkt: string,
+    forfatter: string,
+    likes : number,
+    liked : boolean
+}
+
+class Artikkel extends Component<Props> {
     constructor(props) {
         super(props);
         this.state = {
@@ -19,30 +34,38 @@ class Artikkel extends Component {
             viktighet:"",
             tidspunkt:"",
             forfatter:"",
-            likes : ""
+            likes : "",
+            liked : false
         };
     }
 
-    handleThumbsUp = () => {
-        this.setState({
-            likes : this.state.likes + 1
-        });
-        this.updateLikes();
-    };
+    notifyFailure: void = () => toast("Det er kun lov å gi én like!", {type: toast.TYPE.ERROR, position: toast.POSITION.BOTTOM_LEFT});
 
+    handleThumbsUp = () => {
+        if (!(this.state.liked)) {
+            this.setState({
+                likes : this.state.likes + 1,
+                liked : true
+            });
+        this.updateLikes();
+        } else {
+            this.notifyFailure();
+        }
+    };
+    /*
     handleThumbsDown = () => {
         let number = this.state.likes - 1;
-        console.log("number: " + number);
         this.setState({
             likes: number
         });
         this.updateLikes();
     };
+    */
 
     updateLikes = () => {
         let articleService = new ArticleService();
         console.log("likes from state: " + this.state.likes);
-        articleService.updateLikes(this.props.match.params.id, {likes: this.state.likes})
+        articleService.updateLikes(this.props.match.params.id)
             .then(() => {
                 console.log("Updating likes")
             })
@@ -72,16 +95,16 @@ class Artikkel extends Component {
                         </Column>
                     </Row>
                     <Row>
-                        <Column width={document.body.clientWidth}>
-                            <h5 className={"tidTekst"}><b>Publisert: </b> {this.state.tidspunkt} av {this.state.forfatter}</h5>
+                        <Column width={9}>
+                            <h5 className={"tidTekst float-left"}><b>Publisert: </b> {this.state.tidspunkt} av {this.state.forfatter}</h5>
                         </Column>
-                        <Column>
-                            <p onClick={() => this.handleThumbsUp()}><FontAwesomeIcon icon={faThumbsUp} size="2x"/></p>
-                            <p> <b>Likes: </b> {this.state.likes}</p>
+                        <Column width={3}>
+                            <span><p onClick={() => this.handleThumbsUp()}><FontAwesomeIcon id="iconLikes" icon={faThumbsUp}/>   {this.state.likes}</p></span>
                         </Column>
+                        {/*}
                         <Column>
                             <p onClick={() => this.handleThumbsDown()}><FontAwesomeIcon icon={faThumbsDown} size={"2x"}/></p>
-                        </Column>
+                        </Column>{*/}
 
                     </Row>
                     <Row>

@@ -17,6 +17,7 @@ import './navbar.css';
 import {Link} from "react-router-dom";
 import {Row, Column} from '../../widgets.js';
 import KategoriService, {Kategori} from '../../../services/kategoriService';
+import logo from "C:/Programmering/NTNU/Systemutvikling 2/miniprosjekt/client/src/assets/images/logo.png";
 
 
 type State = {
@@ -26,7 +27,9 @@ type State = {
     showNavbar : boolean
 }
 
-class NavBar extends Component<State> {
+type Props = {}
+
+class NavBar extends Component<State, Props> {
     //ToDo:
 
     constructor(props) {
@@ -51,19 +54,20 @@ class NavBar extends Component<State> {
         return(
             <div>
                 <Navbar style={{backgroundColor: '#1F2833'}} dark expand="md">
-                    <NavbarBrand href="/#/home"><p className="link">myNews</p></NavbarBrand>
+                    <a href="/#/home"><img src={logo} alt="logo.png" className="imgLogo"/></a>
+                    <NavbarBrand href="/#/home"><h5 className="link">Kalvskinnet News</h5></NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
-                                <Link to="/home"><NavItem>
-                                    <p className="link">Hjem</p>
-                                </NavItem></Link>
-                                <Link to="/reg"><NavItem>
-                                    <p className="link">Registrer ny sak</p>
-                                </NavItem></Link>
+                                <NavItem><NavLink href="/#/home">
+                                    <h5 className="link">Hjem</h5>
+                                </NavLink></NavItem>
+                                <NavItem><NavLink href="/#/reg">
+                                    <h5 className="link">Registrer ny sak</h5>
+                                </NavLink></NavItem>
                                 <UncontrolledDropdown nav inNavbar>
                                     <DropdownToggle dark nav caret>
-                                        <p className="link">Kategorier</p>
+                                        <h5 className="link">Kategorier</h5>
                                     </DropdownToggle>
                                     <DropdownMenu right dark style={{backgroundColor: '#1F2833'}}>
                                         {this.state.kategorier.map((kategorier) => {

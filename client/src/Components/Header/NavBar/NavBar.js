@@ -15,7 +15,6 @@ import {
 import React, {Component} from 'react';
 import './navbar.css';
 import {Link} from "react-router-dom";
-import {Row, Column} from '../../widgets.js';
 import KategoriService, {Kategori} from '../../../services/kategoriService';
 import logo from "C:/Programmering/NTNU/Systemutvikling 2/miniprosjekt/client/src/assets/images/logo.png";
 

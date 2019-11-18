@@ -5,6 +5,8 @@ import {Row, Column} from '../widgets';
 import ArticleService, {Article} from '../../services/articleService';
 import KategoriService from '../../services/kategoriService';
 import {toast} from 'react-toastify';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 //Setting the types of the state
 type State = {
@@ -40,6 +42,38 @@ class EndreArtikkel extends Component<State, Props> {
         }
     }
 
+    submitDelete = () => {
+        confirmAlert({
+        title: 'Bekreftelse av sletting',
+        message: 'Er du sikker på at du vil slette artikkelen?',
+        buttons: [
+            {
+            label: 'Yes',
+            onClick : () => this.delete()
+            },
+            {
+            label: 'No'
+            }
+        ]
+        });
+    }
+
+    submitSave = () => {
+        confirmAlert({
+        title: 'Bekreftelse av oppdatering',
+        message: 'Er du sikker på at du vil oppdatere artikkelen?',
+        buttons: [
+            {
+            label: 'Yes',
+            onClick : () => this.save()
+            },
+            {
+            label: 'No'
+            }
+        ]
+        });
+    }
+
     notifyChange: void = () => {
         toast("Endring av artikkel vellykket", {type: toast.TYPE.SUCCESS, position: toast.POSITION.BOTTOM_LEFT});
     }
@@ -48,6 +82,7 @@ class EndreArtikkel extends Component<State, Props> {
 
     save() : void {
         let articleService = new ArticleService();
+        console.log("Want to save???:((");
         let newArticle = new Article(this.state.overskrift, this.state.ingress, this.state.innhold, this.state.kategori, this.state.bilde, this.state.viktighet, this.state.forfatter);
         articleService.updateOneArticle(this.props.match.params.id, newArticle)
             .then(() => {
@@ -135,12 +170,12 @@ class EndreArtikkel extends Component<State, Props> {
                     </div>
                     <Row>
                         <Column>
-                            <button type="button" className="btn btn-secondary" onClick={() => this.save()}>
+                            <button type="button" className="btn btn-secondary" onClick={() => this.submitSave()}>
                             Lagre
                             </button>
                         </Column>
                         <Column>
-                            <button type="button" className="btn btn-danger" onClick={() => this.delete() }> Slett </button>
+                            <button type="button" className="btn btn-danger" onClick={() => this.submitDelete() }> Slett </button>
                         </Column>
                     </Row>
                 </form>

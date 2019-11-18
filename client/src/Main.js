@@ -27,7 +27,6 @@ class Main extends Component<> {
                 <Route exact path="/nyheter/:id" component={Artikkel} />
                 <Route exact path="/nyheter/endre/:id" component={EndreArtikkel} />
                 <Route exact path="/kategorier/:id" component={KategoriVisning} />
-                
                 <Footer />
             </HashRouter>
         );

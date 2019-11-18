@@ -14,7 +14,7 @@ type Props = {
     id: number,
     tidspunkt : string
 }
-class LiveFeedElement extends Component<State> {
+class LiveFeedElement extends Component<State, Props> {
     constructor(props) {
         super(props);
         this.state = {

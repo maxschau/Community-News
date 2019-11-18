@@ -9,7 +9,6 @@ import './FrontPage.css'
 import {faForward, faBackward}  from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {Row, Column} from '../widgets'
-import {toast} from 'react-toastify';
 
 type State= {
     mainArticle : Article,
@@ -61,7 +60,7 @@ class FrontPage extends Component<State> {
                         <p onClick={this.handleLastPage}><FontAwesomeIcon icon={faBackward} /> </p>
                     </Column>
                     <Column>
-                        <p>Page {this.state.pageNumber}</p>
+                        <p>Page {this.state.pageNumber + 1}</p>
                     </Column>
                     <Column>
                         <p onClick={this.handleNextPage}><FontAwesomeIcon icon={faForward} /> </p>
@@ -114,6 +113,7 @@ class FrontPage extends Component<State> {
                     articles: articles.data,
                     maxPage : Math.floor((articles.data.length / this.state.limitPerPage))
                 })
+                console.log("maxPage: "+ this.state.maxPage);
             })
     }
 

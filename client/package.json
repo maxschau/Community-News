@@ -15,6 +15,7 @@
     "cors": "^2.8.5",
     "mdbreact": "^4.22.1",
     "react": "^16.11.0",
+    "react-confirm-alert": "^2.4.1",
     "react-dom": "^16.11.0",
     "react-native": "^0.61.4",
     "react-native-snackbar": "^2.0.3",

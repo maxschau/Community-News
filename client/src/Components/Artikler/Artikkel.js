@@ -9,18 +9,22 @@ import './Artikkel.css';
 import {toast} from 'react-toastify';
 
 
-type Props = {
-    overskrift: string,
-    ingress: string,
-    innhold: string,
-    kategori: number,
-    bilde: string,
-    viktighet:number,
-    tidspunkt: string,
-    forfatter: string,
-    likes : number,
-    liked : boolean
+type State = {
+    overskrift?: string,
+    ingress?: string,
+    innhold?: string,
+    kategori?: number,
+    bilde?: string,
+    viktighet?:number,
+    tidspunkt?: string,
+    forfatter?: string,
+    likes? : number,
+    liked?: boolean
 }
+
+type Props = {}
+
+type props= {}
 
 class Artikkel extends Component<Props> {
     constructor(props) {

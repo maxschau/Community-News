@@ -7,10 +7,6 @@ import {Row, Column} from '../widgets';
 import {toast} from 'react-toastify';
 
 
-import createHashHistory from 'history/createHashHistory';
-
-//const history = createHashHistory(); // Use history.push(...) to programmatically change path, for instance after successfully saving a student
-
 type State = {
     overskrift: string,
     ingress: string,

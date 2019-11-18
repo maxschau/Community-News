@@ -3,7 +3,7 @@
 import React, {Component} from 'react'
 import MainArticle from './MainArticle'
 import OtherArticle from './OtherArticle'
-import ArticleService, {Article} from '../../services/articleService';
+import ArticleService, {Article} from '../../services/ArticleService';
 import LiveFeed from '../LiveFeed/LiveFeed';
 import './FrontPage.css'
 import {faForward, faBackward}  from "@fortawesome/free-solid-svg-icons";
@@ -45,13 +45,13 @@ class FrontPage extends Component<State> {
         return (
             <div className="front">
                 <LiveFeed/>
-                <MainArticle show = {this.state.frontPage} id={this.state.mainArticle.id} overskrift={this.state.mainArticle.overskrift} bilde={this.state.mainArticle.bilde}/>
+                <MainArticle show = {this.state.frontPage} id={this.state.mainArticle.id} headline={this.state.mainArticle.headline} image={this.state.mainArticle.image}/>
                 <hr />
                 <Row className="justify-content-center">
                 {this.state.articles.slice(this.pageNumbers[this.state.pageNumber][0], this.pageNumbers[this.state.pageNumber][1]).map((article) => {
                     return (
-                        <OtherArticle key={article.id} id={article.id} overskrift={article.overskrift}
-                                      bilde={article.bilde}/>
+                        <OtherArticle key={article.id} id={article.id} headline={article.headline}
+                                      image={article.image}/>
                     )
                 })}
                 </Row>
@@ -71,13 +71,13 @@ class FrontPage extends Component<State> {
     }
 
         handleNextPage : void = () => {
-        let number = (this.state.pageNumber + 1)%(this.state.maxPage)
+        let number = (this.state.pageNumber + 1)%(this.state.maxPage);
         if (number > 0) {
             this.setState({
                 frontPage : false
             });
         }
-        console.log("number: " + number)
+        console.log("number: " + number);
         if (number == 0) {
             this.setState({
                 frontPage : true
@@ -101,7 +101,6 @@ class FrontPage extends Component<State> {
                 pageNumber : number
             })
         }
-        
     };
 
     componentDidMount() {
@@ -112,7 +111,7 @@ class FrontPage extends Component<State> {
                     mainArticle: articles.data[0],
                     articles: articles.data,
                     maxPage : Math.floor((articles.data.length / this.state.limitPerPage))
-                })
+                });
                 console.log("maxPage: "+ this.state.maxPage);
             })
     }

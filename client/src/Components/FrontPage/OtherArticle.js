@@ -7,8 +7,8 @@ import './OtherArticle.css'
 
 type Props = {
     id : number,
-    overskrift : string,
-    bilde : string
+    headline : string,
+    image : string
 }
 
 class OtherArticle extends Component<Props> {
@@ -16,9 +16,9 @@ class OtherArticle extends Component<Props> {
         return (
             <Column width={6}>
                 <div>
-                    <Link to={"/nyheter/" + this.props.id}><img id="otherImg" src={this.props.bilde}
-                                                                    alt={this.props.overskrift}/></Link>
-                    <Link to={"/nyheter/" + this.props.id}><p>{this.props.overskrift}</p></Link>
+                    <Link to={"/articles/" + this.props.id}><img id="otherImg" src={this.props.image}
+                                                                    alt={this.props.headline}/></Link>
+                    <Link to={"/articles/" + this.props.id}><p>{this.props.headline}</p></Link>
                 </div>
             </Column>
         );

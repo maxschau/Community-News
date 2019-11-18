@@ -2,22 +2,22 @@
 
 import React, {Component} from 'react'
 import {Row, Column} from '../widgets';
-import ArticleService, {Article} from '../../services/articleService';
-import KategoriService from '../../services/kategoriService';
+import ArticleService, {Article} from '../../services/ArticleService';
+import CategoryService from '../../services/CategoryService';
 import {toast} from 'react-toastify';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 
 //Setting the types of the state
 type State = {
-    overskrift : string,
+    headline : string,
     ingress : string,
-    innhold : string,
-    kategori: number,
-    bilde : string, 
-    viktighet: number,
-    tidspunkt : string, 
-    forfatter : string,
+    contents : string,
+    category: number,
+    image : string,
+    importance: number,
+    time : string, 
+    author : string,
     likes : number
 }
 
@@ -25,20 +25,20 @@ type Props = {
     id : number
 }
 
-class EndreArtikkel extends Component<State, Props> {
+class ChangeArticle extends Component<State, Props> {
     constructor(props) {
         super(props);
 
         this.state = {
-            overskrift:"",
+            headline:"",
             ingress : "",
-            innhold:"",
-            kategori:"",
-            bilde:"",
-            viktighet:"",
-            tidspunkt:"",
-            forfatter : "",
-            kategorier: []
+            contents:"",
+            category:"",
+            image:"",
+            importance:"",
+            time:"",
+            author : "",
+            categories: []
         }
     }
 
@@ -82,12 +82,11 @@ class EndreArtikkel extends Component<State, Props> {
 
     save() : void {
         let articleService = new ArticleService();
-        console.log("Want to save???:((");
-        let newArticle = new Article(this.state.overskrift, this.state.ingress, this.state.innhold, this.state.kategori, this.state.bilde, this.state.viktighet, this.state.forfatter);
+        let newArticle = new Article(this.state.headline, this.state.ingress, this.state.contents, this.state.category, this.state.image, this.state.importance, this.state.author);
         articleService.updateOneArticle(this.props.match.params.id, newArticle)
             .then(() => {
                 this.notifyChange();
-                window.location.hash = '/nyheter/' + this.props.match.params.id
+                window.location.hash = '/articles/' + this.props.match.params.id
             })
             .catch((error) => console.error(error))
     }
@@ -116,8 +115,8 @@ class EndreArtikkel extends Component<State, Props> {
                         <label>Overskrift: </label>
                         <input type="text" className="form-control"
                                id="fname" placeholder="Skriv inn overskrift"
-                               value = {this.state.overskrift}
-                               name="overskrift" onChange={this.handleChange} required/>
+                               value = {this.state.headline}
+                               name="headline" onChange={this.handleChange} required/>
                     </div>
                     <div className="form-group">
                         <label>Ingress:</label>
@@ -127,16 +126,16 @@ class EndreArtikkel extends Component<State, Props> {
 
                     <div className="form-group">
                         <label>Innhold:</label>
-                        <textarea  className="form-control" id="lname" value = {this.state.innhold} rows="3"
-                               placeholder="Skriv inn innholdet" name="innhold" onChange={this.handleChange} required/>
+                        <textarea  className="form-control" id="lname" value = {this.state.contents} rows="3"
+                               placeholder="Skriv inn innholdet" name="contents" onChange={this.handleChange} required/>
                     </div>
 
 
                     <div className="form-group">
                         <label>Bilde:</label>
                         <input type="text" className="form-control"
-                               id="fname" value = {this.state.bilde} placeholder="Skriv inn bilde-URL"
-                               name="bilde" onChange={this.handleChange} required/>
+                               id="fname" value = {this.state.image} placeholder="Skriv inn bilde-URL"
+                               name="image" onChange={this.handleChange} required/>
                     </div>
                     <div className="form-group">
                         <Row>
@@ -146,10 +145,10 @@ class EndreArtikkel extends Component<State, Props> {
                         </Row>
                         <Row>
                             <Column>
-                                <select className="btn btn-secondary" name="kategori" value= {this.state.kategori} onChange={this.handleChange}>
-                                {this.state.kategorier.map((kategorier) => {
+                                <select className="btn btn-secondary" name="category" value= {this.state.category} onChange={this.handleChange}>
+                                {this.state.categories.map((categories) => {
                                     return(
-                                        <option value={kategorier.id} name = "kategori" selected={this.state.kategori === kategorier.id}>{kategorier.navn}</option>
+                                        <option value={categories.id} name = "category" selected={this.state.category === categories.id}>{categories.name}</option>
                                     )
                                 })}
                                 </select>
@@ -162,8 +161,8 @@ class EndreArtikkel extends Component<State, Props> {
                         </Row>
                         <Row>
                             <Column>
-                                <label>1<input type="radio" name="viktighet" value={1} checked= {this.state.viktighet == 1} onChange={this.handleChange}/></label>
-                                <label>2<input type="radio" name="viktighet" value={2} checked= {this.state.viktighet == 2} onChange={this.handleChange}/></label>
+                                <label>1<input type="radio" name="importance" value={1} checked= {this.state.importance == 1} onChange={this.handleChange}/></label>
+                                <label>2<input type="radio" name="importance" value={2} checked= {this.state.importance == 2} onChange={this.handleChange}/></label>
 
                             </Column>
                         </Row>
@@ -187,29 +186,29 @@ class EndreArtikkel extends Component<State, Props> {
 
     componentDidMount() {
             let articleService = new ArticleService();
-            let kategoriService = new KategoriService();
+            let categoryService = new CategoryService();
 
-            kategoriService.getAll()
-                .then((kategorier) => {
+            categoryService.getAll()
+                .then((categories) => {
                     this.setState({
-                        kategorier: kategorier.data
+                        categories: categories.data
                     })
                 })
                 .catch((error) => {
                     console.error(error);
-                })
+                });
 
             articleService.getOneArticle(this.props.match.params.id)
                 .then((article) => {
                     this.setState({
-                        overskrift: article.data[0].overskrift,
+                        headline: article.data[0].headline,
                         ingress: article.data[0].ingress,
-                        innhold: article.data[0].innhold,
-                        kategori: article.data[0].kategori,
-                        bilde: article.data[0].bilde,
-                        viktighet: article.data[0].viktighet,
-                        tidspunkt: article.data[0].tidspunkt,
-                        forfatter: article.data[0].forfatter
+                        contents: article.data[0].contents,
+                        category: article.data[0].category,
+                        image: article.data[0].image,
+                        importance: article.data[0].importance,
+                        time: article.data[0].time,
+                        author: article.data[0].author
                     });
                     //window.scrollTo(0, document.body.scrollHeight)
                 })
@@ -217,4 +216,4 @@ class EndreArtikkel extends Component<State, Props> {
     }
 }
 
-export default EndreArtikkel;
+export default ChangeArticle;

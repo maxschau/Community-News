@@ -1,43 +1,43 @@
 // @flow
 import React, {Component} from 'react';
-import ArticleService, {Article} from '../../services/articleService';
+import ArticleService from '../../services/ArticleService';
 import {Column, Row, Card} from '../../Components/widgets';
 import {Link} from "react-router-dom";
 import {faThumbsUp, faThumbsDown }  from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import './Artikkel.css';
+import './Article.css';
 import {toast} from 'react-toastify';
 
 
 type State = {
-    overskrift?: string,
-    ingress?: string,
-    innhold?: string,
-    kategori?: number,
-    bilde?: string,
-    viktighet?:number,
-    tidspunkt?: string,
-    forfatter?: string,
-    likes? : number,
-    liked?: boolean
+    headline: string,
+    ingress: string,
+    contents: string,
+    category: number,
+    image: string,
+    importance:number,
+    time: string,
+    author: string,
+    likes : number,
+    liked : boolean
 }
 
 type Props = {}
 
 type props= {}
 
-class Artikkel extends Component<Props> {
+class Article extends Component<Props> {
     constructor(props) {
         super(props);
         this.state = {
-            overskrift:"",
+            headline:"",
             ingress: "",
-            innhold:"",
-            kategori:"",
-            bilde:"",
-            viktighet:"",
-            tidspunkt:"",
-            forfatter:"",
+            contents:"",
+            category:"",
+            image:"",
+            importance:"",
+            time:"",
+            author:"",
             likes : "",
             liked : false
         };
@@ -56,19 +56,9 @@ class Artikkel extends Component<Props> {
             this.notifyFailure();
         }
     };
-    /*
-    handleThumbsDown = () => {
-        let number = this.state.likes - 1;
-        this.setState({
-            likes: number
-        });
-        this.updateLikes();
-    };
-    */
 
     updateLikes = () => {
         let articleService = new ArticleService();
-        console.log("likes from state: " + this.state.likes);
         articleService.updateLikes(this.props.match.params.id)
             .then(() => {
                 console.log("Updating likes")
@@ -84,12 +74,12 @@ class Artikkel extends Component<Props> {
                 <Card title={""}>
                     <Row>
                         <Column> 
-                            <img src={this.state.bilde} alt = {this.state.overskrift} id="img" />
+                            <img src={this.state.image} alt = {this.state.headline} id="img" />
                         </Column>
                     </Row>
                     <Row>
                         <Column>
-                            <h1>{this.state.overskrift}</h1>
+                            <h1>{this.state.headline}</h1>
                         </Column>
                     </Row>
                     <Row>
@@ -100,26 +90,21 @@ class Artikkel extends Component<Props> {
                     </Row>
                     <Row>
                         <Column width={9}>
-                            <h5 className={"tidTekst float-left"}><b>Publisert: </b> {this.state.tidspunkt} av {this.state.forfatter}</h5>
+                            <h5 className={"timeText float-left"}><b>Publisert: </b> {this.state.time} av {this.state.author}</h5>
                         </Column>
                         <Column width={3}>
                             <span><p onClick={() => this.handleThumbsUp()}><FontAwesomeIcon id="iconLikes" icon={faThumbsUp}/>   {this.state.likes}</p></span>
                         </Column>
-                        {/*}
-                        <Column>
-                            <p onClick={() => this.handleThumbsDown()}><FontAwesomeIcon icon={faThumbsDown} size={"2x"}/></p>
-                        </Column>{*/}
-
                     </Row>
                     <Row>
                         <Column>
-                            <h5>{this.state.innhold}</h5>
+                            <h5>{this.state.contents}</h5>
                         </Column>
                     </Row>
 
                     <Row>
                         <Column>
-                            <Link to={"/nyheter/endre/" + this.props.match.params.id}><button className="btn btn-secondary">Endre </button></Link>
+                            <Link to={"/articles/edit/" + this.props.match.params.id}><button className="btn btn-secondary">Endre </button></Link>
                         </Column>
                     </Row>
                 </Card>
@@ -132,25 +117,25 @@ class Artikkel extends Component<Props> {
         let articleService = new ArticleService();
         articleService.getOneArticle(this.props.match.params.id)
             .then((article) => {
-                let tidspunkt = article.data[0].tidspunkt.substring(0, article.data[0].tidspunkt.length-1);
-                tidspunkt = tidspunkt.replace("T", " ");
-                tidspunkt = tidspunkt.replace('.000', "");
+                console.log(article.data[0]);
+                let time = article.data[0].time.substring(0, article.data[0].time.length-1);
+                time = time.replace("T", " ");
+                time = time.replace('.000', "");
                 this.setState({
-                    overskrift : article.data[0].overskrift,
+                    headline : article.data[0].headline,
                     ingress: article.data[0].ingress,
-                    innhold:article.data[0].innhold,
-                    kategori:article.data[0].kategori,
-                    bilde:article.data[0].bilde,
-                    viktighet:article.data[0].viktighet,
-                    tidspunkt: tidspunkt,
-                    forfatter: article.data[0].forfatter,
+                    contents:article.data[0].contents,
+                    category:article.data[0].category,
+                    image:article.data[0].image,
+                    importance:article.data[0].importance,
+                    time: time,
+                    author: article.data[0].author,
                     likes : article.data[0].likes
                 });
-                console.log(article.data[0].likes);
             })
             .catch((error => console.error(error)))
 
     }
 }
 
-export default Artikkel;
+export default Article;

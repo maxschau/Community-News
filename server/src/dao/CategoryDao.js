@@ -1,15 +1,15 @@
 const dao = require('./dao.js');
 
-module.exports = class Kategoridao extends dao {
+module.exports = class CategoryDao extends dao {
     getAll(callback) {
         super.query(
-            "SELECT * FROM kategorier"
+            "SELECT * FROM categories"
         ,[], callback);
     };
 
     getOne(id, callback) {
         super.query(
-            "SELECT * FROM kategorier where id = (?)",
+            "SELECT * FROM categories where id = (?)",
             [id],
             callback
         );

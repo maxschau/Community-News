@@ -2,18 +2,18 @@
 
 import React, {Component} from 'react';
 import LiveFeedElement from './LiveFeedElement'
-import {ArticleService, Article} from '../../services/articleService'
+import {ArticleService, Article} from '../../services/ArticleService'
 import './LiveFeed.css';
 
 type State = {
-    artikler: Article[]
+    articles: Article[]
 }
 
 class LiveFeed extends Component<State> {
     constructor(props) {
         super(props);
         this.state = {
-            artikler : []
+            articles : []
         }
     }
     render() {
@@ -21,8 +21,8 @@ class LiveFeed extends Component<State> {
         return(
             <marquee behavior="scroll">
                 <div className="row flex-row flex-nowrap">
-                    {this.state.artikler.map(artikkel => {
-                        return (<div className="col" key={artikkel.id}><LiveFeedElement key = {artikkel.id} id = {artikkel.id} overskrift = {artikkel.overskrift} tidspunkt ={artikkel.tidspunkt} /> </div>)
+                    {this.state.articles.map(article => {
+                        return (<div className="col" key={article.id}><LiveFeedElement key = {article.id} id = {article.id} headline= {article.headline} time={article.time} /> </div>)
                     })}
                 </div>
             </marquee>
@@ -33,7 +33,7 @@ class LiveFeed extends Component<State> {
         articleService.getAllLiveFeedArticles()
             .then((articles) => {
                 this.setState({
-                    artikler : articles.data
+                    articles : articles.data
                 })
             })
             .catch((error) => console.error(error))

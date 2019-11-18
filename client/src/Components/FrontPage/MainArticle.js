@@ -1,14 +1,14 @@
 // @flow
 
 import React, {Component} from 'react';
-import ArticleService, {Article} from '../../services/articleService';
+import ArticleService, {Article} from '../../services/ArticleService';
 import './MainArticle.css';
 import {Link} from "react-router-dom";
 
 type Props = {
     id : number,
-    overskrift : string,
-    bilde : string,
+    headline : string,
+    image : string,
     show : boolean
 }
 class MainArticle extends Component<Props> {
@@ -18,8 +18,8 @@ class MainArticle extends Component<Props> {
         }
         return(
             <div id="mainDiv">
-                <Link to={"nyheter/" + this.props.id}><img src={this.props.bilde} id="imgMain"alt={this.props.overskrift} /> </Link>
-                <Link to={"nyheter/" + this.props.id}><h1>{this.props.overskrift}</h1></Link>
+                <Link to={"articles/" + this.props.id}><img src={this.props.image} id="imgMain"alt={this.props.headline} /> </Link>
+                <Link to={"articles/" + this.props.id}><h1>{this.props.headline}</h1></Link>
             </div>
         );
     }

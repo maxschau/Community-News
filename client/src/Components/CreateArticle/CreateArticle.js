@@ -1,44 +1,44 @@
 // @flow
 import React, {Component} from 'react';
-import ArticleService, {Article} from '../../services/articleService';
-import KategoriService, {Kategori} from '../../services/kategoriService';
-import './RegistrerSak.css'
+import ArticleService, {Article} from '../../services/ArticleService';
+import CategoryService, {Category} from '../../services/CategoryService';
+import './CreateArticle.css'
 import {Row, Column} from '../widgets';
 import {toast} from 'react-toastify';
 
 
 type State = {
-    overskrift: string,
+    headline: string,
     ingress: string,
-    innhold: string,
-    kategori: number,
-    bilde: string,
-    viktighet: number,
-    tidspunkt: string,
-    forfatter: string,
-    kategorier: Kategori[]
+    contents: string,
+    category: number,
+    image: string,
+    importance: number,
+    time: string,
+    author: string,
+    categories: Category[]
 }
 
-class RegistrerSak extends Component<State> {
+class CreateArticle extends Component<State> {
 
     constructor(props) {
         super(props);
         this.state = {
-            overskrift: "",
+            headline: "",
             ingress: "",
-            innhold: "",
-            kategori: "",
-            bilde: "",
-            viktighet: "",
-            tidspunkt: "",
-            forfatter: "",
-            kategorier: []
+            contents: "",
+            category: "",
+            image: "",
+            importance: "",
+            time: "",
+            author: "",
+            categories: []
         };
     }
 
     notifySuccess: void = () => {
         toast("Registrering vellykket", {type: toast.TYPE.SUCCESS, position: toast.POSITION.BOTTOM_LEFT});
-    }
+    };
 
     notifyFailure: void = () => toast("Noe gikk galt", {type: toast.TYPE.ERROR, position: toast.POSITION.BOTTOM_LEFT});
 
@@ -52,7 +52,7 @@ class RegistrerSak extends Component<State> {
     //BØR KANSKJE GJØRES SLIK AT MAN KOMMER RETT TIL ARTIKKELEN???
     save(): void {
         let articleService = new ArticleService();
-        let a1 = new Article(this.state.overskrift, this.state.ingress, this.state.innhold, this.state.kategori, this.state.bilde, this.state.viktighet, this.state.forfatter);
+        let a1 = new Article(this.state.headline, this.state.ingress, this.state.contents, this.state.category, this.state.image, this.state.importance, this.state.author);
         articleService.createNewArticle(a1)
             .then(() => {
                 this.notifySuccess();
@@ -72,7 +72,7 @@ class RegistrerSak extends Component<State> {
                         <label>Overskrift: </label>
                         <input type="text" className="form-control"
                                id="fname" placeholder="Skriv inn overskrift"
-                               name="overskrift" onChange={this.handleChange} required/>
+                               name="headline" onChange={this.handleChange} required/>
                     </div>
                     <div className="form-group">
                         <label>Ingress: </label>
@@ -84,7 +84,7 @@ class RegistrerSak extends Component<State> {
                     <div className="form-group">
                         <label>Innhold:</label>
                         <textarea className="form-control" id="lname" rows="4"
-                                  placeholder="Skriv inn innholdet" name="innhold" onChange={this.handleChange}
+                                  placeholder="Skriv inn innholdet" name="contents" onChange={this.handleChange}
                                   required/>
                     </div>
 
@@ -92,7 +92,7 @@ class RegistrerSak extends Component<State> {
                         <label>Bilde:</label>
                         <input type="text" className="form-control"
                                id="fname" placeholder="Skriv inn bilde-URL"
-                               name="bilde" onChange={this.handleChange} required/>
+                               name="image" onChange={this.handleChange} required/>
                     </div>
                     <div className="form-group">
                         <Row>
@@ -102,12 +102,12 @@ class RegistrerSak extends Component<State> {
                         </Row>
                         <Row>
                             <Column>
-                                <select className="btn btn-secondary" name="kategori" value={this.state.kategori}
+                                <select className="btn btn-secondary" name="category" value={this.state.category}
                                         onChange={this.handleChange}>
                                     <option value="" selected disabled hidden>Velg en kategori</option>
-                                    {this.state.kategorier.map((kategorier) => {
+                                    {this.state.categories.map((categories) => {
                                         return (
-                                            <option value={kategorier.id}>{kategorier.navn}</option>
+                                            <option value={categories.id}>{categories.name}</option>
                                         )
                                     })}
                                 </select>
@@ -123,7 +123,7 @@ class RegistrerSak extends Component<State> {
                                 <Column>
                                     <input type="text" className="form-control"
                                            id="fname" placeholder="Hvem er du?"
-                                           name="forfatter" onChange={this.handleChange} required/>
+                                           name="author" onChange={this.handleChange} required/>
                                 </Column>
                             </Row>
 
@@ -137,9 +137,9 @@ class RegistrerSak extends Component<State> {
                         </Row>
                         <Row>
                             <Column>
-                                <label>1<input type="radio" value={1} name="viktighet"
+                                <label>1<input type="radio" value={1} name="importance"
                                                onChange={this.handleChange}/></label>
-                                <label>2<input type="radio" value={2} name="viktighet"
+                                <label>2<input type="radio" value={2} name="importance"
                                                onChange={this.handleChange}/></label>
                             </Column>
                         </Row>
@@ -153,11 +153,11 @@ class RegistrerSak extends Component<State> {
     }
 
     componentDidMount() {
-        let kategoriService = new KategoriService();
-        kategoriService.getAll()
-            .then((kategorier) => {
+        let categoryService = new CategoryService();
+        categoryService.getAll()
+            .then((categories) => {
                 this.setState({
-                    kategorier: kategorier.data
+                    categories: categories.data
                 })
             })
             .catch((error) => {
@@ -166,4 +166,4 @@ class RegistrerSak extends Component<State> {
     }
 }
 
-export default RegistrerSak;
+export default CreateArticle;

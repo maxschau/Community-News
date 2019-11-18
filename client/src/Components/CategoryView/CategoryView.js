@@ -2,11 +2,11 @@
 
 import React, {Component} from 'react';
 import {Row, Column} from '../widgets'
-import {ArticleService, Article} from '../../services/articleService';
+import {ArticleService, Article} from '../../services/ArticleService';
 import OtherArticle from "../FrontPage/OtherArticle";
-import './KategoriVisning.css';
+import './CategoryView.css';
 import {Link} from "react-router-dom";
-import KategoriService from '../../services/kategoriService';
+import CategoryService from '../../services/CategoryService';
 import {faForward, faBackward}  from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -14,19 +14,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 type State = {
     id : number,
     articles : Article[],
-    kategori : number,
+    category : number,
     pageNumber : number,
     maxPage : number,
     limitPerPage : number
 }
-class KategoriVisning extends Component<State> {
+class CategoryView extends Component<State> {
 
     constructor(props) {
         super(props);
         this.state = {
             id : "",
             articles: [],
-            kategori: "",
+            category: "",
             pageNumber: 0,
             maxPage : "",
             limitPerPage : 6
@@ -47,13 +47,13 @@ class KategoriVisning extends Component<State> {
             <div className="main">
                 <Row>
                     <Column>
-                        {<h1>{this.state.kategori.navn}</h1>}
+                        {<h1>{this.state.category.navn}</h1>}
                     </Column>
                 </Row>
                 <hr />
                 <Row>
                     {this.state.articles.slice(this.pageNumbers[this.state.pageNumber][0], this.pageNumbers[this.state.pageNumber][1]).map((article) => {
-                        return <OtherArticle key={article.id} id={article.id} overskrift={article.overskrift} bilde={article.bilde}/>
+                        return <OtherArticle key={article.id} id={article.id} headline={article.headline} image={article.image}/>
                     })}
                 </Row>
                 <hr />
@@ -73,7 +73,7 @@ class KategoriVisning extends Component<State> {
     }
 
     handleNextPage : void = () => {
-        let number = (this.state.pageNumber + 1)%(this.state.maxPage)
+        let number = (this.state.pageNumber + 1)%(this.state.maxPage);
         this.setState({
             pageNumber : number
         })
@@ -95,7 +95,7 @@ class KategoriVisning extends Component<State> {
         }
         if (this.props.match.params.id !== prevProps.match.params.id) {
             let articleService = new ArticleService();
-            let kategoriService = new KategoriService();
+            let categoryService = new CategoryService();
             articleService.getArticlesByCategory(this.props.match.params.id)
                 .then((articles) => {
                     this.setState({
@@ -106,10 +106,10 @@ class KategoriVisning extends Component<State> {
                     });
                 })
                 .catch((error) => console.error(error));
-            kategoriService.getOne(this.props.match.params.id)
-                .then((kategori) => {
+            categoryService.getOne(this.props.match.params.id)
+                .then((category) => {
                     this.setState({
-                    kategori: kategori.data[0]
+                    category: category.data[0]
                 });
             });
         }
@@ -118,7 +118,7 @@ class KategoriVisning extends Component<State> {
     componentDidMount(): void {
         console.log("ComponentDidMount()");
         let articleService = new ArticleService();
-        let kategoriService = new KategoriService();
+        let categoryService = new CategoryService();
         articleService.getArticlesByCategory(this.props.match.params.id)
             .then((articles) => {
                 this.setState({
@@ -127,14 +127,14 @@ class KategoriVisning extends Component<State> {
                     maxPage : Math.floor((articles.data.length / this.state.limitPerPage)) + 1
                 });
             })
-            .catch((error) => console.error(error))
-        kategoriService.getOne(this.props.match.params.id)
-            .then((kategori) => {
+            .catch((error) => console.error(error));
+        categoryService.getOne(this.props.match.params.id)
+            .then((category) => {
                 this.setState({
-                    kategori: kategori.data[0]
+                    category: category.data[0]
                 });
             });
     }
 }
 
-export default KategoriVisning;
+export default CategoryView;

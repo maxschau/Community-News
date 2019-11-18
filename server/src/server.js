@@ -15,8 +15,8 @@ app.use(function(req, res, next) {
     next();
 });
 
-const KategoriDao = require("./dao/kategoridao");
-const NyhetssakDao = require("./dao/nyhetssakdao");
+const CategoryDao = require("./dao/CategoryDao");
+const ArticleDao = require("./dao/ArticleDao");
 
 var pool = mysql.createPool( {
     connectionLimit: 2,
@@ -27,12 +27,12 @@ var pool = mysql.createPool( {
     debug: false
 });
 
-let nyhetssakDao = new NyhetssakDao(pool);
-let kategoriDao = new KategoriDao(pool);
+let articleDao = new ArticleDao(pool);
+let categoryDao = new CategoryDao(pool);
 
 
-app.get("/nyheter", (req ,res) => {
-    nyhetssakDao.getAll((status, data) => {
+app.get("/articles", (req ,res) => {
+    articleDao.getAll((status, data) => {
         res.status(status);
         res.json(data);
     });
@@ -40,49 +40,49 @@ app.get("/nyheter", (req ,res) => {
 
 
 //Registrer ny artikkel
-app.post("/nyheter", (req, res)  => {
-   nyhetssakDao.createOne(req.body, (status, data) => {
+app.post("/articles", (req, res)  => {
+   articleDao.createOne(req.body, (status, data) => {
       res.status(status);
       res.json(data);
    });
 });
 
 //Hent en nyhetssak
-app.get("/nyheter/:id", (req, res) => {
-   nyhetssakDao.getOne(req.params.id, (status, data) => {
+app.get("/articles/:id", (req, res) => {
+   articleDao.getOne(req.params.id, (status, data) => {
        res.status(status);
        res.json(data);
    })
 });
 
 //Slett en nyhetssak
-app.delete("/nyheter/:id", (req, res) => {
-   nyhetssakDao.deleteOne(req.params.id, (status, data) => {
+app.delete("/articles/:id", (req, res) => {
+   articleDao.deleteOne(req.params.id, (status, data) => {
        res.status(status);
        res.json(data);
    });
 });
 
-app.put("/nyheter/likes/:id", (req, res) => {
-    nyhetssakDao.updateLikes(req.params.id, (status, data) => {
+app.put("/articles/likes/:id", (req, res) => {
+    articleDao.updateLikes(req.params.id, (status, data) => {
         res.status(status);
         res.json(data);
     })
 });
 
 //Endre en nyhetssak
-app.put("/nyheter/:id", (req, res) => {
-    nyhetssakDao.updateOne(req.params.id, req.body, (status, data) => {
+app.put("/articles/:id", (req, res) => {
+    articleDao.updateOne(req.params.id, req.body, (status, data) => {
         res.status(status);
         res.json(data);
     })
 });
 
-//Henter nyheter til livefeed
+//Henter articles til livefeed
 
 // BØR KANSKJE ENDRES?????!!??!?!?!?!?
 app.get("/livefeed", (req, res) => {
-    nyhetssakDao.getArtiklerLiveFeed((status, data) => {
+    articleDao.getArticlesLiveFeed((status, data) => {
         res.status(status);
         res.json(data);
     })
@@ -90,37 +90,37 @@ app.get("/livefeed", (req, res) => {
 
 //Henter alle kategorier
 app.get("/kategorier", (reg, res) => {
-    kategoriDao.getAll((status, data) => {
+    categoryDao.getAll((status, data) => {
         res.status(status);
         res.json(data);
     })
 });
 
 //Henter en kategori
-app.get("/kategorier/:id", (req, res) => {
-    kategoriDao.getOne(parseInt(req.params.id), (status, data) => {
+app.get("/categories/:id", (req, res) => {
+    categoryDao.getOne(parseInt(req.params.id), (status, data) => {
         res.status(status);
         res.json(data);
     })
 });
-//Henter alle nyheter til en kategori
-app.get("/nyheter/kategorier/:id", (req, res) => {
-    nyhetssakDao.getArtiklerByCategory(parseInt(req.params.id), (status, data) => {
+//Henter alle articles til en kategori
+app.get("/articles/categories/:id", (req, res) => {
+    articleDao.getArticlesByCategory(parseInt(req.params.id), (status, data) => {
         res.status(status);
         res.json(data);
     })
 });
 
 app.get("/frontpage", (req, res) => {
-    nyhetssakDao.getAllFrontPage((status, data) => {
+    articleDao.getAllFrontPage((status, data) => {
         res.status(status);
         res.json(data);
     });
 });
 
 
-app.get("/nyheter/finnAntall/:antall", (req, res) => {
-    nyhetssakDao.getAmountOfNews(parseInt(req.params.antall), (status, data) => {
+app.get("/articles/getAmount/:amount", (req, res) => {
+    articleDao.getAmountOfNews(parseInt(req.params.amount), (status, data) => {
         res.status(status);
         res.json(data);
     });

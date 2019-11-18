@@ -48,11 +48,11 @@ class ChangeArticle extends Component<State, Props> {
         message: 'Er du sikker på at du vil slette artikkelen?',
         buttons: [
             {
-            label: 'Yes',
+            label: 'Ja',
             onClick : () => this.delete()
             },
             {
-            label: 'No'
+            label: 'Nei'
             }
         ]
         });
@@ -64,11 +64,11 @@ class ChangeArticle extends Component<State, Props> {
         message: 'Er du sikker på at du vil oppdatere artikkelen?',
         buttons: [
             {
-            label: 'Yes',
+            label: 'Ja',
             onClick : () => this.save()
             },
             {
-            label: 'No'
+            label: 'Nei'
             }
         ]
         });
@@ -109,7 +109,7 @@ class ChangeArticle extends Component<State, Props> {
 
     render() {
         return(
-            <div>
+            <div id = "containerReg">
                 <form>
                     <div className="form-group">
                         <label>Overskrift: </label>

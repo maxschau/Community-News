@@ -46,7 +46,16 @@ test("Receive all articles from database", done => {
   articleDao.getAll(callback);
 });
 
-/*
+test("test that we receive all articles with importane 1", done => {
+  function callback(status, data) {
+    console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
+    expect(data.length).toBe(3)
+    done();
+  }
+  articleDao.getAllFrontPage(callback);
+});
+
+
 test("get a specific amount of news (2)", done => {
   function callback(status, data) {
     console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
@@ -55,7 +64,7 @@ test("get a specific amount of news (2)", done => {
   }
   nyhetssakDao.getAmountOfNews(2, callback);
 })
-*/
+
 
 test("test that we create a new article", done => {
   function callback(status, data) {
@@ -70,7 +79,16 @@ test("test that we create a new article", done => {
   );
 });
 
-test("test that we get all articles from one kategori", done => {
+test("test that we get all articles to the livefeed", done => {
+  function callback(status, data) {
+    console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
+    expect(data.length).toBe(4);
+    done();
+  }
+  categoryDao.getArticlesLiveFeed(callback);
+})
+
+test("test that we get all articles from one category", done => {
   function callback(status, data) {
     console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
     expect(data.length).toBe(2)

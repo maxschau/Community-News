@@ -23,7 +23,7 @@ module.exports = class ArticleDao extends dao {
 
     getAmountOfNews(amount, callback) {
         super.query(
-            "SELECT id, headline, image, importance FROM article HAVING importance = 1 ORDER BY time DESC limit ?", 
+            "SELECT id, headline, image, importance FROM article ORDER BY time DESC limit ?", 
             [amount],
             callback
         );

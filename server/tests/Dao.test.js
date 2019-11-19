@@ -134,7 +134,6 @@ test("test that we can update likes for one article", done => {
       expect(data[0].likes).toBe(1);
       done();
     });
-    done();
   }
   articleDao.updateLikes(1, callback);
 })

@@ -62,7 +62,7 @@ test("get a specific amount of news (2)", done => {
     expect(data.length).toBe(2);
     done();
   }
-  nyhetssakDao.getAmountOfNews(2, callback);
+  articleDao.getAmountOfNews(2, callback);
 })
 
 
@@ -85,7 +85,7 @@ test("test that we get all articles to the livefeed", done => {
     expect(data.length).toBe(4);
     done();
   }
-  categoryDao.getArticlesLiveFeed(callback);
+  articleDao.getArticlesLiveFeed(callback);
 })
 
 test("test that we get all articles from one category", done => {

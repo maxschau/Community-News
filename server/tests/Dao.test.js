@@ -126,6 +126,18 @@ test("test that we can update one article", done => {
   );
 });
 
+test("test that we can update likes for one article", done => {
+  function callback(status, data) {
+    console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
+    articleDao.getOne(1, (status, data) => {
+      expect(data[0].likes).toBe(1);
+      done();
+    });
+    done();
+  }
+  articleDao.updateLikes(1, callback);
+})
+
 /*CATEGORY TESTS */
 
 

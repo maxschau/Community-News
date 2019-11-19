@@ -1,7 +1,5 @@
 const dao = require('./dao.js');
 
-
-
 module.exports = class ArticleDao extends dao {
     getAll(callback) {
         super.query("SELECT id, headline, ingress contents, time, image, category, importance, author from article order by time desc", [], callback

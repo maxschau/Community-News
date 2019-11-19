@@ -12,9 +12,10 @@ import CategoryView from './Components/CategoryView/CategoryView'
 import {ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+type Props = {}
+type State = {}
 
-
-class Main extends Component<> {
+class Main extends Component<Props, State> {
 
 
     render() {

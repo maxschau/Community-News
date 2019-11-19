@@ -21,7 +21,7 @@ type State = {
 }
 class CategoryView extends Component<State> {
 
-    constructor(props) {
+    constructor(props : any) {
         super(props);
         this.state = {
             id : "",

@@ -10,7 +10,7 @@ type State = {
 }
 
 class LiveFeed extends Component<State> {
-    constructor(props) {
+    constructor(props : any) {
         super(props);
         this.state = {
             articles : []

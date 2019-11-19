@@ -31,7 +31,7 @@ type Props = {}
 class NavBar extends Component<State, Props> {
     //ToDo:
 
-    constructor(props) {
+    constructor(props : any) {
         super(props);
         this.state = {
             categories: [],

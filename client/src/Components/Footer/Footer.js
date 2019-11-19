@@ -10,9 +10,10 @@ import youtube_logo from "C:/Programmering/NTNU/Systemutvikling 2/miniprosjekt/c
 import flickr_logo from "C:/Programmering/NTNU/Systemutvikling 2/miniprosjekt/client/src/assets/images/icons/flickr.png";
 import instagram_logo from "C:/Programmering/NTNU/Systemutvikling 2/miniprosjekt/client/src/assets/images/icons/instagram.png";
 
+type State = {}
+type Props = {}
 
-
-class Footer extends Component<> {
+class Footer extends Component<State, Props> {
     render() {
         return(
             <div className="mainFooter row justify-content-center">

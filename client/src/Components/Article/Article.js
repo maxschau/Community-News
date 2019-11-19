@@ -27,7 +27,7 @@ type Props = {}
 type props= {}
 
 class Article extends Component<Props> {
-    constructor(props) {
+    constructor(props : any) {
         super(props);
         this.state = {
             headline:"",

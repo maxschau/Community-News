@@ -26,7 +26,7 @@ type Props = {
 }
 
 class ChangeArticle extends Component<State, Props> {
-    constructor(props) {
+    constructor(props : any) {
         super(props);
 
         this.state = {

@@ -1,4 +1,4 @@
-// @flow
+
 /* eslint eqeqeq: "off" */
 
 import {Component} from 'react';

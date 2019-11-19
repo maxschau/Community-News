@@ -106,6 +106,28 @@ test("test that we can update one article", done => {
   );
 });
 
+/*CATEGORY TESTS */
+
+
+test("test that we receive all categories", done => {
+  function callback(status, data) {
+    console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
+    expect(data.length).toBe(4);
+    done();
+  }
+  categoryDao.getAll(callback);
+});
+
+test("that we get one category ", done => {
+  function callback(status, data) {
+    console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
+    expect(data.length).toBe(1);
+    expect(data[0].name).toBe("Sport");
+    done();
+  }
+  categoryDao.getOne(1, callback);
+});
+
 
 
 afterAll(() => {

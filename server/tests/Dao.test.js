@@ -130,6 +130,7 @@ test("test that we can update likes for one article", done => {
   function callback(status, data) {
     console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
     articleDao.getOne(1, (status, data) => {
+      console.log("test callback : status = " + status + ", data = " + JSON.stringify(data));
       expect(data[0].likes).toBe(1);
       done();
     });

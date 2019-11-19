@@ -16,6 +16,7 @@ var pool = mysql.createPool({
 
 
 let articleDao = new ArticleDao(pool);
+let categoryDao = new CateogryDao(pool);
 
 beforeAll(done => {
     runsqlfile("create_tables.sql", pool, () => {

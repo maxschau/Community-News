@@ -12,6 +12,7 @@ type State = {
 
 type Props = {
     id: number,
+    headline : string,
     time : string
 }
 class LiveFeedElement extends Component<State, Props> {
@@ -26,7 +27,7 @@ class LiveFeedElement extends Component<State, Props> {
     render() {
         return(
             <div>
-                <Link to={"/nyheter/" + this.state.id}><p><b>{this.state.headline}</b> {this.state.time} | </p></Link>
+                <Link to={"/articles/" + this.state.id}><p><b>{this.state.headline}</b> {this.state.time} | </p></Link>
             </div>
         );
     }

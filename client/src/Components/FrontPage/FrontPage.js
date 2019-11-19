@@ -110,7 +110,7 @@ class FrontPage extends Component<State> {
                 this.setState({
                     mainArticle: articles.data[0],
                     articles: articles.data,
-                    maxPage : Math.floor((articles.data.length / this.state.limitPerPage))
+                    maxPage : Math.floor((articles.data.length / this.state.limitPerPage)) + 1
                 });
                 console.log("maxPage: "+ this.state.maxPage);
             })

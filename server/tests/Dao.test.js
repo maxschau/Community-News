@@ -2,6 +2,7 @@ var mysql = require("mysql");
 
 const ArticleDao = require("../src/dao/ArticleDao");
 const runsqlfile = require("./runsqlfile.js");
+const CategoryDao = require("../src/dao/CategoryDao");
 
 
 var pool = mysql.createPool({
@@ -16,7 +17,7 @@ var pool = mysql.createPool({
 
 
 let articleDao = new ArticleDao(pool);
-let categoryDao = new CateogryDao(pool);
+let categoryDao = new CategoryDao(pool);
 
 beforeAll(done => {
     runsqlfile("create_tables.sql", pool, () => {

@@ -19,7 +19,7 @@ let articleDao = new ArticleDao(pool);
 
 beforeAll(done => {
     runsqlfile("create_tables.sql", pool, () => {
-        runsqlfile("create_testdata_article.sql", pool, done);
+        runsqlfile("create_testdata.sql", pool, done);
     });
 });
 

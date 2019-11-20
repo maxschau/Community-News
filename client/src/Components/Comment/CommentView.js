@@ -49,7 +49,7 @@ class CommentView extends Component<State, Props> {
 
     handleDown = () => {
         if (this.state.commentPage > 0) {
-            let number = (this.state.commentPage - 1)%(this.state.maxPage);
+            let number = this.state.pageNumber - 1;
             this.setState({
                 commentPage : number
             })

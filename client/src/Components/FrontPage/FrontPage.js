@@ -33,14 +33,6 @@ class FrontPage extends Component<State> {
         }
     }
 
-
-    pageNumbers = {
-        0 : [1 , 7],
-        1 : [7, 13],
-        2 : [13, 19],
-        3 : [19, 25]
-    };
-
     render() {
         return (
             <div className="front">
@@ -48,7 +40,8 @@ class FrontPage extends Component<State> {
                 <MainArticle show = {this.state.frontPage} id={this.state.mainArticle.id} headline={this.state.mainArticle.headline} image={this.state.mainArticle.image}/>
                 <hr />
                 <Row className="justify-content-center">
-                {this.state.articles.slice(this.pageNumbers[this.state.pageNumber][0], this.pageNumbers[this.state.pageNumber][1]).map((article) => {
+                {/*this.state.articles.slice(this.pageNumbers[this.state.pageNumber][0], this.pageNumbers[this.state.pageNumber][1]).map((article) => {*/
+                this.state.articles.slice(this.state.pageNumber * this.state.limitPerPage, this.state.pageNumber * this.state.limitPerPage + 6).map((article) => {
                     return (
                         <OtherArticle key={article.id} id={article.id} headline={article.headline}
                                       image={article.image}/>
@@ -77,7 +70,6 @@ class FrontPage extends Component<State> {
                 frontPage : false
             });
         }
-        console.log("number: " + number);
         if (number == 0) {
             this.setState({
                 frontPage : true
@@ -89,7 +81,7 @@ class FrontPage extends Component<State> {
         })
     };
 
-    handleLastPage = () => {
+    handleLastPage : void = () => {
         if (this.state.pageNumber > 0) {
             let number = this.state.pageNumber - 1;
             if (number == 0) {
@@ -109,9 +101,11 @@ class FrontPage extends Component<State> {
             .then((articles) => {
                 this.setState({
                     mainArticle: articles.data[0],
-                    articles: articles.data,
-                    maxPage : Math.floor((articles.data.length / this.state.limitPerPage)) + 1
+                    articles: articles.data.slice(1),
+                    maxPage : Math.ceil(((articles.data.length) / this.state.limitPerPage))
                 });
+                console.log("A: " + Math.ceil(this.state.articles.length / this.state.limitPerPage));
+
                 console.log("maxPage: "+ this.state.maxPage);
             })
     }

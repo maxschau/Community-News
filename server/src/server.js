@@ -17,6 +17,7 @@ app.use(function(req, res, next) {
 
 const CategoryDao = require("./dao/CategoryDao");
 const ArticleDao = require("./dao/ArticleDao");
+const CommmentsDao = require("./dao/CommentsDao");
 
 var pool = mysql.createPool( {
     connectionLimit: 2,
@@ -29,6 +30,33 @@ var pool = mysql.createPool( {
 
 let articleDao = new ArticleDao(pool);
 let categoryDao = new CategoryDao(pool);
+let commentsDao = new CommmentsDao(pool);
+
+//Comments //
+
+//BØR KANSKJE ENDRES???
+app.get("/comments/:id", (req, res) => {
+    commentsDao.getCommentsByArticle(req.params.id, (status, data) => {
+        res.status(status);
+        res.json(data);
+    });
+});
+
+app.delete("/comments/:id", (req, res) => {
+    commentsDao.deleteComment(req.params.id, (status, data) => {
+        res.status(status);
+        res.json(data);
+    });
+});
+
+app.post("/comments", (req, res) => {
+    commentsDao.addComment(req.body, (status, data) => {
+        res.status(status);
+        res.json(data);
+    });
+});
+
+
 
 
 app.get("/articles", (req ,res) => {

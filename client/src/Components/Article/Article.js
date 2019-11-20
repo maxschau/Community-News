@@ -1,6 +1,7 @@
 // @flow
 import React, {Component} from 'react';
 import ArticleService from '../../services/ArticleService';
+import CommentView from "../Comment/CommentView";
 import {Column, Row, Card} from '../../Components/widgets';
 import {Link} from "react-router-dom";
 import {faThumbsUp, faThumbsDown }  from "@fortawesome/free-solid-svg-icons"
@@ -24,9 +25,8 @@ type State = {
 
 type Props = {}
 
-type props= {}
 
-class Article extends Component<Props> {
+class Article extends Component<State, Props> {
     constructor(props : any) {
         super(props);
         this.state = {
@@ -39,9 +39,13 @@ class Article extends Component<Props> {
             time:"",
             author:"",
             likes : "",
-            liked : false
+            liked : false,
+            comments : ""
         };
+        this.handleThumbsUp = this.handleThumbsUp.bind(this);
     }
+
+
 
     notifyFailure: void = () => toast("Det er kun lov å gi én like!", {type: toast.TYPE.ERROR, position: toast.POSITION.BOTTOM_LEFT});
 
@@ -56,6 +60,7 @@ class Article extends Component<Props> {
             this.notifyFailure();
         }
     };
+
 
     updateLikes = () => {
         let articleService = new ArticleService();
@@ -103,8 +108,14 @@ class Article extends Component<Props> {
                     </Row>
 
                     <Row>
-                        <Column>
+                        <Column width>
                             <Link to={"/articles/edit/" + this.props.match.params.id}><button className="btn btn-secondary">Endre </button></Link>
+                        </Column>
+                    </Row>
+                    <hr/>
+                    <Row>
+                        <Column>
+                            <CommentView id={this.props.match.params.id} />
                         </Column>
                     </Row>
                 </Card>

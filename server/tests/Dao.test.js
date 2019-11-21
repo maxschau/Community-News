@@ -162,6 +162,8 @@ test("that we get one category ", done => {
   categoryDao.getOne(1, callback);
 });
 
+
+
 /* Comments test */
 test("that we get comments to one article", done => {
   function callback(status, data) {

@@ -98,7 +98,7 @@ class Article extends Component<State, Props> {
                             <h5 className={"timeText float-left"}><b>Publisert: </b> {this.state.time} av {this.state.author}</h5>
                         </Column>
                         <Column width={3}>
-                            <span><p onClick={() => this.handleThumbsUp()}><FontAwesomeIcon id="iconLikes" icon={faThumbsUp}/>   {this.state.likes}</p></span>
+                            <span><p data-toggle="tooltip" data-placement="top" title="Gi en like!!" onClick={() => this.handleThumbsUp()}><FontAwesomeIcon id="iconLikes" icon={faThumbsUp}/>   {this.state.likes}</p></span>
                         </Column>
                     </Row>
                     <Row>

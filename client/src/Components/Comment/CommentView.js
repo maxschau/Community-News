@@ -54,7 +54,6 @@ class CommentView extends Component<State, Props> {
                 commentPage : number
             })
         }
-       
     }
 
     addComment = () => {
@@ -64,12 +63,22 @@ class CommentView extends Component<State, Props> {
         let c = new Comment(name, comment, this.props.id);
         commentsService.createComment(c)
             .then(() => {
-                window.location.reload();
+                /* HMMMMM */
+                document.getElementById("inpName").value = "";
+                document.getElementById("inpComment").value = "";
+                this.openNewComment();
+                this.componentDidMount();
+                                /* HMMMMM */
+
+                /* HMMMMM */
+
             })
             .catch((error) => {
                 console.error(error);
             })
     }
+
+
 
     render() {
         return(

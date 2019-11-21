@@ -26,7 +26,7 @@ CREATE TABLE article (
 DROP TABLE IF EXISTS comments;
 
 CREATE TABLE comments (
-  id int(11) NOT NULL,
+  id int(11) NOT NULL AUTO_INCREMENT,
   name varchar(60) NOT NULL,
   comment text NOT NULL,
   article int(11) NOT NULL,

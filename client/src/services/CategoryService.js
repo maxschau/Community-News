@@ -14,11 +14,11 @@ export class Category {
 
 class CategoryService {
     getAll() : Promise<Category[]> {
-        return Axios.get('http://localhost:8080/kategorier');
+        return Axios.get('http://localhost:8080/categories');
     }
 
     getOne(id : number) : Promise<Category> {
-        return Axios.get('http://localhost:8080/kategorier/' + id);
+        return Axios.get('http://localhost:8080/categories/' + id);
     }
 }
 

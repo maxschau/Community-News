@@ -81,7 +81,7 @@ class CommentView extends Component<State, Props> {
                 </Row>
                 <Row>
                     <Column>
-                        <button onClick={() => this.openNewComment()} id="btnComment">Skriv ny kommentar </button>
+                        <button className="btn btn-dark" onClick={() => this.openNewComment()} id="btnComment">Skriv ny kommentar </button>
                         <hr/>
                     </Column>
                 </Row>
@@ -101,7 +101,7 @@ class CommentView extends Component<State, Props> {
                                         id="inpComment" placeholder="Din kommentar..."
                                         name="kommentar"required/>
                                 </div>
-                                <button type="button" onClick={() => this.addComment()}>Lagre</button>
+                                <button type="button" className="btn btn-dark" onClick={() => this.addComment()}>Lagre</button>
                             </form>
                         </div>
                     </Column>

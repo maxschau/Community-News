@@ -117,7 +117,7 @@ app.get("/livefeed", (req, res) => {
 });
 
 //Henter alle kategorier
-app.get("/kategorier", (reg, res) => {
+app.get("/categories", (reg, res) => {
     categoryDao.getAll((status, data) => {
         res.status(status);
         res.json(data);

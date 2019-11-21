@@ -32,27 +32,17 @@ class CategoryView extends Component<State> {
             limitPerPage : 6
         }
     }
-    //Denne bør ikke være hardkodet!!!
-
-    ///!!!!!
-    pageNumbers = {
-        0 : [0 , 6],
-        1: [6, 12],
-        2 : [12, 18],
-        3 : [18, 24]
-    };
-
     render() {
         return (
             <div className="main">
                 <Row>
                     <Column>
-                        {<h1>{this.state.category.navn}</h1>}
+                        {<h1>{this.state.category.name}</h1>}
                     </Column>
                 </Row>
                 <hr />
                 <Row>
-                    {this.state.articles.slice(this.pageNumbers[this.state.pageNumber][0], this.pageNumbers[this.state.pageNumber][1]).map((article) => {
+                    {this.state.articles.slice(this.state.pageNumber*this.state.limitPerPage, this.state.pageNumber*this.state.limitPerPage+6).map((article) => {
                         return <OtherArticle key={article.id} id={article.id} headline={article.headline} image={article.image}/>
                     })}
                 </Row>
@@ -101,7 +91,7 @@ class CategoryView extends Component<State> {
                     this.setState({
                         id: this.props.match.params.id,
                         articles: articles.data,
-                        maxPage : Math.floor((articles.data.length / this.state.limitPerPage)) + 1,
+                        maxPage : Math.ceil((articles.data.length / this.state.limitPerPage)),
                         pageNumber : 0
                     });
                 })
@@ -133,7 +123,8 @@ class CategoryView extends Component<State> {
                 this.setState({
                     category: category.data[0]
                 });
-            });
+            })
+            .catch((error) => console.error(error));
     }
 }
 

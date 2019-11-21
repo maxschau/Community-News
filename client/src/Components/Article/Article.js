@@ -109,7 +109,7 @@ class Article extends Component<State, Props> {
 
                     <Row>
                         <Column width>
-                            <Link to={"/articles/edit/" + this.props.match.params.id}><button className="btn btn-secondary">Endre </button></Link>
+                            <Link to={"/articles/edit/" + this.props.match.params.id}><button className="btn btn-dark">Endre </button></Link>
                         </Column>
                     </Row>
                     <hr/>

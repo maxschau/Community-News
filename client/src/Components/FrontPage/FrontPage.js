@@ -40,8 +40,7 @@ class FrontPage extends Component<State> {
                 <MainArticle show = {this.state.frontPage} id={this.state.mainArticle.id} headline={this.state.mainArticle.headline} image={this.state.mainArticle.image}/>
                 <hr />
                 <Row className="justify-content-center">
-                {/*this.state.articles.slice(this.pageNumbers[this.state.pageNumber][0], this.pageNumbers[this.state.pageNumber][1]).map((article) => {*/
-                this.state.articles.slice(this.state.pageNumber * this.state.limitPerPage, this.state.pageNumber * this.state.limitPerPage + 6).map((article) => {
+                {this.state.articles.slice(this.state.pageNumber * this.state.limitPerPage, this.state.pageNumber * this.state.limitPerPage + 6).map((article) => {
                     return (
                         <OtherArticle key={article.id} id={article.id} headline={article.headline}
                                       image={article.image}/>

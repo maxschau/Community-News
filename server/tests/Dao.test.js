@@ -3,6 +3,7 @@ var mysql = require("mysql");
 const ArticleDao = require("../src/dao/ArticleDao");
 const runsqlfile = require("./runsqlfile.js");
 const CategoryDao = require("../src/dao/CategoryDao");
+const CommentsDao = require("../src/dao/CommentsDao");
 
 
 var pool = mysql.createPool({
@@ -18,6 +19,7 @@ var pool = mysql.createPool({
 
 let articleDao = new ArticleDao(pool);
 let categoryDao = new CategoryDao(pool);
+let commentsDao = new CommentsDao(pool);
 
 beforeAll(done => {
     runsqlfile("create_tables.sql", pool, () => {
@@ -159,6 +161,29 @@ test("that we get one category ", done => {
   }
   categoryDao.getOne(1, callback);
 });
+
+/* Comments test */
+test("that we get comments to one article", done => {
+  function callback(status, data) {
+    console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
+    expect(data.length).toBe(2);
+    done();
+  }
+  commentsDao.getCommentsByArticle(1, callback);
+});
+
+test("that we can create a comment", done => {
+  function callback(status, data) {
+    console.log("Test callback: status = " + status + ", data= " + JSON.stringify(data));
+    expect(data.affectedRows).toBe(1);
+    done();
+  }
+  commentsDao.addComment(
+    {name: "Max", comment: "heisann", article: 3},
+    callback
+  );
+})
+
 
 
 

@@ -8,3 +8,7 @@ INSERT INTO article(headline, ingress, contents, time, image, category, importan
 INSERT INTO article(headline, ingress, contents, time, image, category, importance, author) VALUES ("Test v2","SKÅÅÅÅÅum lorem ipsum","dsdfsdfsdfsdf er innholdet","2016-11-05 12:43:59","sfdfgdfgbildsdfsdfse.no",2,1,"Cornelia T. Schau");
 INSERT INTO article(headline, ingress, contents, time, image, category, importance, author) VALUES ("jippi","Lasdsaorem ipsum lorem ipsum","Dasdsadette er innholdet","2009-11-05 12:47:59","image.no",2,1,"Morten Langli");
 INSERT INTO article(headline, ingress, contents, time, image, category, importance, author) VALUES ("Vålerenga er best v2","de vinner alt lorem ipsum","oh yeyeeye dsdfsdfsdfsdf er innholdet","2019-11-05 12:43:59","sd.no",1,1,"Cornelia T. Schau");
+
+INSERT INTO comments(name, comment, article) VALUES("Max", "Test", 1);
+INSERT INTO comments(name, comment, article) VALUES("Sara", "Så kul test", 1);
+INSERT INTO comments(name, comment, article) VALUES("Martin", "test", 2);

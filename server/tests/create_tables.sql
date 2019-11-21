@@ -21,3 +21,15 @@ CREATE TABLE article (
     PRIMARY KEY(id),
     FOREIGN KEY(category) REFERENCES categories(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+DROP TABLE IF EXISTS comments;
+
+CREATE TABLE comments (
+  id int(11) NOT NULL,
+  name varchar(60) NOT NULL,
+  comment text NOT NULL,
+  article int(11) NOT NULL,
+  PRIMARY KEY(id),
+  FOREIGN KEY(article) REFERENCES article(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;

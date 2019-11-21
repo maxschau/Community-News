@@ -114,7 +114,7 @@ class CategoryView extends Component<State> {
                 this.setState({
                     id: this.props.match.params.id,
                     articles: articles.data,
-                    maxPage : Math.floor((articles.data.length / this.state.limitPerPage)) + 1
+                    maxPage : Math.ceil((articles.data.length / this.state.limitPerPage)) 
                 });
             })
             .catch((error) => console.error(error));

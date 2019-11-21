@@ -31,5 +31,5 @@ CREATE TABLE comments (
   comment text NOT NULL,
   article int(11) NOT NULL,
   PRIMARY KEY(id),
-  CONSTRAINT 'articles_id' FOREIGN KEY(article) REFERENCES article(id) ON UPDATE CASCADE
+  CONSTRAINT articles_id FOREIGN KEY(article) REFERENCES article(id) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

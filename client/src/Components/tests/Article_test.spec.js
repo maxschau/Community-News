@@ -29,16 +29,69 @@ describe('Article renders correctly', () => {
         const component = renderer.create(<Article {...props}/>);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
+    });
+});
+
+describe("CategoryView", () => {
+    test("snapshot renders", () => {
+        const props = {
+            match: { params: {id: 1}}
+        }
+        const params = {id : 1};
+        const component = renderer.create(<CategoryView {...props}/>);
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
+
+describe("ChangeArticle renders without crashing", () => {
+    test("snapshot renders", () => {
+        const props = {
+            match: { params: {id: 1}}
+        }
+        const params = {id : 1};
+        const component = renderer.create(<ChangeArticle {...props}/>);
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
+
+describe("CommentSingle", () => {
+    test("snapshot renders", () => {
+        const component = renderer.create(<CommentSingle name="Max" comment="Meget bra" />);
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
+
+describe("CommentView", () => {
+    test("snapshot renders", () => {
+        const props = {
+            match: { params: {id: 1}}
+        }
+        const params = {id : 1};
+        const component = renderer.create(<CommentView {...props} />);
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
+
+describe('CreateArticle renders correctly', () => {
+    test('snapshot renders', () => {
+        const component = renderer.create(<CreateArticle />);
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
     })
-})
+});
 
 describe('Footer renders correctly', () => {
     test('snapshot renders', () => {
         const component = renderer.create(<Footer />);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
-    });
+    })
 });
+
 
 /*
 

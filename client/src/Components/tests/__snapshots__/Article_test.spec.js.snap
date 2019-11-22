@@ -260,7 +260,496 @@ exports[`Article renders correctly snapshot renders 1`] = `
 </div>
 `;
 
+exports[`CategoryView snapshot renders 1`] = `
+<div
+  className="main"
+>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <h1 />
+    </div>
+  </div>
+  <hr />
+  <div
+    className="row"
+  />
+  <hr />
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <p
+        onClick={[Function]}
+      >
+        <svg
+          aria-hidden="true"
+          className="svg-inline--fa fa-backward fa-w-16 "
+          data-icon="backward"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          style={Object {}}
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M11.5 280.6l192 160c20.6 17.2 52.5 2.8 52.5-24.6V96c0-27.4-31.9-41.8-52.5-24.6l-192 160c-15.3 12.8-15.3 36.4 0 49.2zm256 0l192 160c20.6 17.2 52.5 2.8 52.5-24.6V96c0-27.4-31.9-41.8-52.5-24.6l-192 160c-15.3 12.8-15.3 36.4 0 49.2z"
+            fill="currentColor"
+            style={Object {}}
+          />
+        </svg>
+         
+      </p>
+    </div>
+    <div
+      className="col"
+    >
+      <p>
+        Page 
+        1
+      </p>
+    </div>
+    <div
+      className="col"
+    >
+      <p
+        onClick={[Function]}
+      >
+        <svg
+          aria-hidden="true"
+          className="svg-inline--fa fa-forward fa-w-16 "
+          data-icon="forward"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          style={Object {}}
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M500.5 231.4l-192-160C287.9 54.3 256 68.6 256 96v320c0 27.4 31.9 41.8 52.5 24.6l192-160c15.3-12.8 15.3-36.4 0-49.2zm-256 0l-192-160C31.9 54.3 0 68.6 0 96v320c0 27.4 31.9 41.8 52.5 24.6l192-160c15.3-12.8 15.3-36.4 0-49.2z"
+            fill="currentColor"
+            style={Object {}}
+          />
+        </svg>
+         
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ChangeArticle renders without crashing snapshot renders 1`] = `
+<div
+  id="containerReg"
+>
+  <form>
+    <div
+      className="form-group"
+    >
+      <label>
+        Overskrift: 
+      </label>
+      <input
+        className="form-control"
+        id="fname"
+        name="headline"
+        onChange={[Function]}
+        placeholder="Skriv inn overskrift"
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label>
+        Ingress:
+      </label>
+      <textarea
+        className="form-control"
+        id="lname"
+        name="ingress"
+        onChange={[Function]}
+        placeholder="Skriv inn innholdet"
+        required={true}
+        rows="2"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label>
+        Innhold:
+      </label>
+      <textarea
+        className="form-control"
+        id="lname"
+        name="contents"
+        onChange={[Function]}
+        placeholder="Skriv inn innholdet"
+        required={true}
+        rows="3"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label>
+        Bilde:
+      </label>
+      <input
+        className="form-control"
+        id="fname"
+        name="image"
+        onChange={[Function]}
+        placeholder="Skriv inn bilde-URL"
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          <label>
+            Kategori: 
+          </label>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          <select
+            className="btn btn-secondary"
+            name="category"
+            onChange={[Function]}
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          <label>
+            Viktighet 
+          </label>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          <label>
+            1
+            <input
+              checked={false}
+              name="importance"
+              onChange={[Function]}
+              type="radio"
+              value={1}
+            />
+          </label>
+          <label>
+            2
+            <input
+              checked={false}
+              name="importance"
+              onChange={[Function]}
+              type="radio"
+              value={2}
+            />
+          </label>
+        </div>
+      </div>
+    </div>
+    <div
+      className="row"
+    >
+      <div
+        className="col"
+      >
+        <button
+          className="btn btn-secondary"
+          onClick={[Function]}
+          type="button"
+        >
+          Lagre
+        </button>
+      </div>
+      <div
+        className="col"
+      >
+        <button
+          className="btn btn-danger"
+          onClick={[Function]}
+          type="button"
+        >
+           Slett 
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`CommentSingle snapshot renders 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <b>
+        Max
+        :
+      </b>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      Meget bra
+    </div>
+  </div>
+  <hr />
+</div>
+`;
+
+exports[`CommentView snapshot renders 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <h4>
+        Kommentarer
+      </h4>
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <button
+        className="btn btn-dark"
+        id="btnComment"
+        onClick={[Function]}
+      >
+        Skriv ny kommentar 
+      </button>
+      <hr />
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <div
+        id="containerNewComment"
+      >
+        <form>
+          <div
+            className="form-group"
+          >
+            <label>
+              Ditt navn:
+            </label>
+            <input
+              className="form-control"
+              id="inpName"
+              name="name"
+              placeholder="Skriv navnet ditt"
+              required={true}
+              type="text"
+            />
+          </div>
+          <div
+            className="form-group"
+          >
+            <label>
+              Din kommentar:
+            </label>
+            <textarea
+              className="form-control"
+              id="inpComment"
+              name="kommentar"
+              placeholder="Din kommentar..."
+              required={true}
+            />
+          </div>
+          <button
+            className="btn btn-dark"
+            onClick={[Function]}
+            type="button"
+          >
+            Lagre
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div
+    className="containerComments"
+  />
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <p
+        onClick={[Function]}
+      >
+        Forrige
+      </p>
+    </div>
+    <div
+      className="col"
+    >
+      1
+    </div>
+    <div
+      className="col"
+    >
+      <p
+        onClick={[Function]}
+      >
+        Neste
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Footer renders correctly snapshot renders 1`] = `
+<div
+  className="mainFooter row justify-content-center"
+>
+  <div
+    className="mainFooter row justify-content-center"
+  >
+    <div
+      id="col"
+    >
+      <a
+        href="http://www.facebook.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          alt="fbook"
+          id="imgLogo"
+          src="facebook.png"
+        />
+      </a>
+      <a
+        href="http://www.twitter.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          alt="twitter"
+          id="imgLogo"
+          src="twitter.png"
+        />
+      </a>
+      <a
+        href="http://www.flickr.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          alt="flickr"
+          id="imgLogo"
+          src="flickr.png"
+        />
+      </a>
+      <a
+        href="http://www.instagram.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          alt="insta"
+          id="imgLogo"
+          src="instagram.png"
+        />
+      </a>
+      <a
+        href="http://www.youtube.com"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        <img
+          alt="youtube"
+          id="imgLogo"
+          src="youtube.png"
+        />
+      </a>
+    </div>
+  </div>
+  <div
+    className="row justify-content-center"
+  >
+    <div
+      id="col"
+    >
+      <h5>
+        Kontakt: 
+      </h5>
+      <span>
+        <b>
+          Tlf: 
+        </b>
+        91782159 
+      </span>
+      <br />
+      <span>
+        <b>
+          E-post: 
+        </b>
+        redaksjonen@kalvskinnetNews.com 
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Footer renders correctly snapshot renders 2`] = `
 <div
   className="mainFooter row justify-content-center"
 >

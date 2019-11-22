@@ -655,6 +655,198 @@ exports[`CommentView snapshot renders 1`] = `
 </div>
 `;
 
+exports[`CreateArticle renders correctly snapshot renders 1`] = `
+<div
+  className="card"
+  id="containerReg"
+>
+  <form>
+    <div
+      className="form-group"
+    >
+      <label>
+        Overskrift: 
+      </label>
+      <input
+        className="form-control"
+        id="fname"
+        name="headline"
+        onChange={[Function]}
+        placeholder="Skriv inn overskrift"
+        required={true}
+        type="text"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label>
+        Ingress: 
+      </label>
+      <textarea
+        className="form-control"
+        id="lname"
+        name="ingress"
+        onChange={[Function]}
+        placeholder="Skriv inn ingressen"
+        required={true}
+        rows="2"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label>
+        Innhold:
+      </label>
+      <textarea
+        className="form-control"
+        id="lname"
+        name="contents"
+        onChange={[Function]}
+        placeholder="Skriv inn innholdet"
+        required={true}
+        rows="4"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <label>
+        Bilde:
+      </label>
+      <input
+        className="form-control"
+        id="fname"
+        name="image"
+        onChange={[Function]}
+        placeholder="Skriv inn bilde-URL"
+        required={true}
+        type="text"
+      />
+    </div>
+    <div
+      className="form-group"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          <label>
+            Kategori: 
+          </label>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          <select
+            className="btn btn-secondary"
+            name="category"
+            onChange={[Function]}
+            value=""
+          >
+            <option
+              disabled={true}
+              hidden={true}
+              selected={true}
+              value=""
+            >
+              Velg en kategori
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        className="form-group"
+      >
+        <div
+          className="row"
+        >
+          <div
+            className="col"
+          >
+            <label>
+              Forfatter
+            </label>
+          </div>
+        </div>
+        <div
+          className="row"
+        >
+          <div
+            className="col"
+          >
+            <input
+              className="form-control"
+              id="fname"
+              name="author"
+              onChange={[Function]}
+              placeholder="Hvem er du?"
+              required={true}
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      className="form-group"
+    >
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          <label>
+            Viktighet: 
+          </label>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div
+          className="col"
+        >
+          <label>
+            1
+            <input
+              name="importance"
+              onChange={[Function]}
+              type="radio"
+              value={1}
+            />
+          </label>
+          <label>
+            2
+            <input
+              name="importance"
+              onChange={[Function]}
+              type="radio"
+              value={2}
+            />
+          </label>
+        </div>
+      </div>
+    </div>
+    <button
+      className="btn btn-secondary"
+      onClick={[Function]}
+      type="button"
+    >
+      Registrer sak
+    </button>
+  </form>
+</div>
+`;
+
 exports[`Footer renders correctly snapshot renders 1`] = `
 <div
   className="mainFooter row justify-content-center"
@@ -749,96 +941,410 @@ exports[`Footer renders correctly snapshot renders 1`] = `
 </div>
 `;
 
-exports[`Footer renders correctly snapshot renders 2`] = `
+exports[`FrontPage renders correctly snapshot renders 1`] = `
 <div
-  className="mainFooter row justify-content-center"
+  className="front"
 >
-  <div
-    className="mainFooter row justify-content-center"
+  <marquee
+    behavior="scroll"
   >
     <div
-      id="col"
+      className="row flex-row flex-nowrap"
+    />
+  </marquee>
+  <div
+    id="mainDiv"
+  >
+    <a
+      href="#/articles/undefined"
+      onClick={[Function]}
     >
-      <a
-        href="http://www.facebook.com"
-        rel="noopener noreferrer"
-        target="_blank"
+      <img
+        id="imgMain"
+      />
+       
+    </a>
+    <a
+      href="#/articles/undefined"
+      onClick={[Function]}
+    >
+      <h1 />
+    </a>
+  </div>
+  <hr />
+  <div
+    className="row"
+  />
+  <div
+    className="row"
+  >
+    <div
+      className="col"
+    >
+      <p
+        onClick={[Function]}
       >
-        <img
-          alt="fbook"
-          id="imgLogo"
-          src="facebook.png"
-        />
-      </a>
-      <a
-        href="http://www.twitter.com"
-        rel="noopener noreferrer"
-        target="_blank"
+        <svg
+          aria-hidden="true"
+          className="svg-inline--fa fa-backward fa-w-16 "
+          data-icon="backward"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          style={Object {}}
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M11.5 280.6l192 160c20.6 17.2 52.5 2.8 52.5-24.6V96c0-27.4-31.9-41.8-52.5-24.6l-192 160c-15.3 12.8-15.3 36.4 0 49.2zm256 0l192 160c20.6 17.2 52.5 2.8 52.5-24.6V96c0-27.4-31.9-41.8-52.5-24.6l-192 160c-15.3 12.8-15.3 36.4 0 49.2z"
+            fill="currentColor"
+            style={Object {}}
+          />
+        </svg>
+         
+      </p>
+    </div>
+    <div
+      className="col"
+    >
+      <p>
+        Page 
+        1
+      </p>
+    </div>
+    <div
+      className="col"
+    >
+      <p
+        onClick={[Function]}
       >
-        <img
-          alt="twitter"
-          id="imgLogo"
-          src="twitter.png"
-        />
-      </a>
-      <a
-        href="http://www.flickr.com"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <img
-          alt="flickr"
-          id="imgLogo"
-          src="flickr.png"
-        />
-      </a>
-      <a
-        href="http://www.instagram.com"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <img
-          alt="insta"
-          id="imgLogo"
-          src="instagram.png"
-        />
-      </a>
-      <a
-        href="http://www.youtube.com"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        <img
-          alt="youtube"
-          id="imgLogo"
-          src="youtube.png"
-        />
-      </a>
+        <svg
+          aria-hidden="true"
+          className="svg-inline--fa fa-forward fa-w-16 "
+          data-icon="forward"
+          data-prefix="fas"
+          focusable="false"
+          role="img"
+          style={Object {}}
+          viewBox="0 0 512 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M500.5 231.4l-192-160C287.9 54.3 256 68.6 256 96v320c0 27.4 31.9 41.8 52.5 24.6l192-160c15.3-12.8 15.3-36.4 0-49.2zm-256 0l-192-160C31.9 54.3 0 68.6 0 96v320c0 27.4 31.9 41.8 52.5 24.6l192-160c15.3-12.8 15.3-36.4 0-49.2z"
+            fill="currentColor"
+            style={Object {}}
+          />
+        </svg>
+         
+      </p>
     </div>
   </div>
-  <div
-    className="row justify-content-center"
-  >
-    <div
-      id="col"
+</div>
+`;
+
+exports[`Header renders correctly snapshot renders 1`] = `
+<div>
+  <div>
+    <nav
+      className="navbar navbar-expand-md navbar-dark"
+      style={
+        Object {
+          "backgroundColor": "#1F2833",
+        }
+      }
     >
-      <h5>
-        Kontakt: 
+      <a
+        href="/#/home"
+      >
+        <img
+          alt="logo.png"
+          className="imgLogo"
+          src="logo.png"
+        />
+      </a>
+      <a
+        className="navbar-brand"
+        href="/#/home"
+      >
+        <h5
+          className="link"
+        >
+          Kalvskinnet News
+        </h5>
+      </a>
+      <button
+        aria-label="Toggle navigation"
+        className="navbar-toggler"
+        onClick={[Function]}
+        type="button"
+      >
+        <span
+          className="navbar-toggler-icon"
+        />
+      </button>
+      <div
+        aria-expanded="false"
+        className="collapse navbar-collapse"
+        style={Object {}}
+      >
+        <ul
+          className="ml-auto navbar-nav"
+        >
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/#/home"
+              onClick={[Function]}
+            >
+              <h5
+                className="link"
+              >
+                Hjem
+              </h5>
+            </a>
+          </li>
+          <li
+            className="nav-item"
+          >
+            <a
+              className="nav-link"
+              href="/#/createArticle"
+              onClick={[Function]}
+            >
+              <h5
+                className="link"
+              >
+                Registrer ny sak
+              </h5>
+            </a>
+          </li>
+          <li
+            className="dropdown nav-item"
+            onKeyDown={[Function]}
+          >
+            <a
+              aria-expanded={false}
+              aria-haspopup={true}
+              className="dropdown-toggle nav-link"
+              href="#"
+              onClick={[Function]}
+            >
+              <h5
+                className="link"
+              >
+                Kategorier
+              </h5>
+            </a>
+            <div
+              aria-hidden={true}
+              className="dropdown-menu dropdown-menu-right"
+              role="menu"
+              style={
+                Object {
+                  "backgroundColor": "#1F2833",
+                }
+              }
+              tabIndex="-1"
+            />
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+`;
+
+exports[`LiveFeed renders correctly snapshot renders 1`] = `
+<marquee
+  behavior="scroll"
+>
+  <div
+    className="row flex-row flex-nowrap"
+  />
+</marquee>
+`;
+
+exports[`LiveFeedElement renders correctly snapshot renders 1`] = `
+<div>
+  <a
+    href="#/articles/1"
+    onClick={[Function]}
+  >
+    <p>
+      <b>
+        tester igjen
+      </b>
+       
+      12.12.2019 14:5
+       | 
+    </p>
+  </a>
+</div>
+`;
+
+exports[`MainArticle renders correctly snapshot renders 1`] = `
+<div
+  id="mainDiv"
+>
+  <a
+    href="#/articles/1"
+    onClick={[Function]}
+  >
+    <img
+      alt="test test"
+      id="imgMain"
+      src="test.no"
+    />
+     
+  </a>
+  <a
+    href="#/articles/1"
+    onClick={[Function]}
+  >
+    <h1>
+      test test
+    </h1>
+  </a>
+</div>
+`;
+
+exports[`NavBar renders correctly snapshot renders 1`] = `
+<div>
+  <nav
+    className="navbar navbar-expand-md navbar-dark"
+    style={
+      Object {
+        "backgroundColor": "#1F2833",
+      }
+    }
+  >
+    <a
+      href="/#/home"
+    >
+      <img
+        alt="logo.png"
+        className="imgLogo"
+        src="logo.png"
+      />
+    </a>
+    <a
+      className="navbar-brand"
+      href="/#/home"
+    >
+      <h5
+        className="link"
+      >
+        Kalvskinnet News
       </h5>
-      <span>
-        <b>
-          Tlf: 
-        </b>
-        91782159 
-      </span>
-      <br />
-      <span>
-        <b>
-          E-post: 
-        </b>
-        redaksjonen@kalvskinnetNews.com 
-      </span>
+    </a>
+    <button
+      aria-label="Toggle navigation"
+      className="navbar-toggler"
+      onClick={[Function]}
+      type="button"
+    >
+      <span
+        className="navbar-toggler-icon"
+      />
+    </button>
+    <div
+      aria-expanded="false"
+      className="collapse navbar-collapse"
+      style={Object {}}
+    >
+      <ul
+        className="ml-auto navbar-nav"
+      >
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            href="/#/home"
+            onClick={[Function]}
+          >
+            <h5
+              className="link"
+            >
+              Hjem
+            </h5>
+          </a>
+        </li>
+        <li
+          className="nav-item"
+        >
+          <a
+            className="nav-link"
+            href="/#/createArticle"
+            onClick={[Function]}
+          >
+            <h5
+              className="link"
+            >
+              Registrer ny sak
+            </h5>
+          </a>
+        </li>
+        <li
+          className="dropdown nav-item"
+          onKeyDown={[Function]}
+        >
+          <a
+            aria-expanded={false}
+            aria-haspopup={true}
+            className="dropdown-toggle nav-link"
+            href="#"
+            onClick={[Function]}
+          >
+            <h5
+              className="link"
+            >
+              Kategorier
+            </h5>
+          </a>
+          <div
+            aria-hidden={true}
+            className="dropdown-menu dropdown-menu-right"
+            role="menu"
+            style={
+              Object {
+                "backgroundColor": "#1F2833",
+              }
+            }
+            tabIndex="-1"
+          />
+        </li>
+      </ul>
     </div>
+  </nav>
+</div>
+`;
+
+exports[`OtherArticle renders correctly snapshot renders 1`] = `
+<div
+  className="col-6"
+>
+  <div>
+    <a
+      href="#/articles/1"
+      onClick={[Function]}
+    >
+      <img
+        alt="test test"
+        id="otherImg"
+        src="test.no"
+      />
+    </a>
+    <a
+      href="#/articles/1"
+      onClick={[Function]}
+    >
+      <p>
+        test test
+      </p>
+    </a>
   </div>
 </div>
 `;

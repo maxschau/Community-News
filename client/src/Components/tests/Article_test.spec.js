@@ -81,7 +81,7 @@ describe('CreateArticle renders correctly', () => {
         const component = renderer.create(<CreateArticle />);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
-    })
+    });
 });
 
 describe('Footer renders correctly', () => {
@@ -91,6 +91,65 @@ describe('Footer renders correctly', () => {
         expect(tree).toMatchSnapshot();
     })
 });
+
+describe('FrontPage renders correctly', () => {
+    test('snapshot renders', () => {
+        const component = renderer.create(<FrontPage />);
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    })
+});
+
+describe("MainArticle renders correctly", () => {
+    test("snapshot renders", () => {
+        const component = renderer.create(<MainArticle show = {true} id={1} headline="test test" image="test.no" />)
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
+
+describe("OtherArticle renders correctly", () => {
+    test("snapshot renders", () => {
+        const component = renderer.create(<OtherArticle id={1} headline="test test" image="test.no" />)
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
+
+describe("Header renders correctly", () => {
+    test("snapshot renders", () => {
+        const component = renderer.create(<Header/>)
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
+
+describe("NavBar renders correctly", () => {
+    test("snapshot renders", () => {
+        const component = renderer.create(<NavBar/>)
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
+
+describe("LiveFeed renders correctly", () => {
+    test("snapshot renders", () => {
+        const component = renderer.create(<LiveFeed/>)
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
+
+describe("LiveFeedElement renders correctly", () => {
+    test("snapshot renders", () => {
+        const component = renderer.create(<LiveFeedElement id={1} headline = {"tester igjen"} time={"12.12.2019 14:56"} />)
+        let tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
+    });
+});
+
+
+
 
 
 /*

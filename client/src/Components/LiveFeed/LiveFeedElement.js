@@ -1,7 +1,7 @@
 // @flow
 
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
+import {Link, HashRouter} from "react-router-dom";
 import './LiveFeedElement.css';
 
 type State = {
@@ -27,7 +27,9 @@ class LiveFeedElement extends Component<State, Props> {
     render() {
         return(
             <div>
-                <Link to={"/articles/" + this.state.id}><p><b>{this.state.headline}</b> {this.state.time} | </p></Link>
+                <HashRouter>
+                    <Link to={"/articles/" + this.state.id}><p><b>{this.state.headline}</b> {this.state.time} | </p></Link>
+                </HashRouter>
             </div>
         );
     }

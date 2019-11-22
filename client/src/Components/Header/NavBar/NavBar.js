@@ -14,7 +14,6 @@ import {
 } from 'reactstrap';
 import React, {Component} from 'react';
 import './navbar.css';
-import {Link} from "react-router-dom";
 import CategoryService, {Category} from '../../../services/CategoryService';
 import logo from "C:/Programmering/NTNU/Systemutvikling 2/miniprosjekt/client/src/assets/images/logo.png";
 
@@ -65,13 +64,13 @@ class NavBar extends Component<State, Props> {
                                     <h5 className="link">Registrer ny sak</h5>
                                 </NavLink></NavItem>
                                 <UncontrolledDropdown nav inNavbar>
-                                    <DropdownToggle dark nav caret>
+                                    <DropdownToggle nav caret>
                                         <h5 className="link">Kategorier</h5>
                                     </DropdownToggle>
-                                    <DropdownMenu right dark style={{backgroundColor: '#1F2833'}}>
+                                    <DropdownMenu right style={{backgroundColor: '#1F2833'}}>
                                         {this.state.categories.map((categories) => {
                                             return(
-                                                <Link key={categories.id} to={"/categories/" + categories.id}><DropdownItem className="nav-link kategori" href="#"> {categories.name} </DropdownItem></Link>
+                                                <DropdownItem key={categories.id} className="nav-link kategori" onClick={() => window.location.hash="#/categories/" + categories.id}> {categories.name} </DropdownItem>
                                             )
                                         })}
                                     </DropdownMenu>

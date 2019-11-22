@@ -2,7 +2,7 @@
 
 import React, {Component} from 'react';
 import {Comment, CommentsService} from '../../services/CommentsService';
-import {Column, Row, Card} from '../../Components/widgets';
+import {Column, Row} from '../../Components/widgets';
 import CommentSingle from '../Comment/CommentSingle';
 import './CommentView.css';
 
@@ -13,7 +13,6 @@ type State = {
 
 type Props = {}
 
-type props= {}
 
 class CommentView extends Component<State, Props> {
     constructor(props : any) {
@@ -30,7 +29,7 @@ class CommentView extends Component<State, Props> {
         let show  =  document.getElementById("containerNewComment");
         let style = window.getComputedStyle(show);
         let btn = document.getElementById("btnComment");
-        if (style.display == "none") {
+        if (style.display === "none") {
             show.style.display = "block";
             btn.innerHTML = "Fjern ny kommentarer";
         } else {
@@ -118,7 +117,7 @@ class CommentView extends Component<State, Props> {
                 <div className="containerComments">
                     {this.state.comments.slice((this.state.commentPage*this.state.limitPerPage), this.state.commentPage*4 + 4).map((comment) => {
                         return(
-                            <CommentSingle name={comment.name} comment = {comment.comment} />
+                            <CommentSingle key = {comment.id} name={comment.name} comment = {comment.comment} />
                         )
                     })}
                 </div>
@@ -139,10 +138,9 @@ class CommentView extends Component<State, Props> {
                     comments : comment.data,
                     maxPage : Math.ceil((comment.data.length / this.state.limitPerPage))
                 });
-                console.log("Maxpage comments: " + this.state.maxPage);
             })
             .catch((error) => {
-                console.error(error);
+                //console.error(error);
             })
     }
 }

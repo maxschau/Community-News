@@ -1,9 +1,8 @@
 // @flow
 
 import React, {Component} from 'react';
-import ArticleService, {Article} from '../../services/ArticleService';
 import './MainArticle.css';
-import {Link} from "react-router-dom";
+import {Link ,HashRouter} from "react-router-dom";
 
 type Props = {
     id : number,
@@ -18,8 +17,10 @@ class MainArticle extends Component<Props> {
         }
         return(
             <div id="mainDiv">
-                <Link to={"articles/" + this.props.id}><img src={this.props.image} id="imgMain"alt={this.props.headline} /> </Link>
-                <Link to={"articles/" + this.props.id}><h1>{this.props.headline}</h1></Link>
+                <HashRouter>
+                    <Link to={"articles/" + this.props.id}><img src={this.props.image} id="imgMain"alt={this.props.headline} /> </Link>
+                    <Link to={"articles/" + this.props.id}><h1>{this.props.headline}</h1></Link>
+                </HashRouter>
             </div>
         );
     }

@@ -5,7 +5,6 @@ import {Row, Column} from '../widgets'
 import {ArticleService, Article} from '../../services/ArticleService';
 import OtherArticle from "../FrontPage/OtherArticle";
 import './CategoryView.css';
-import {Link} from "react-router-dom";
 import CategoryService from '../../services/CategoryService';
 import {faForward, faBackward}  from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -106,7 +105,6 @@ class CategoryView extends Component<State> {
     }
 
     componentDidMount(): void {
-        console.log("ComponentDidMount()");
         let articleService = new ArticleService();
         let categoryService = new CategoryService();
         articleService.getArticlesByCategory(this.props.match.params.id)

@@ -69,7 +69,7 @@ class FrontPage extends Component<State> {
                 frontPage : false
             });
         }
-        if (number == 0) {
+        if (number === 0) {
             this.setState({
                 frontPage : true
             })
@@ -83,7 +83,7 @@ class FrontPage extends Component<State> {
     handleLastPage : void = () => {
         if (this.state.pageNumber > 0) {
             let number = this.state.pageNumber - 1;
-            if (number == 0) {
+            if (number === 0) {
                 this.setState({
                     frontPage: true
                 })
@@ -103,9 +103,6 @@ class FrontPage extends Component<State> {
                     articles: articles.data.slice(1),
                     maxPage : Math.ceil(((articles.data.length) / this.state.limitPerPage))
                 });
-                console.log("A: " + Math.ceil(this.state.articles.length / this.state.limitPerPage));
-
-                console.log("maxPage: "+ this.state.maxPage);
             })
     }
 

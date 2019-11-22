@@ -3,8 +3,8 @@ import React, {Component} from 'react';
 import ArticleService from '../../services/ArticleService';
 import CommentView from "../Comment/CommentView";
 import {Column, Row, Card} from '../../Components/widgets';
-import {Link} from "react-router-dom";
-import {faThumbsUp, faThumbsDown }  from "@fortawesome/free-solid-svg-icons"
+import {Link, HashRouter} from "react-router-dom";
+import {faThumbsUp }  from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './Article.css';
 import {toast} from 'react-toastify';
@@ -23,10 +23,8 @@ type State = {
     liked : boolean
 }
 
-type Props = {}
 
-
-class Article extends Component<State, Props> {
+class Article extends Component<State> {
     constructor(props : any) {
         super(props);
         this.state = {
@@ -109,7 +107,8 @@ class Article extends Component<State, Props> {
 
                     <Row>
                         <Column width>
-                            <Link to={"/articles/edit/" + this.props.match.params.id}><button className="btn btn-dark">Endre </button></Link>
+                            <HashRouter>
+                            <Link to={"/articles/edit/" + this.props.match.params.id}><button className="btn btn-dark">Endre </button></Link></HashRouter>
                         </Column>
                     </Row>
                     <hr/>
@@ -128,7 +127,6 @@ class Article extends Component<State, Props> {
         let articleService = new ArticleService();
         articleService.getOneArticle(this.props.match.params.id)
             .then((article) => {
-                console.log(article.data[0]);
                 let time = article.data[0].time.substring(0, article.data[0].time.length-1);
                 time = time.replace("T", " ");
                 time = time.replace('.000', "");

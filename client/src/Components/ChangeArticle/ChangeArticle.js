@@ -161,8 +161,8 @@ class ChangeArticle extends Component<State, Props> {
                         </Row>
                         <Row>
                             <Column>
-                                <label>1<input type="radio" name="importance" value={1} checked= {this.state.importance == 1} onChange={this.handleChange}/></label>
-                                <label>2<input type="radio" name="importance" value={2} checked= {this.state.importance == 2} onChange={this.handleChange}/></label>
+                                <label>1<input type="radio" name="importance" value={1} checked= {this.state.importance === 1} onChange={this.handleChange}/></label>
+                                <label>2<input type="radio" name="importance" value={2} checked= {this.state.importance === 2} onChange={this.handleChange}/></label>
 
                             </Column>
                         </Row>

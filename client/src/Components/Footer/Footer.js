@@ -2,11 +2,11 @@
 
 import React, {Component} from 'react'
 import './Footer.css'
-import facebook_logo from "C:/Programmering/NTNU/Systemutvikling 2/miniprosjekt/client/src/assets/images/icons/facebook.png";
-import twitter_logo from "C:/Programmering/NTNU/Systemutvikling 2/miniprosjekt/client/src/assets/images/icons/twitter.png";
-import youtube_logo from "C:/Programmering/NTNU/Systemutvikling 2/miniprosjekt/client/src/assets/images/icons/youtube.png";
-import flickr_logo from "C:/Programmering/NTNU/Systemutvikling 2/miniprosjekt/client/src/assets/images/icons/flickr.png";
-import instagram_logo from "C:/Programmering/NTNU/Systemutvikling 2/miniprosjekt/client/src/assets/images/icons/instagram.png";
+import facebook_logo from "../../assets/images/icons/facebook.png";
+import twitter_logo from "../../assets/images/icons/twitter.png";
+import youtube_logo from "../../assets/images/icons/youtube.png";
+import flickr_logo from "../../assets/images/icons/flickr.png";
+import instagram_logo from "../../assets/images/icons/instagram.png";
 
 type State = {}
 type Props = {}

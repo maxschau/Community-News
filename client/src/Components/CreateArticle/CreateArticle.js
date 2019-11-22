@@ -19,7 +19,9 @@ type State = {
     categories: Category[]
 }
 
-class CreateArticle extends Component<State> {
+type Props = {}
+
+class CreateArticle extends Component<Props, State> {
 
 
     constructor(props : any) {
@@ -28,22 +30,22 @@ class CreateArticle extends Component<State> {
             headline: "",
             ingress: "",
             contents: "",
-            category: "",
+            category: 0,
             image: "",
-            importance: "",
+            importance: 0,
             time: "",
             author: "",
             categories: []
         };
     }
 
-    notifySuccess: void = () => {
+    notifySuccess = () => {
         toast("Registrering vellykket", {type: toast.TYPE.SUCCESS, position: toast.POSITION.BOTTOM_LEFT});
     };
 
-    notifyFailure: void = () => toast("Noe gikk galt", {type: toast.TYPE.ERROR, position: toast.POSITION.BOTTOM_LEFT});
+    notifyFailure = () => toast("Noe gikk galt", {type: toast.TYPE.ERROR, position: toast.POSITION.BOTTOM_LEFT});
 
-    handleChange: void = (e) => {
+    handleChange = (e : SyntheticInputEvent<HTMLInputElement>) => {
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -51,7 +53,7 @@ class CreateArticle extends Component<State> {
 
 
     //BØR KANSKJE GJØRES SLIK AT MAN KOMMER RETT TIL ARTIKKELEN???
-    save(): void {
+    save() {
         let articleService = new ArticleService();
         let a1 = new Article(this.state.headline, this.state.ingress, this.state.contents, this.state.category, this.state.image, this.state.importance, this.state.author);
         articleService.createNewArticle(a1)
@@ -158,7 +160,7 @@ class CreateArticle extends Component<State> {
         categoryService.getAll()
             .then((categories) => {
                 this.setState({
-                    categories: categories.data
+                    categories: categories
                 })
             })
             .catch((error) => {

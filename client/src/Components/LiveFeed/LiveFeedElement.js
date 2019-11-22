@@ -15,11 +15,11 @@ type Props = {
     headline : string,
     time : string
 }
-class LiveFeedElement extends Component<State, Props> {
+class LiveFeedElement extends Component<Props, State> {
     constructor(props : any) {
         super(props);
         this.state = {
-            id : "",
+            id : 0,
             headline:"",
             time:""
         }

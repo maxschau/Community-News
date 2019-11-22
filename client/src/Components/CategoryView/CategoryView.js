@@ -5,7 +5,7 @@ import {Row, Column} from '../widgets'
 import {ArticleService, Article} from '../../services/ArticleService';
 import OtherArticle from "../FrontPage/OtherArticle";
 import './CategoryView.css';
-import CategoryService from '../../services/CategoryService';
+import CategoryService , {Category} from '../../services/CategoryService';
 import {faForward, faBackward}  from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -13,21 +13,25 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 type State = {
     id : number,
     articles : Article[],
-    category : number,
+    category : Category,
     pageNumber : number,
     maxPage : number,
     limitPerPage : number
 }
-class CategoryView extends Component<State> {
+
+type Props = {
+    match : { params : { id: number}}
+}
+class CategoryView extends Component<Props, State> {
 
     constructor(props : any) {
         super(props);
         this.state = {
-            id : "",
+            id : -1,
             articles: [],
-            category: "",
+            category: {},
             pageNumber: 0,
-            maxPage : "",
+            maxPage : -1,
             limitPerPage : 6
         }
     }
@@ -61,14 +65,14 @@ class CategoryView extends Component<State> {
         );
     }
 
-    handleNextPage : void = () => {
+    handleNextPage  = () => {
         let number = (this.state.pageNumber + 1)%(this.state.maxPage);
         this.setState({
             pageNumber : number
         })
     };
 
-    handleLastPage : void = () => {
+    handleLastPage = () => {
         if (this.state.pageNumber > 0) {
             let number = this.state.pageNumber - 1;
             this.setState({
@@ -78,7 +82,7 @@ class CategoryView extends Component<State> {
     };
 
 
-    componentDidUpdate(prevProps, prevState) : void {
+    componentDidUpdate(prevProps : Props, prevState : State) : void {
         if (this.state.pageNumber !== prevState.pageNumber) {
             console.log("WTF IS GOING ON, THE STATE HAS CHANGED")
         }
@@ -89,8 +93,8 @@ class CategoryView extends Component<State> {
                 .then((articles) => {
                     this.setState({
                         id: this.props.match.params.id,
-                        articles: articles.data,
-                        maxPage : Math.ceil((articles.data.length / this.state.limitPerPage)),
+                        articles: articles,
+                        maxPage : Math.ceil((articles.length / this.state.limitPerPage)),
                         pageNumber : 0
                     });
                 })
@@ -98,28 +102,29 @@ class CategoryView extends Component<State> {
             categoryService.getOne(this.props.match.params.id)
                 .then((category) => {
                     this.setState({
-                    category: category.data[0]
+                    category: category[0]
                 });
             });
         }
     }
 
-    componentDidMount(): void {
+    componentDidMount() {
         let articleService = new ArticleService();
         let categoryService = new CategoryService();
         articleService.getArticlesByCategory(this.props.match.params.id)
             .then((articles) => {
                 this.setState({
                     id: this.props.match.params.id,
-                    articles: articles.data,
-                    maxPage : Math.ceil((articles.data.length / this.state.limitPerPage)) 
+                    articles: articles,
+                    maxPage : Math.ceil((articles.length / this.state.limitPerPage))
                 });
             })
             .catch((error) => console.error(error));
         categoryService.getOne(this.props.match.params.id)
             .then((category) => {
+                console.log(category);
                 this.setState({
-                    category: category.data[0]
+                    category: category[0]
                 });
             })
             .catch((error) => console.error(error));

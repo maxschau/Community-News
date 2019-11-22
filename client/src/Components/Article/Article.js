@@ -16,27 +16,31 @@ type State = {
     contents: string,
     category: number,
     image: string,
-    importance:number,
+    importance: number,
     time: string,
     author: string,
     likes : number,
     liked : boolean
 }
 
+type Props = {
+    match : { params : { id: number}}
+};
 
-class Article extends Component<State> {
+
+class Article extends Component<Props, State> {
     constructor(props : any) {
         super(props);
         this.state = {
             headline:"",
             ingress: "",
             contents:"",
-            category:"",
+            category:-1,
             image:"",
-            importance:"",
+            importance:-1,
             time:"",
             author:"",
-            likes : "",
+            likes : 0,
             liked : false,
             comments : ""
         };
@@ -45,7 +49,7 @@ class Article extends Component<State> {
 
 
 
-    notifyFailure: void = () => toast("Det er kun lov å gi én like!", {type: toast.TYPE.ERROR, position: toast.POSITION.BOTTOM_LEFT});
+    notifyFailure = () => toast("Det er kun lov å gi én like!", {type: toast.TYPE.ERROR, position: toast.POSITION.BOTTOM_LEFT});
 
     handleThumbsUp = () => {
         if (!(this.state.liked)) {
@@ -106,7 +110,7 @@ class Article extends Component<State> {
                     </Row>
 
                     <Row>
-                        <Column width>
+                        <Column>
                             <HashRouter>
                             <Link to={"/articles/edit/" + this.props.match.params.id}><button className="btn btn-dark">Endre </button></Link></HashRouter>
                         </Column>
@@ -127,19 +131,20 @@ class Article extends Component<State> {
         let articleService = new ArticleService();
         articleService.getOneArticle(this.props.match.params.id)
             .then((article) => {
-                let time = article.data[0].time.substring(0, article.data[0].time.length-1);
+                let time = article[0].time.substring(0, article[0].time.length-1);
                 time = time.replace("T", " ");
                 time = time.replace('.000', "");
+                console.log(article);
                 this.setState({
-                    headline : article.data[0].headline,
-                    ingress: article.data[0].ingress,
-                    contents:article.data[0].contents,
-                    category:article.data[0].category,
-                    image:article.data[0].image,
-                    importance:article.data[0].importance,
+                    headline : article[0].headline,
+                    ingress: article[0].ingress,
+                    contents:article[0].contents,
+                    category:article[0].category,
+                    image:article[0].image,
+                    importance:article[0].importance,
                     time: time,
-                    author: article.data[0].author,
-                    likes : article.data[0].likes
+                    author: article[0].author,
+                    likes : article[0].likes
                 });
             })
             .catch((error => console.error(error)))

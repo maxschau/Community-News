@@ -8,19 +8,24 @@ import './CommentView.css';
 
 
 type State = {
-    comments : Comment[] 
+    comments : Comment[],
+    limitPerPage : number,
+    maxPage : number,
+    commentPage : number
 }
 
-type Props = {}
+type Props = {
+     id: number
+}
 
 
-class CommentView extends Component<State, Props> {
+class CommentView extends Component<Props, State> {
     constructor(props : any) {
         super(props);
         this.state = {
             comments : [],
             limitPerPage : 4,
-            maxPage : "",
+            maxPage : -1,
             commentPage : 0
         }
     }
@@ -48,12 +53,12 @@ class CommentView extends Component<State, Props> {
 
     handleDown = () => {
         if (this.state.commentPage > 0) {
-            let number = this.state.pageNumber - 1;
+            let number = this.state.commentPage - 1;
             this.setState({
                 commentPage : number
             })
         }
-    }
+    };
 
     addComment = () => {
         let commentsService = new CommentsService();
@@ -135,8 +140,8 @@ class CommentView extends Component<State, Props> {
         commentsService.getCommentsByArticle(this.props.id)
             .then((comment) => {
                 this.setState({
-                    comments : comment.data,
-                    maxPage : Math.ceil((comment.data.length / this.state.limitPerPage))
+                    comments : comment,
+                    maxPage : Math.ceil((comment.length / this.state.limitPerPage))
                 });
             })
             .catch((error) => {

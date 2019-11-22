@@ -1,17 +1,15 @@
+// @flow
+
 import React, {Component} from 'react';
 import {Column, Row} from '../../Components/widgets';
 import './CommentSingle.css';
 
+type Props = {
+    name : string,
+    comment : string
+}
 
-
-class CommentSingle extends Component<State, Props> {
-    constructor(props) {
-        super(props);
-        this.state= {
-
-        }
-    }
-
+class CommentSingle extends Component<Props> {
     render() {
         return(
             <div>

@@ -19,15 +19,17 @@ type State= {
     frontPage : boolean
 }
 
-class FrontPage extends Component<State> {
+type Props = {}
+
+class FrontPage extends Component<Props,State> {
 
     constructor(props : any) {
         super(props);
         this.state = {
-            mainArticle: "",
+            mainArticle: {},
             articles: [],
             pageNumber : 0,
-            maxPage : "",
+            maxPage : 0,
             limitPerPage : 6,
             frontPage : true
         }
@@ -62,7 +64,7 @@ class FrontPage extends Component<State> {
         );
     }
 
-        handleNextPage : void = () => {
+        handleNextPage = () => {
         let number = (this.state.pageNumber + 1)%(this.state.maxPage);
         if (number > 0) {
             this.setState({
@@ -80,7 +82,7 @@ class FrontPage extends Component<State> {
         })
     };
 
-    handleLastPage : void = () => {
+    handleLastPage = () => {
         if (this.state.pageNumber > 0) {
             let number = this.state.pageNumber - 1;
             if (number === 0) {
@@ -99,9 +101,12 @@ class FrontPage extends Component<State> {
         articleService.getAllArticlesFrontPage()
             .then((articles) => {
                 this.setState({
-                    mainArticle: articles.data[0],
-                    articles: articles.data.slice(1),
-                    maxPage : Math.ceil(((articles.data.length) / this.state.limitPerPage))
+                    //mainArticle: articles.data[0],
+                    mainArticle : articles[0],
+                    //articles: articles.data.slice(1),
+                    articles: articles.slice(1),
+                    //maxPage : Math.ceil(((articles.data.length) / this.state.limitPerPage))
+                    maxPage : Math.ceil(((articles.length) / this.state.limitPerPage))
                 });
             })
     }

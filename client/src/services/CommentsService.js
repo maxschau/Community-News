@@ -1,12 +1,13 @@
 // @flow
 
-import Axios from "axios"
+import Axios from "axios";
+//Axios.interceptors.response.use(response => response.data);
 
 export class Comment {
     id : number;
     name : string;
     comment : string;
-    article : id;
+    article : number;
 
     constructor(name : string, comment : string, article : number) {
         this.name = name;

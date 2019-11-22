@@ -1,6 +1,7 @@
 // @flow
 
 import Axios from "axios";
+//Axios.interceptors.response.use(response => response.data);
 
 export class Category {
     id : number;
@@ -17,7 +18,7 @@ class CategoryService {
         return Axios.get('http://localhost:8080/categories');
     }
 
-    getOne(id : number) : Promise<Category> {
+    getOne(id : number) : Promise<Category[]> {
         return Axios.get('http://localhost:8080/categories/' + id);
     }
 }

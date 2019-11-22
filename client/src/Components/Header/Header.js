@@ -6,7 +6,7 @@ import './Header.css';
 
 type State = {}
 type Props = {}
-class Header extends Component<State, Props> {
+class Header extends Component<Props, State> {
     render() {
         return(
             <div>

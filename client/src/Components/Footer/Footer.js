@@ -11,7 +11,7 @@ import instagram_logo from "../../assets/images/icons/instagram.png";
 type State = {}
 type Props = {}
 
-class Footer extends Component<State, Props> {
+class Footer extends Component<Props, State> {
     render() {
         return(
             <div className="mainFooter row justify-content-center">

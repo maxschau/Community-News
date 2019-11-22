@@ -27,7 +27,7 @@ type State = {
 
 type Props = {}
 
-class NavBar extends Component<State, Props> {
+class NavBar extends Component<Props, State> {
     //ToDo:
 
     constructor(props : any) {
@@ -38,7 +38,8 @@ class NavBar extends Component<State, Props> {
             navCollapsed: true,
             showNavbar: false
         };
-        this.toggle = this.toggle.bind(this);
+        const self : any = this;
+        self.toggle = this.toggle.bind(this);
     }
     toggle() {
         this.setState({
@@ -88,8 +89,11 @@ class NavBar extends Component<State, Props> {
         let categoryService = new CategoryService();
         categoryService.getAll()
             .then((categories) => {
+                console.log("Categories:");
+                console.log(categories);
                 this.setState({
-                    categories: categories.data
+                    //categories: categories.data
+                    categories: categories
                 })
             })
             .catch((error) => console.error(error))

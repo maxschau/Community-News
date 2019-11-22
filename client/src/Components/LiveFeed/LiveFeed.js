@@ -9,7 +9,9 @@ type State = {
     articles: Article[]
 }
 
-class LiveFeed extends Component<State> {
+type Props = {}
+
+class LiveFeed extends Component<Props, State> {
     constructor(props : any) {
         super(props);
         this.state = {
@@ -33,7 +35,8 @@ class LiveFeed extends Component<State> {
         articleService.getAllLiveFeedArticles()
             .then((articles) => {
                 this.setState({
-                    articles : articles.data
+                    //articles : articles.data
+                    articles : articles
                 })
             })
             .catch((error) => console.error(error))

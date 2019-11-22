@@ -3,7 +3,7 @@
 import React, {Component} from 'react'
 import {Row, Column} from '../widgets';
 import ArticleService, {Article} from '../../services/ArticleService';
-import CategoryService from '../../services/CategoryService';
+import CategoryService, {Category} from '../../services/CategoryService';
 import {toast} from 'react-toastify';
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
@@ -18,14 +18,14 @@ type State = {
     importance: number,
     time : string, 
     author : string,
-    likes : number
+    categories : Category[]
 }
 
 type Props = {
-    id : number
+    match : { params : { id: number}}
 }
 
-class ChangeArticle extends Component<State, Props> {
+class ChangeArticle extends Component<Props, State> {
     constructor(props : any) {
         super(props);
 
@@ -33,14 +33,14 @@ class ChangeArticle extends Component<State, Props> {
             headline:"",
             ingress : "",
             contents:"",
-            category:"",
+            category: 0,
             image:"",
-            importance:"",
+            importance:0,
             time:"",
             author : "",
             categories: []
         }
-    }
+    };
 
     submitDelete = () => {
         confirmAlert({
@@ -56,7 +56,7 @@ class ChangeArticle extends Component<State, Props> {
             }
         ]
         });
-    }
+    };
 
     submitSave = () => {
         confirmAlert({
@@ -72,15 +72,15 @@ class ChangeArticle extends Component<State, Props> {
             }
         ]
         });
-    }
+    };
 
-    notifyChange: void = () => {
+    notifyChange = () => {
         toast("Endring av artikkel vellykket", {type: toast.TYPE.SUCCESS, position: toast.POSITION.BOTTOM_LEFT});
-    }
+    };
 
-    notifyDelete: void = () => toast("Sletting gikk bra", {type: toast.TYPE.SUCCESS, position: toast.POSITION.BOTTOM_LEFT});
+    notifyDelete = () => toast("Sletting gikk bra", {type: toast.TYPE.SUCCESS, position: toast.POSITION.BOTTOM_LEFT});
 
-    save() : void {
+    save()  {
         let articleService = new ArticleService();
         let newArticle = new Article(this.state.headline, this.state.ingress, this.state.contents, this.state.category, this.state.image, this.state.importance, this.state.author);
         articleService.updateOneArticle(this.props.match.params.id, newArticle)
@@ -91,7 +91,7 @@ class ChangeArticle extends Component<State, Props> {
             .catch((error) => console.error(error))
     }
 
-    delete() : void {
+    delete()  {
         let articleService = new ArticleService();
         articleService.deleteOneArticle(this.props.match.params.id)
             .then(() => {
@@ -101,7 +101,7 @@ class ChangeArticle extends Component<State, Props> {
             .catch((error) => console.error(error))
     }
 
-    handleChange : void = (e) => {
+    handleChange  = (e : SyntheticInputEvent<HTMLInputElement>) => {
         this.setState({
             [e.target.name]: e.target.value
         });
@@ -191,7 +191,7 @@ class ChangeArticle extends Component<State, Props> {
             categoryService.getAll()
                 .then((categories) => {
                     this.setState({
-                        categories: categories.data
+                        categories: categories
                     })
                 })
                 .catch((error) => {
@@ -200,15 +200,16 @@ class ChangeArticle extends Component<State, Props> {
 
             articleService.getOneArticle(this.props.match.params.id)
                 .then((article) => {
+                    console.log(article[0].headline);
                     this.setState({
-                        headline: article.data[0].headline,
-                        ingress: article.data[0].ingress,
-                        contents: article.data[0].contents,
-                        category: article.data[0].category,
-                        image: article.data[0].image,
-                        importance: article.data[0].importance,
-                        time: article.data[0].time,
-                        author: article.data[0].author
+                        headline: article[0].headline,
+                        ingress: article[0].ingress,
+                        contents: article[0].contents,
+                        category: article[0].category,
+                        image: article[0].image,
+                        importance: article[0].importance,
+                        time: article[0].time,
+                        author: article[0].author
                     });
                     //window.scrollTo(0, document.body.scrollHeight)
                 })

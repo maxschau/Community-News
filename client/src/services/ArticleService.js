@@ -1,5 +1,6 @@
 // @flow
 import Axios from "axios";
+Axios.interceptors.response.use(response => response.data);
 
 export class Article {
     id : number;
@@ -11,6 +12,7 @@ export class Article {
     importance: number;
     time: string;
     author: string;
+    likes : number;
 
     constructor(headline: string, ingress: string, contents: string, category: number, image: string, importance: number, author: string) {
         this.headline = headline;
@@ -37,11 +39,11 @@ export class ArticleService {
         return Axios.post("http://localhost:8080/articles", article)
     }
 
-    getOneArticle(id : number) : Promise<Article> {
+    getOneArticle(id : number) : Promise<Article[]> {
         return Axios.get("http://localhost:8080/articles/" + id);
     }
 
-    updateOneArticle(id : number, article : Article) : Promise<void> {
+    updateOneArticle(id : number, article : Article ): Promise<void> {
         return Axios.put("http://localhost:8080/articles/" + id, article)
     }
 
@@ -61,7 +63,7 @@ export class ArticleService {
         return Axios.get("http://localhost:8080/articles/finnAntall/" + amount);
     }
 
-    getArticlesByCategory(id : number) : Promise<void> {
+    getArticlesByCategory(id : number) : Promise<Article[]> {
         return Axios.get("http://localhost:8080/articles/categories/" + id);
     }
 

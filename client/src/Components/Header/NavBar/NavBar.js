@@ -15,7 +15,7 @@ import {
 import React, {Component} from 'react';
 import './navbar.css';
 import CategoryService, {Category} from '../../../services/CategoryService';
-import logo from "C:/Programmering/NTNU/Systemutvikling 2/miniprosjekt/client/src/assets/images/logo.png";
+import logo from "../../../assets/images/logo.png";
 
 
 type State = {

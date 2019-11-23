@@ -41,7 +41,7 @@ class FrontPage extends Component<Props,State> {
                 <LiveFeed />
                 <div className="front">
                     <MainArticle show = {this.state.frontPage} id={this.state.mainArticle.id} headline={this.state.mainArticle.headline} image={this.state.mainArticle.image}/>
-                    <hr />
+
                     <Row className="justify-content-center">
                     {this.state.articles.slice(this.state.pageNumber * this.state.limitPerPage, this.state.pageNumber * this.state.limitPerPage + 6).map((article) => {
                         return (

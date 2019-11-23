@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-import renderer from 'react-test-renderer';
+//import renderer from 'react-test-renderer';
+import ShallowRenderer from 'react-test-renderer/shallow';
 
 import Article from '../Article/Article';
 import CategoryView from '../CategoryView/CategoryView';
@@ -18,6 +19,8 @@ import NavBar from '../Header/NavBar/NavBar';
 import Header from '../Header/Header';
 import LiveFeedElement from '../LiveFeed/LiveFeedElement';
 import LiveFeed from '../LiveFeed/LiveFeed';
+
+const renderer = new ShallowRenderer();
 
 
 describe('Article renders correctly', () => {

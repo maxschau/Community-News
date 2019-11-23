@@ -8,6 +8,7 @@ module.exports = class ArticleDao extends dao {
         );
     }
 
+
     getOne(id : number, callback : function) {
         super.query(
             "SELECT headline, ingress ,contents, time, image, category, importance, author, likes from article where id = (?)", [id], callback

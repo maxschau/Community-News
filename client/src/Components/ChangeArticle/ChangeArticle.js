@@ -200,7 +200,6 @@ class ChangeArticle extends Component<Props, State> {
 
             articleService.getOneArticle(this.props.match.params.id)
                 .then((article) => {
-                    console.log(article[0].headline);
                     this.setState({
                         headline: article[0].headline,
                         ingress: article[0].ingress,

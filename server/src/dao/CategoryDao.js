@@ -9,7 +9,7 @@ module.exports = class CategoryDao extends dao {
         ,[], callback);
     };
 
-    getOne(id : number, callback : function) {
+    getOne(id : number, callback : Function) {
         super.query(
             "SELECT * FROM categories where id = (?)",
             [id],

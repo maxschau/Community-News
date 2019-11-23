@@ -19,6 +19,8 @@ run_tests:
   stage: test
   script: 
     - npm test
+    - cd ../client
+    - npm test
   artifacts:
     paths:
       - /coverage

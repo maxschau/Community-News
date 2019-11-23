@@ -22,138 +22,101 @@ import LiveFeed from '../LiveFeed/LiveFeed';
 
 const renderer = new ShallowRenderer();
 
-
-describe('Article renders correctly', () => {
-    test('snapshot renders', () => {
+describe("article renders correctly", () => {
+    it('article renders without crashing', () => {
         const props = {
             match: { params: {id: 1}}
         };
-        const params = {id : 1};
-        const component = renderer.create(<Article {...props}/>);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+        renderer.render(<Article {...props} />);
     });
 });
 
-describe("CategoryView", () => {
-    test("snapshot renders", () => {
+describe("categoryview renders correctly", () => {
+    it('categoryview renders without crashing', () => {
         const props = {
             match: { params: {id: 1}}
         };
-        const params = {id : 1};
-        const component = renderer.create(<CategoryView {...props}/>);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+        renderer.render(<CategoryView {...props} />);
     });
 });
 
-describe("ChangeArticle renders without crashing", () => {
-    test("snapshot renders", () => {
+describe("ChangeArticle renders correctly", () => {
+    it('changearticle renders without crashing', () => {
         const props = {
             match: { params: {id: 1}}
         };
-        const params = {id : 1};
-        const component = renderer.create(<ChangeArticle {...props}/>);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+        renderer.render(<ChangeArticle {...props} />);
     });
 });
 
-describe("CommentSingle", () => {
-    test("snapshot renders", () => {
-        const component = renderer.create(<CommentSingle name="Max" comment="Meget bra" time={"2019-11-23 15:27:42"}/>);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+describe("commentsingle renders correctly", () => {
+    it('commentsingle renders without crashing', () => {
+        renderer.render(<CommentSingle name="Max" comment="Meget bra" time={"2019-11-23 15:27:42"}/>);
     });
 });
 
-describe("CommentView", () => {
-    test("snapshot renders", () => {
+describe("commentview renders correctly", () => {
+    it('commentview renders without crashing', () => {
         const props = {
             match: { params: {id: 1}}
         };
-        const params = {id : 1};
-        const component = renderer.create(<CommentView {...props} />);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+        renderer.render(<CommentView {...props} />);
     });
 });
 
-describe('CreateArticle renders correctly', () => {
-    test('snapshot renders', () => {
-        const component = renderer.create(<CreateArticle />);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+describe("createarticle renders correctly", () => {
+    it('createarticle renders without crashing', () => {
+        renderer.render(<CreateArticle />);
     });
 });
 
-describe('Footer renders correctly', () => {
-    test('snapshot renders', () => {
-        const component = renderer.create(<Footer />);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-    })
-});
-
-describe('FrontPage renders correctly', () => {
-    test('snapshot renders', () => {
-        const component = renderer.create(<FrontPage />);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-    })
-});
-
-describe("MainArticle renders correctly", () => {
-    test("snapshot renders", () => {
-        const component = renderer.create(<MainArticle show = {true} id={1} headline="test test" image="test.no" />)
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+describe("footer renders correctly", () => {
+    it('footer renders without crashing', () => {
+        renderer.render(<Footer />);
     });
 });
 
-describe("OtherArticle renders correctly", () => {
-    test("snapshot renders", () => {
-        const component = renderer.create(<OtherArticle id={1} headline="test test" image="test.no" />);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+describe("createarticle renders correctly", () => {
+    it('createarticle renders without crashing', () => {
+        renderer.render(<FrontPage />);
     });
 });
 
-describe("Header renders correctly", () => {
-    test("snapshot renders", () => {
-        const component = renderer.create(<Header/>);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+describe("mainarticle renders correctly", () => {
+    it('mainarticle renders without crashing', () => {
+        renderer.render(<MainArticle show = {true} id={1} headline="test test" image="test.no" />);
     });
 });
 
-describe("NavBar renders correctly", () => {
-    test("snapshot renders", () => {
-        const component = renderer.create(<NavBar/>);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+describe("otherarticle renders correctly", () => {
+    it('otherarticle renders without crashing', () => {
+        renderer.render(<OtherArticle id={1} headline="test test" image="test.no" />);
     });
 });
 
-describe("LiveFeed renders correctly", () => {
-    test("snapshot renders", () => {
-        const component = renderer.create(<LiveFeed/>);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+describe("header renders correctly", () => {
+    it('header renders without crashing', () => {
+        renderer.render(<Header/>);
     });
 });
 
-describe("LiveFeedElement renders correctly", () => {
-    test("snapshot renders", () => {
-        const component = renderer.create(<LiveFeedElement id={1} headline = {"tester igjen"} time={"12.12.2019 14:56"} />);
-        let tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+describe("navbar renders correctly", () => {
+    it('navbar renders without crashing', () => {
+        renderer.render(<NavBar/>);
     });
 });
 
+describe("livefeed renders correctly", () => {
+    it('livefeed renders without crashing', () => {
+        renderer.render(<LiveFeed/>);
+    });
+});
 
-
-
+describe("livefeedelement renders correctly", () => {
+    it('livefeedelement renders without crashing', () => {
+        renderer.render(<LiveFeedElement id={1} headline = {"tester igjen"} time={"12.12.2019 14:56"} />);
+    });
+});
 
 /*
 

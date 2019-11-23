@@ -1,0 +1,16 @@
+.commentCard {
+    background-color: #F4F4F4;
+}
+
+.commentCard p {
+    padding-left: 2px;
+}
+
+.text {
+    padding-left: 4px;
+}
+
+.minorText {
+    font-size: 12px;
+    text-align: right;
+}

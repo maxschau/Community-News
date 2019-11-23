@@ -13,15 +13,18 @@ type Props = {
 class CommentSingle extends Component<Props> {
     render() {
         return(
-            <div>
+            <div className={"commentCard"}>
                 <Row>
                     <Column>
-                        <b>{this.props.name}:</b> Skrevet: {this.props.time.substring(11,16) + " | " +  this.props.time.substring(0,10)}
+                        <b><p className={"text"}>{this.props.name}:</p></b>
                     </Column>
                 </Row>
                 <Row>
                     <Column>
-                        {this.props.comment}
+                        <p className={"text"}>{this.props.comment}</p>
+                    </Column>
+                    <Column>
+                        <p className={"minorText"}> Skrevet: {this.props.time.substring(11,16) + " | " +  this.props.time.substring(0,10)}</p>
                     </Column>
                 </Row>
                  <hr />

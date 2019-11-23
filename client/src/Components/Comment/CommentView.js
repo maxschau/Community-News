@@ -132,12 +132,9 @@ class CommentView extends Component<Props, State> {
                                            time={comment.time}/>
                         )
                     })}
-                    <div style={{display : this.state.hasCommentsExceed ? 'block' : 'none'}}>
-                        <Row>
-                            <Column><p onClick={() => this.handleDown()}>Forrige</p></Column>
-                            <Column>Side {this.state.commentPage + 1}</Column>
-                            <Column><p onClick={() => this.handleNext()}>Neste</p></Column>
-                        </Row>
+                    <div id="pagination" style={{display : this.state.hasCommentsExceed ? 'block' : 'none'}}>
+                        <a onClick={() => this.handleDown()}>Forrige</a>
+                        <a onClick={() => this.handleNext()}>Neste</a>
                     </div>
                 </div>
             </div>

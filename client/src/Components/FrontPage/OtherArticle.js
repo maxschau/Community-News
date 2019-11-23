@@ -15,7 +15,7 @@ class OtherArticle extends Component<Props> {
     render() {
         return (
             <Column width={6}>
-                <div>
+                <div id={"mainOtherArticle"}>
                     {//Getting an error which says that I cannot use Link outside a Router} 
                     }
                     <HashRouter>

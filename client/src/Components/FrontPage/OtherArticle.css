@@ -9,6 +9,10 @@
     color: black;
 }
 
+#mainOtherArticle {
+    padding-top: 1vw;
+}
+
 @media only screen and (max-width: 600px) {
     p {
         font-size: 15px;

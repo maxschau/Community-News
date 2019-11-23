@@ -21,10 +21,10 @@ run_tests:
   stage: test
   script: 
     - npm test
+    - flow
     - cd ../client
-    - flow check src
     - npm test
-    - flow check src
+    - flow
   artifacts:
     paths:
       - /coverage

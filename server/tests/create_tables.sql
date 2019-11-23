@@ -22,7 +22,7 @@ CREATE TABLE article (
     FOREIGN KEY(category) REFERENCES categories(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
+SET FOREIGN_KEY_CHECKS=0
 DROP TABLE IF EXISTS comments;
 
 CREATE TABLE comments (
@@ -31,5 +31,5 @@ CREATE TABLE comments (
   comment text NOT NULL,
   article int(11) NOT NULL,
   PRIMARY KEY(id),
-  CONSTRAINT articles_id FOREIGN KEY(article) REFERENCES article(id) ON DELETE CASCADE
+  FOREIGN KEY(article) REFERENCES article(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

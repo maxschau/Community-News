@@ -24,7 +24,7 @@ describe('Article renders correctly', () => {
     test('snapshot renders', () => {
         const props = {
             match: { params: {id: 1}}
-        }
+        };
         const params = {id : 1};
         const component = renderer.create(<Article {...props}/>);
         let tree = component.toJSON();
@@ -36,7 +36,7 @@ describe("CategoryView", () => {
     test("snapshot renders", () => {
         const props = {
             match: { params: {id: 1}}
-        }
+        };
         const params = {id : 1};
         const component = renderer.create(<CategoryView {...props}/>);
         let tree = component.toJSON();
@@ -48,7 +48,7 @@ describe("ChangeArticle renders without crashing", () => {
     test("snapshot renders", () => {
         const props = {
             match: { params: {id: 1}}
-        }
+        };
         const params = {id : 1};
         const component = renderer.create(<ChangeArticle {...props}/>);
         let tree = component.toJSON();
@@ -58,7 +58,7 @@ describe("ChangeArticle renders without crashing", () => {
 
 describe("CommentSingle", () => {
     test("snapshot renders", () => {
-        const component = renderer.create(<CommentSingle name="Max" comment="Meget bra" />);
+        const component = renderer.create(<CommentSingle name="Max" comment="Meget bra" time={"2019-11-23 15:27:42"}/>);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });
@@ -68,7 +68,7 @@ describe("CommentView", () => {
     test("snapshot renders", () => {
         const props = {
             match: { params: {id: 1}}
-        }
+        };
         const params = {id : 1};
         const component = renderer.create(<CommentView {...props} />);
         let tree = component.toJSON();
@@ -110,7 +110,7 @@ describe("MainArticle renders correctly", () => {
 
 describe("OtherArticle renders correctly", () => {
     test("snapshot renders", () => {
-        const component = renderer.create(<OtherArticle id={1} headline="test test" image="test.no" />)
+        const component = renderer.create(<OtherArticle id={1} headline="test test" image="test.no" />);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });
@@ -118,7 +118,7 @@ describe("OtherArticle renders correctly", () => {
 
 describe("Header renders correctly", () => {
     test("snapshot renders", () => {
-        const component = renderer.create(<Header/>)
+        const component = renderer.create(<Header/>);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });
@@ -126,7 +126,7 @@ describe("Header renders correctly", () => {
 
 describe("NavBar renders correctly", () => {
     test("snapshot renders", () => {
-        const component = renderer.create(<NavBar/>)
+        const component = renderer.create(<NavBar/>);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });
@@ -134,7 +134,7 @@ describe("NavBar renders correctly", () => {
 
 describe("LiveFeed renders correctly", () => {
     test("snapshot renders", () => {
-        const component = renderer.create(<LiveFeed/>)
+        const component = renderer.create(<LiveFeed/>);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });
@@ -142,7 +142,7 @@ describe("LiveFeed renders correctly", () => {
 
 describe("LiveFeedElement renders correctly", () => {
     test("snapshot renders", () => {
-        const component = renderer.create(<LiveFeedElement id={1} headline = {"tester igjen"} time={"12.12.2019 14:56"} />)
+        const component = renderer.create(<LiveFeedElement id={1} headline = {"tester igjen"} time={"12.12.2019 14:56"} />);
         let tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });

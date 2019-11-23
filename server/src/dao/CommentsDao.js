@@ -4,7 +4,7 @@ const dao = require('./dao.js');
 
 module.exports = class CommentsDao extends dao {
     getCommentsByArticle(id : number, callback : function){
-        super.query("SELECT * from comments where article = ? order by time desc",
+        super.query("SELECT * from comments where article = ? order by id desc",
         [id],
         callback);
     };

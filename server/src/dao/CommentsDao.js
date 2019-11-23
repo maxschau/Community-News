@@ -1,13 +1,15 @@
+// @flow
+
 const dao = require('./dao.js');
 
 module.exports = class CommentsDao extends dao {
-    getCommentsByArticle(id, callback){
+    getCommentsByArticle(id : number, callback : function){
         super.query("SELECT * from comments where article = ? order by id desc",
         [id],
         callback);
     };
 
-    addComment(json, callback) {
+    addComment(json : {name : string, comment : string, article: number}, callback : function) {
         let val = [json.name, json.comment, json.article];
         super.query(
             "INSERT INTO comments(name, comment, article) values (?, ?, ?)",
@@ -16,11 +18,11 @@ module.exports = class CommentsDao extends dao {
         );
     }
 
-    deleteComment(id, callback) {
+    deleteComment(id : number, callback : function) {
         super.query(
             "DELETE from comments where id = ?",
             [id],
             callback
         );
     }
-}
+};

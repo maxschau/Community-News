@@ -1,10 +1,12 @@
+// @flow
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Main from './Main';
 
-let root = document.getElementById("root");
+let root = (document.getElementById("root") : any);
 ReactDOM.render(
         <Main />
     , root);

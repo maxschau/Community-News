@@ -31,9 +31,9 @@ class CommentView extends Component<Props, State> {
     }
 
     openNewComment = () => {
-        let show  =  document.getElementById("containerNewComment");
+        let show  =  (document.getElementById("containerNewComment") : any);
         let style = window.getComputedStyle(show);
-        let btn = document.getElementById("btnComment");
+        let btn = (document.getElementById("btnComment") : any);
         if (style.display === "none") {
             show.style.display = "block";
             btn.innerHTML = "Fjern ny kommentarer";
@@ -42,14 +42,14 @@ class CommentView extends Component<Props, State> {
             btn.innerHTML = "Skriv ny kommentarer";
         }
 
-    }
+    };
 
     handleNext = () => {
         let number = (this.state.commentPage + 1)%(this.state.maxPage);
         this.setState({
             commentPage : number
         })
-    }
+    };
 
     handleDown = () => {
         if (this.state.commentPage > 0) {
@@ -62,14 +62,14 @@ class CommentView extends Component<Props, State> {
 
     addComment = () => {
         let commentsService = new CommentsService();
-        let name = document.getElementById("inpName").value;
-        let comment = document.getElementById("inpComment").value;
+        let name = (document.getElementById("inpName") : any).value;
+        let comment = (document.getElementById("inpComment") : any).value;
         let c = new Comment(name, comment, this.props.id);
         commentsService.createComment(c)
             .then(() => {
                 /* HMMMMM */
-                document.getElementById("inpName").value = "";
-                document.getElementById("inpComment").value = "";
+                (document.getElementById("inpName") : any).value = "";
+                (document.getElementById("inpComment") : any).value = "";
                 this.openNewComment();
                 this.componentDidMount();
                                 /* HMMMMM */

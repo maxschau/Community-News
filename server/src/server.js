@@ -1,11 +1,11 @@
 // @flow
 
 
-var express = require("express");
-var mysql = require("mysql");
-var app = express();
-var apiRoutes = express.Router();
-var bodyParser = require("body-parser");
+let express = require("express");
+let mysql = require("mysql");
+let app = express();
+let apiRoutes = express.Router();
+let bodyParser = require("body-parser");
 app.use(bodyParser.json()); // for å tolke JSON
 
 app.use(function(req, res, next) {
@@ -19,7 +19,7 @@ const CategoryDao = require("./dao/CategoryDao");
 const ArticleDao = require("./dao/ArticleDao");
 const CommmentsDao = require("./dao/CommentsDao");
 
-var pool = mysql.createPool( {
+let pool = mysql.createPool( {
     connectionLimit: 2,
     host: "mysql.stud.iie.ntnu.no",
     user: "maxts",
@@ -155,4 +155,4 @@ app.get("/articles/getAmount/:amount", (req, res) => {
 });
 
 
-var server = app.listen(8080);
+let server = app.listen(8080);

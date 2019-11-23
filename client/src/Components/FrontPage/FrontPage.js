@@ -26,7 +26,7 @@ class FrontPage extends Component<Props,State> {
     constructor(props : any) {
         super(props);
         this.state = {
-            mainArticle: {},
+            mainArticle: new Article("", "", "", 0, "", 0, ""),
             articles: [],
             pageNumber : 0,
             maxPage : 0,

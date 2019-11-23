@@ -1,12 +1,14 @@
+// @flow
+
 const dao = require('./dao.js');
 
 module.exports = class ArticleDao extends dao {
-    getAll(callback) {
+    getAll(callback : function) {
         super.query("SELECT id, headline, ingress contents, time, image, category, importance, author from article order by time desc", [], callback
         );
     }
 
-    getOne(id, callback) {
+    getOne(id : number, callback : function) {
         super.query(
             "SELECT headline, ingress ,contents, time, image, category, importance, author, likes from article where id = (?)", [id], callback
         );
@@ -14,12 +16,12 @@ module.exports = class ArticleDao extends dao {
 
 
 
-    getAllFrontPage(callback) {
+    getAllFrontPage(callback : function) {
         super.query("SELECT id, headline, ingress, contents, time, image, category, importance, author from article where importance = 1 order by time desc", [], callback
         );
     }
 
-    getAmountOfNews(amount, callback) {
+    getAmountOfNews(amount : number, callback : function) {
         super.query(
             "SELECT id, headline, image, importance FROM article ORDER BY time DESC limit ?", 
             [amount],
@@ -27,7 +29,7 @@ module.exports = class ArticleDao extends dao {
         );
     }
 
-    createOne(json, callback) {
+    createOne(json : {headline : string, ingress: string, contents: string, dateTime : string, image : string, category : number, importance : number, author : string}, callback : function) {
         console.log("Create one");
 
         let today = new Date();
@@ -42,12 +44,12 @@ module.exports = class ArticleDao extends dao {
         );
     }
 
-    getArticlesLiveFeed(callback) {
+    getArticlesLiveFeed(callback : function) {
         super.query(
             "SELECT id, headline, time FROM article order by time desc limit 10", [], callback);
     }
 
-    getArticlesByCategory(id, callback) {
+    getArticlesByCategory(id : number, callback : function) {
         super.query(
             "SELECT id, headline, image, time FROM article where category = (?) order by time desc",
             [id], 
@@ -55,7 +57,7 @@ module.exports = class ArticleDao extends dao {
         );
     }
 
-    deleteOne(id, callback) {
+    deleteOne(id : number, callback : function) {
         super.query(
             "DELETE from article where id = (?)",
             [id],
@@ -63,7 +65,7 @@ module.exports = class ArticleDao extends dao {
         );
     }
 
-    updateOne(id, json, callback) {
+    updateOne(id : number, json : {headline : string, ingress : string, contents : string, image : string, category : number, importance : number, }, callback : function) {
         const val = [json.headline, json.ingress, json.contents, json.image, json.category, json.importance, id];
         super.query(
             "UPDATE article SET headline=?, ingress=?, contents=?,  image=?, category=?, importance=? where id=?",
@@ -71,10 +73,10 @@ module.exports = class ArticleDao extends dao {
             callback
         );
     }
-    updateLikes(id, callback) {
+    updateLikes(id : number, callback : function) {
         super.query(
             "UPDATE article SET likes = likes+1 where id=?",
-            id,
+            [id],
             callback
         );
     }

@@ -29,7 +29,7 @@ class CategoryView extends Component<Props, State> {
         this.state = {
             id : -1,
             articles: [],
-            category: {},
+            category: new Category(""),
             pageNumber: 0,
             maxPage : -1,
             limitPerPage : 6

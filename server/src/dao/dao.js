@@ -1,19 +1,20 @@
 // @flow
 
 module.exports = class Dao {
-    constructor(pool) {
+    pool : any;
+    constructor(pool : any) {
         this.pool = pool;
     }
 
-    query(sql, params, callback) {
-        this.pool.getConnection((err, connection) => {
+    query(sql : string, params  : Array<mixed>, callback : function) {
+        this.pool.getConnection((err : Error, connection : function) => {
             console.log("dao: connected to database");
             if (err) {
                 console.log("dao: error connecting");
                 callback(500, {error: "feil ved ved oppkobling"});
             } else {
                 console.log("dao: running sql: " + sql);
-                connection.query(sql, params, (err, rows) => {
+                connection.query(sql, params, (err : string, rows : []) => {
                     connection.release();
                     if (err) {
                         console.log(err);

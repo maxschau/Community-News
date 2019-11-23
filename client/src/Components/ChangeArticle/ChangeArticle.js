@@ -110,6 +110,8 @@ class ChangeArticle extends Component<Props, State> {
     render() {
         return(
             <div id = "containerReg">
+                <h1>Endre artikkelen </h1>
+                <hr />
                 <form>
                     <div className="form-group">
                         <label>Overskrift: </label>
@@ -148,7 +150,7 @@ class ChangeArticle extends Component<Props, State> {
                                 <select className="btn btn-secondary" name="category" value= {this.state.category} onChange={this.handleChange}>
                                 {this.state.categories.map((categories) => {
                                     return(
-                                        <option value={categories.id} name = "category" selected={this.state.category === categories.id}>{categories.name}</option>
+                                        <option key = {categories.id} value={categories.id} name = "category" defaultValue={this.state.category === categories.id}>{categories.name}</option>
                                     )
                                 })}
                                 </select>
@@ -156,24 +158,22 @@ class ChangeArticle extends Component<Props, State> {
                         </Row>
                         <Row>
                             <Column>
-                                <label>Viktighet </label>
+                                <label>Førsteside? </label>
                             </Column>
                         </Row>
                         <Row>
                             <Column>
-                                <label>1<input type="radio" name="importance" value={1} checked= {this.state.importance === 1} onChange={this.handleChange}/></label>
-                                <label>2<input type="radio" name="importance" value={2} checked= {this.state.importance === 2} onChange={this.handleChange}/></label>
+                                <label>Ja<input type="radio" name="importance" value={1} checked= {this.state.importance == 1} onChange={this.handleChange}/></label>
+                                <label>Nei<input type="radio" name="importance" value={2} checked= {this.state.importance == 2} onChange={this.handleChange}/></label>
 
                             </Column>
                         </Row>
                     </div>
                     <Row>
                         <Column>
-                            <button type="button" className="btn btn-secondary" onClick={() => this.submitSave()}>
+                            <button type="button" style={{margin: 2}} className="btn btn-secondary" onClick={() => this.submitSave()}>
                             Lagre
                             </button>
-                        </Column>
-                        <Column>
                             <button type="button" className="btn btn-danger" onClick={() => this.submitDelete() }> Slett </button>
                         </Column>
                     </Row>

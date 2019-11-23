@@ -55,7 +55,7 @@ class CategoryView extends Component<Props, State> {
                         <p onClick={this.handleLastPage}><FontAwesomeIcon icon={faBackward} /> </p>
                     </Column>
                     <Column>
-                        <p>Page {this.state.pageNumber + 1}</p>
+                        <p>Side {this.state.pageNumber + 1}</p>
                     </Column>
                     <Column>
                         <p onClick={this.handleNextPage}><FontAwesomeIcon icon={faForward} /> </p>
@@ -84,7 +84,7 @@ class CategoryView extends Component<Props, State> {
 
     componentDidUpdate(prevProps : Props, prevState : State) : void {
         if (this.state.pageNumber !== prevState.pageNumber) {
-            console.log("WTF IS GOING ON, THE STATE HAS CHANGED")
+            console.log("State change")
         }
         if (this.props.match.params.id !== prevProps.match.params.id) {
             let articleService = new ArticleService();
@@ -122,7 +122,6 @@ class CategoryView extends Component<Props, State> {
             .catch((error) => console.error(error));
         categoryService.getOne(this.props.match.params.id)
             .then((category) => {
-                console.log(category);
                 this.setState({
                     category: category[0]
                 });

@@ -3,19 +3,6 @@
 
 import {Component} from 'react';
 import * as React from 'react';
-import { NavLink } from 'react-router-dom';
-import { withToastManager } from 'react-toast-notifications';
-
-
-class NavBarLink extends Component<{ exact?: boolean, to: string, children?: React.Node }> {
-    render() {
-        return (
-            <NavLink className="nav-link" activeClassName="active" exact={this.props.exact} to={this.props.to}>
-                {this.props.children}
-            </NavLink>
-        );
-    }
-}
 
 
 /**

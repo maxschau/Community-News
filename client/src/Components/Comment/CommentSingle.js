@@ -6,7 +6,8 @@ import './CommentSingle.css';
 
 type Props = {
     name : string,
-    comment : string
+    comment : string,
+    time : string
 }
 
 class CommentSingle extends Component<Props> {
@@ -15,7 +16,7 @@ class CommentSingle extends Component<Props> {
             <div>
                 <Row>
                     <Column>
-                        <b>{this.props.name}:</b>
+                        <b>{this.props.name}:</b> Skrevet: {this.props.time.substring(11,16) + " | " +  this.props.time.substring(0,10)}
                     </Column>
                 </Row>
                 <Row>

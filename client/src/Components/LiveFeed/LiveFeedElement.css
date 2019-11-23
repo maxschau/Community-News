@@ -1,6 +1,6 @@
-p {
-    color: black;
-    font-size: 120%;
-    /*margin-top: 2%;
-    margin-bottom: 2%;*/
+#liveFeedP {
+    color: white;
+    font-size: 100%;
+    margin-top: 2%;
+    /*margin-bottom: 2%;*/
 }

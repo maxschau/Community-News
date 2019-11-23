@@ -7,6 +7,7 @@ export class Comment {
     id : number;
     name : string;
     comment : string;
+    time : string;
     article : number;
 
     constructor(name : string, comment : string, article : number) {

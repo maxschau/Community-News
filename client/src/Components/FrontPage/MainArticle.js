@@ -12,11 +12,8 @@ type Props = {
 }
 class MainArticle extends Component<Props> {
     render() {
-        if (!(this.props.show)) {
-            return <div id="mainDiv"></div>
-        }
         return(
-            <div id="mainDiv">
+            <div id="mainDiv" style={{display: this.props.show ? 'block' : 'none'}}>
                 <HashRouter>
                     <Link to={"articles/" + this.props.id}><img src={this.props.image} id="imgMain"alt={this.props.headline} /> </Link>
                     <Link to={"articles/" + this.props.id}><h1>{this.props.headline}</h1></Link>

@@ -69,7 +69,8 @@ class CreateArticle extends Component<Props, State> {
 
     render() {
         return (
-            <div className="card" id="containerReg">
+            <div id="containerReg">
+                <h1>Registrer ny artikkel </h1>
                 <form>
                     <div className="form-group">
                         <label>Overskrift: </label>
@@ -107,10 +108,10 @@ class CreateArticle extends Component<Props, State> {
                             <Column>
                                 <select className="btn btn-secondary" name="category" value={this.state.category}
                                         onChange={this.handleChange}>
-                                    <option value="" selected disabled hidden>Velg en kategori</option>
+                                    <option defaultValue hidden>Velg en kategori</option>
                                     {this.state.categories.map((categories) => {
                                         return (
-                                            <option value={categories.id}>{categories.name}</option>
+                                            <option key = {categories.id} value={categories.id}>{categories.name}</option>
                                         )
                                     })}
                                 </select>
@@ -135,14 +136,14 @@ class CreateArticle extends Component<Props, State> {
                     <div className="form-group">
                         <Row>
                             <Column>
-                                <label>Viktighet: </label>
+                                <label>Førsteside?: </label>
                             </Column>
                         </Row>
                         <Row>
                             <Column>
-                                <label>1<input type="radio" value={1} name="importance"
+                                <label>Ja<input type="radio" value={1} name="importance"
                                                onChange={this.handleChange}/></label>
-                                <label>2<input type="radio" value={2} name="importance"
+                                <label>Nei<input type="radio" value={2} name="importance"
                                                onChange={this.handleChange}/></label>
                             </Column>
                         </Row>

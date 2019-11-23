@@ -52,9 +52,9 @@ class NavBar extends Component<Props, State> {
 
         return(
             <div>
-                <Navbar style={{backgroundColor: '#1F2833'}} dark expand="md">
+                <Navbar style={{backgroundColor: '#00204A'}} dark expand="md">
                     <a href="/#/home"><img src={logo} alt="logo.png" className="imgLogo"/></a>
-                    <NavbarBrand href="/#/home"><h5 className="link">Kalvskinnet News</h5></NavbarBrand>
+                    <NavbarBrand href="/#/home"><h5>Kalvskinnet News</h5></NavbarBrand>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
@@ -89,10 +89,7 @@ class NavBar extends Component<Props, State> {
         let categoryService = new CategoryService();
         categoryService.getAll()
             .then((categories) => {
-                console.log("Categories:");
-                console.log(categories);
                 this.setState({
-                    //categories: categories.data
                     categories: categories
                 })
             })

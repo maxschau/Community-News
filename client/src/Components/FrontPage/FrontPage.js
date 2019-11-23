@@ -37,29 +37,31 @@ class FrontPage extends Component<Props,State> {
 
     render() {
         return (
-            <div className="front">
-                <LiveFeed/>
-                <MainArticle show = {this.state.frontPage} id={this.state.mainArticle.id} headline={this.state.mainArticle.headline} image={this.state.mainArticle.image}/>
-                <hr />
-                <Row className="justify-content-center">
-                {this.state.articles.slice(this.state.pageNumber * this.state.limitPerPage, this.state.pageNumber * this.state.limitPerPage + 6).map((article) => {
-                    return (
-                        <OtherArticle key={article.id} id={article.id} headline={article.headline}
-                                      image={article.image}/>
-                    )
-                })}
-                </Row>
-                <Row>
-                    <Column>
-                        <p onClick={this.handleLastPage}><FontAwesomeIcon icon={faBackward} /> </p>
-                    </Column>
-                    <Column>
-                        <p>Page {this.state.pageNumber + 1}</p>
-                    </Column>
-                    <Column>
-                        <p onClick={this.handleNextPage}><FontAwesomeIcon icon={faForward} /> </p>
-                    </Column>
-                </Row>
+            <div>
+                <LiveFeed />
+                <div className="front">
+                    <MainArticle show = {this.state.frontPage} id={this.state.mainArticle.id} headline={this.state.mainArticle.headline} image={this.state.mainArticle.image}/>
+                    <hr />
+                    <Row className="justify-content-center">
+                    {this.state.articles.slice(this.state.pageNumber * this.state.limitPerPage, this.state.pageNumber * this.state.limitPerPage + 6).map((article) => {
+                        return (
+                            <OtherArticle key={article.id} id={article.id} headline={article.headline}
+                                          image={article.image}/>
+                        )
+                    })}
+                    </Row>
+                    <Row>
+                        <Column>
+                            <p onClick={this.handleLastPage}><FontAwesomeIcon icon={faBackward} /> </p>
+                        </Column>
+                        <Column>
+                            <p>Side {this.state.pageNumber + 1}</p>
+                        </Column>
+                        <Column>
+                            <p onClick={this.handleNextPage}><FontAwesomeIcon icon={faForward} /> </p>
+                        </Column>
+                    </Row>
+                </div>
             </div>
         );
     }

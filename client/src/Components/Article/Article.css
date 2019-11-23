@@ -4,9 +4,13 @@ body {
 }
 
 #container {
-    text-align: center;
     width: 60%;
     margin: auto;
+}
+
+#container h1 {
+    text-align: center;
+
 }
 
 .timeText {

@@ -21,7 +21,7 @@ class OtherArticle extends Component<Props> {
                     <HashRouter>
                         <Link to={"/articles/" + this.props.id}><img id="otherImg" src={this.props.image}
                                                                         alt={this.props.headline}/></Link>
-                        <Link to={"/articles/" + this.props.id}><p>{this.props.headline}</p></Link>
+                        <Link to={"/articles/" + this.props.id}><h5 id={"otherArticleHeadline"}>{this.props.headline}</h5></Link>
                     </HashRouter>
                 </div>
             </Column>

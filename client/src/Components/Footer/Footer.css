@@ -1,10 +1,11 @@
 
 .mainFooter {
-    background-color: #1F2833;
+    background-color:  #00204A;
     color: white;
     bottom: 0;
-    width: 100%;
-    min-height: calc(100vh - 790px);
+    width: 100vw;
+    min-height: calc(100% - 260px);
+    padding-bottom: 10px;
 }
 
 .mainFooter p {

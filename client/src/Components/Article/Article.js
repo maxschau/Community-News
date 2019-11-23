@@ -68,7 +68,6 @@ class Article extends Component<Props, State> {
         let articleService = new ArticleService();
         articleService.updateLikes(this.props.match.params.id)
             .then(() => {
-                console.log("Updating likes")
             })
             .catch((error) => {
                 console.error(error);
@@ -99,13 +98,14 @@ class Article extends Component<Props, State> {
                         <Column width={9}>
                             <h5 className={"timeText float-left"}><b>Publisert: </b> {this.state.time} av {this.state.author}</h5>
                         </Column>
-                        <Column width={3}>
-                            <span><p data-toggle="tooltip" data-placement="top" title="Gi en like!!" onClick={() => this.handleThumbsUp()}><FontAwesomeIcon id="iconLikes" icon={faThumbsUp}/>   {this.state.likes}</p></span>
-                        </Column>
                     </Row>
                     <Row>
                         <Column>
-                            <h5>{this.state.contents}</h5>
+                            {this.state.contents.split("\n").map((paragraph, i) => {
+                                return(
+                                    <p key={i}>{paragraph} </p>
+                                )
+                            })}
                         </Column>
                     </Row>
 
@@ -113,6 +113,9 @@ class Article extends Component<Props, State> {
                         <Column>
                             <HashRouter>
                             <Link to={"/articles/edit/" + this.props.match.params.id}><button className="btn btn-dark">Endre </button></Link></HashRouter>
+                        </Column>
+                        <Column width={3}>
+                            <span><p data-toggle="tooltip" data-placement="top" title="Gi en like!!" onClick={() => this.handleThumbsUp()}><FontAwesomeIcon id="iconLikes" icon={faThumbsUp}/>   {this.state.likes}</p></span>
                         </Column>
                     </Row>
                     <hr/>
@@ -134,7 +137,6 @@ class Article extends Component<Props, State> {
                 let time = article[0].time.substring(0, article[0].time.length-1);
                 time = time.replace("T", " ");
                 time = time.replace('.000', "");
-                console.log(article);
                 this.setState({
                     headline : article[0].headline,
                     ingress: article[0].ingress,

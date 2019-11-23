@@ -7,8 +7,10 @@
 
 
 .mainLiveFeed {
+    background-color: #005792;
+    padding-top: 0.5vw;
     display: flex;
-    width: auto;
+    padding-bottom: 0.3vw;
     width: 100%;
 }
 

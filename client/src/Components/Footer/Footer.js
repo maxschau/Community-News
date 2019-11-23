@@ -29,7 +29,6 @@ class Footer extends Component<Props, State> {
                         <h5>Kontakt: </h5>
                         <span><b>Tlf: </b>91782159 </span><br/>
                         <span><b>E-post: </b>redaksjonen@kalvskinnetNews.com </span>
-
                     </div>
                 </div>
             </div>

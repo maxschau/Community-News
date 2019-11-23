@@ -28,7 +28,7 @@ class LiveFeedElement extends Component<Props, State> {
         return(
             <div>
                 <HashRouter>
-                    <Link to={"/articles/" + this.state.id}><p><b>{this.state.headline}</b> {this.state.time} | </p></Link>
+                    <Link to={"/articles/" + this.state.id}><p id={"liveFeedP"}><b>{this.state.headline}</b> {this.state.time} | </p></Link>
                 </HashRouter>
             </div>
         );

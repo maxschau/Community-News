@@ -8,8 +8,6 @@
 
 
 #imgMain {
-    /*
-    Burde jeg endre bredden til noe annet??
-    */
-    width: 100%;
+    padding-top: 1vw;
+    width: 93%;
 }

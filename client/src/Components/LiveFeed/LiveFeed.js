@@ -21,7 +21,7 @@ class LiveFeed extends Component<Props, State> {
     render() {
 
         return(
-            <marquee behavior="scroll">
+            <marquee behavior="scroll" className={"mainLiveFeed"}>
                 <div className="row flex-row flex-nowrap">
                     {this.state.articles.map(article => {
                         return (<div className="col" key={article.id}><LiveFeedElement key = {article.id} id = {article.id} headline= {article.headline} time={article.time} /> </div>)

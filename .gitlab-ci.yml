@@ -24,7 +24,7 @@ run_tests:
     - cd ../client
     - flow check src
     - npm test
-    -flow check src
+    - flow check src
   artifacts:
     paths:
       - /coverage

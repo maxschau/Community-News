@@ -1,3 +1,4 @@
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS categories;
 CREATE TABLE categories (
   id int(11) NOT NULL AUTO_INCREMENT ,
@@ -5,6 +6,7 @@ CREATE TABLE categories (
   PRIMARY KEY(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS article;
 
 CREATE TABLE article (
@@ -19,7 +21,7 @@ CREATE TABLE article (
     author varchar(30) NOT NULL,
     likes int(11) NOT NULL DEFAULT '0',
     PRIMARY KEY(id),
-    FOREIGN KEY(category) REFERENCES categories(id)
+    FOREIGN KEY(category) REFERENCES categories(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 SET FOREIGN_KEY_CHECKS=0; 
@@ -31,7 +33,7 @@ CREATE TABLE comments (
   comment text NOT NULL,
   article int(11) NOT NULL,
   PRIMARY KEY(id),
-  FOREIGN KEY(article) REFERENCES article(id)
+  FOREIGN KEY(article) REFERENCES article(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 SET FOREIGN_KEY_CHECKS=1; 

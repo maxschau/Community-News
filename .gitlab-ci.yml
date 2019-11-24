@@ -15,7 +15,7 @@ run_tests:
   script:
     - npm install -g flow-bin
     - cd server && npm install && npm test && flow check src
-    - cd ../client && npm install && npm test && flow check srct
+    - cd ../client && npm install && npm test && flow check src
   artifacts:
     paths:
       - /coverage

@@ -2,6 +2,8 @@
 import Axios from "axios";
 Axios.interceptors.response.use(response => response.data);
 
+let ipadress : string = "10.24.78.189";
+
 export class Article {
     id : number;
     headline: string;
@@ -28,43 +30,43 @@ export class Article {
 
 export class ArticleService {
     getAllArticles() : Promise<Article[]> {
-        return Axios.get("http://localhost:8080/articles");
+        return Axios.get("http://" + ipadress + ":8080/articles");
     }
 
     getAllArticlesFrontPage() : Promise<Article[]> {
-        return Axios.get("http://localhost:8080/frontpage");
+        return Axios.get("http://" + ipadress + ":8080/frontpage");
     }
 
     createNewArticle(article : Article) : Promise<void>{
-        return Axios.post("http://localhost:8080/articles", article)
+        return Axios.post("http://" +  + ipadress + ":8080/articles", article)
     }
 
     getOneArticle(id : number) : Promise<Article[]> {
-        return Axios.get("http://localhost:8080/articles/" + id);
+        return Axios.get("http://" +  ipadress + ":8080/articles/" + id);
     }
 
     updateOneArticle(id : number, article : Article ): Promise<void> {
-        return Axios.put("http://localhost:8080/articles/" + id, article)
+        return Axios.put("http://"  + ipadress +  ":8080/articles/" + id, article)
     }
 
     updateLikes(id : number) : Promise<void> {
-        return Axios.put("http://localhost:8080/articles/likes/" + id)
+        return Axios.put("http://"  + ipadress +  ":8080/articles/likes/" + id)
     }
 
     deleteOneArticle(id : number) : Promise<void> {
-        return Axios.delete("http://localhost:8080/articles/" + id);
+        return Axios.delete("http://" + ipadress + ":8080/articles/" + id);
     }
 
     getAllLiveFeedArticles() : Promise<Article[]> {
-        return Axios.get('http://localhost:8080/livefeed')
+        return Axios.get("http://" + ipadress + ":8080/livefeed");
     }
 
     getAmountOfArticles(amount : number) : Promise<Article[]> {
-        return Axios.get("http://localhost:8080/articles/finnAntall/" + amount);
+        return Axios.get("http://" + ipadress + ":8080/articles/finnAntall/" + amount);
     }
 
     getArticlesByCategory(id : number) : Promise<Article[]> {
-        return Axios.get("http://localhost:8080/articles/categories/" + id);
+        return Axios.get("http://" + ipadress + ":8080/articles/categories/" + id);
     }
 
 

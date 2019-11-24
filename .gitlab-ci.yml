@@ -8,14 +8,6 @@ variables:
   MYSQL_DATABASE: school
   MYSQL_ROOT_PASSWORD: root123
 
-#Install node libraries
-
-#before_script:
- # - cd client &&  npm install
-  #- npm install flow-bin
-  #- cd ../server && npm install
-  #- npm install flow-bin
-  
 
 # Run JEST tests
 run_tests:
@@ -23,30 +15,10 @@ run_tests:
   script:
     - npm install -g flow-bin
     - cd server && npm install && npm test && flow check src
-    - cd ../client && npm install && npm test && flow check src
-   # - npm test
-    #- flow
-    #- cd ../client
-    #- npm test
-    #- flow
+    - cd ../client && npm install && npm test && flow check srct
   artifacts:
     paths:
       - /coverage
-
-# Publish coverage report on gitlab-pages
-#pages:
-#  stage: deploy
-#  dependencies:
-#    - run_tests
-#  script:
-#    - mkdir .public
-#    - cp -r coverage/* .public
-#    - mv .public public
-#  artifacts:
-#    paths:
-#      - public
-#  only:
-#    - master
 
 
 

@@ -171,7 +171,7 @@ class ChangeArticle extends Component<Props, State> {
                     </div>
                     <Row>
                         <Column>
-                            <button type="button" style={{margin: 2}} className="btn btn-secondary" onClick={() => this.submitSave()}>
+                            <button type="button" style={{margin: 2}} className="btn btn-secondary btnBot" onClick={() => this.submitSave()}>
                             Lagre
                             </button>
                             <button type="button" className="btn btn-danger" onClick={() => this.submitDelete() }> Slett </button>

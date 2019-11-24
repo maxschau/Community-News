@@ -148,7 +148,7 @@ class CreateArticle extends Component<Props, State> {
                             </Column>
                         </Row>
                     </div>
-                    <button type="button" className="btn btn-secondary" onClick={() => this.save()}>
+                    <button type="button" id="regBtn" className="btn btn-secondary" onClick={() => this.save()}>
                         Registrer sak
                     </button>
                 </form>

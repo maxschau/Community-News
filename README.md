@@ -1,5 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-#Project | NTNU | TDAT2003 Systemutvikling 2
+
+# Project | NTNU | TDAT2003 Systemutvikling 2
 Project developed in the subject TDAT2003 Systemutvikling 2. Development of a community newspaper page where uses can create, read, change and comment on articles. 
 
 

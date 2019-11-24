@@ -35,5 +35,3 @@ CREATE TABLE comments (
   PRIMARY KEY(id),
   FOREIGN KEY(article) REFERENCES article(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-g

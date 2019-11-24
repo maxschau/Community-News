@@ -32,7 +32,7 @@ class CategoryView extends Component<Props, State> {
             category: new Category(""),
             pageNumber: 0,
             maxPage : -1,
-            limitPerPage : 6
+            limitPerPage : 8
         }
     }
     render() {
@@ -45,7 +45,7 @@ class CategoryView extends Component<Props, State> {
                 </Row>
                 <hr />
                 <Row>
-                    {this.state.articles.slice(this.state.pageNumber*this.state.limitPerPage, this.state.pageNumber*this.state.limitPerPage+6).map((article) => {
+                    {this.state.articles.slice(this.state.pageNumber*this.state.limitPerPage, this.state.pageNumber*this.state.limitPerPage+this.state.limitPerPage).map((article) => {
                         return <OtherArticle key={article.id} id={article.id} headline={article.headline} image={article.image}/>
                     })}
                 </Row>

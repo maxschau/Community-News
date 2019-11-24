@@ -68,7 +68,7 @@ class NavBar extends Component<Props, State> {
                                     <DropdownToggle nav caret>
                                         <h5 className="link">Kategorier</h5>
                                     </DropdownToggle>
-                                    <DropdownMenu right style={{backgroundColor: '#1F2833'}}>
+                                    <DropdownMenu right style={{backgroundColor: '#00204A'}}>
                                         {this.state.categories.map((categories) => {
                                             return(
                                                 <DropdownItem key={categories.id} className="nav-link kategori" onClick={() => window.location.hash="#/categories/" + categories.id}> {categories.name} </DropdownItem>

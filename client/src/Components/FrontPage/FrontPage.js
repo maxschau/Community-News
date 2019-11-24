@@ -30,7 +30,7 @@ class FrontPage extends Component<Props,State> {
             articles: [],
             pageNumber : 0,
             maxPage : 0,
-            limitPerPage : 6,
+            limitPerPage : 8,
             frontPage : true
         }
     }
@@ -43,7 +43,7 @@ class FrontPage extends Component<Props,State> {
                     <MainArticle show = {this.state.frontPage} id={this.state.mainArticle.id} headline={this.state.mainArticle.headline} image={this.state.mainArticle.image}/>
 
                     <Row className="justify-content-center">
-                    {this.state.articles.slice(this.state.pageNumber * this.state.limitPerPage, this.state.pageNumber * this.state.limitPerPage + 6).map((article) => {
+                    {this.state.articles.slice(this.state.pageNumber * this.state.limitPerPage, this.state.pageNumber * this.state.limitPerPage + this.state.limitPerPage).map((article) => {
                         return (
                             <OtherArticle key={article.id} id={article.id} headline={article.headline}
                                           image={article.image}/>

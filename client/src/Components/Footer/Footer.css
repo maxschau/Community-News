@@ -3,7 +3,7 @@ html {
     min-height: 100%;
 }
 body {
-    margin-bottom: 157px;
+    margin-bottom: 150px;
 }
 .mainFooter {
     position: absolute;
@@ -37,9 +37,6 @@ body {
 }
 
 @media only screen and (max-width: 600px) {
-    .mainFooter {
-        width: 110%;
-    }
     #imgLogo {
         width: 10vw;
         padding: 2vw;

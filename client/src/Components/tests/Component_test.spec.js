@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 
-//import renderer from 'react-test-renderer';
 import ShallowRenderer from 'react-test-renderer/shallow';
 
 import Article from "../Article/Article";
@@ -118,61 +117,6 @@ describe("livefeedelement renders correctly", () => {
     });
 });
 
-/*
-
-test('Article component renders without crashing', () => {
-    const div = document.createElement('div');
-    const props = {
-        match: {params : {id: 1}}
-    };
-    const params = {id : 1};
-    ReactDOM.render(<Article {...props} />, div);
-});
-
-
-test("CategoryView component renders without crashing", () => {
-    const div = document.createElement('div');
-    const props = {
-        match: {params : {id: 1}}
-    };
-    const params = {id : 1};
-    ReactDOM.render(<CategoryView {...props} />, div);
-});
-
-test("ChangeArticle component renders without crashing", () => {
-    const div = document.createElement('div');
-    const props = {
-        match: {params : {id: 1}}
-    };
-    const params = {id : 1};
-    ReactDOM.render(<ChangeArticle {...props} />, div);
-});
-
-test("CommentSingle component renders without crashing", () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<CommentSingle name="Test" comment="test test test"/>, div);
-});
-
-test("CommentView component renders without crashing", () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<CommentView id={1} />, div);
-});
-
-test("CreateArticle component renders without crashing", () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<CreateArticle />, div);
-});
-
-test("Footer component renders without crashing", () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Footer/>, div);
-});
-
-test("FrontPage component renders without crashing", () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<FrontPage/>, div);
-});
-*/
 
 
 

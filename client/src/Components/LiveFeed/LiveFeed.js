@@ -35,7 +35,6 @@ class LiveFeed extends Component<Props, State> {
         articleService.getAllLiveFeedArticles()
             .then((articles) => {
                 this.setState({
-                    //articles : articles.data
                     articles : articles
                 })
             })

@@ -16,8 +16,6 @@ class OtherArticle extends Component<Props> {
         return (
             <Column width={6}>
                 <div id={"mainOtherArticle"}>
-                    {//Getting an error which says that I cannot use Link outside a Router} 
-                    }
                     <HashRouter>
                         <Link to={"/articles/" + this.props.id}><img id="otherImg" src={this.props.image}
                                                                         alt={this.props.headline}/></Link>

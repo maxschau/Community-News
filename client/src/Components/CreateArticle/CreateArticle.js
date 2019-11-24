@@ -52,7 +52,7 @@ class CreateArticle extends Component<Props, State> {
     };
 
 
-    //BØR KANSKJE GJØRES SLIK AT MAN KOMMER RETT TIL ARTIKKELEN???
+
     save() {
         let articleService = new ArticleService();
         let a1 = new Article(this.state.headline, this.state.ingress, this.state.contents, this.state.category, this.state.image, this.state.importance, this.state.author);

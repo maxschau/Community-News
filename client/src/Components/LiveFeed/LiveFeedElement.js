@@ -35,7 +35,6 @@ class LiveFeedElement extends Component<Props, State> {
     }
 
     componentDidMount() {
-        //Some small changes to format the date to a more appropiate format
         let time = this.props.time.substring(0, this.props.time.length-1);
         time = time.replace("T", " ");
         time = time.replace('.000', "");

@@ -28,7 +28,6 @@ type State = {
 type Props = {}
 
 class NavBar extends Component<Props, State> {
-    //ToDo:
 
     constructor(props : any) {
         super(props);
@@ -48,7 +47,6 @@ class NavBar extends Component<Props, State> {
     }
 
     render() {
-        //const { navCollapsed } = this.state
 
         return(
             <div>

@@ -76,10 +76,6 @@ class CommentView extends Component<Props, State> {
                 (document.getElementById("inpComment"): any).value = "";
                 this.openNewComment();
                 this.componentDidMount();
-                /* HMMMMM */
-
-                /* HMMMMM */
-
             })
             .catch((error) => {
                 console.error(error);

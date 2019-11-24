@@ -210,7 +210,6 @@ class ChangeArticle extends Component<Props, State> {
                         time: article[0].time,
                         author: article[0].author
                     });
-                    //window.scrollTo(0, document.body.scrollHeight)
                 })
         
     }

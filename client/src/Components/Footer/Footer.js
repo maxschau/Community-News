@@ -38,21 +38,6 @@ class Footer extends Component<Props, State> {
                     <span><b>E-post: </b>redaksjonen@kalvskinnetNews.com </span>
                 </div>
             </div>
-
-            /*}
-            <div className="mainFooter">
-                        <a href="http://www.facebook.com" target="_blank" rel="noopener noreferrer"><img src={facebook_logo} alt="fbook" id="imgLogo" /></a>
-                        <a href="http://www.twitter.com" target="_blank" rel="noopener noreferrer"><img src={twitter_logo} alt="twitter" id="imgLogo" /></a>
-                        <a href="http://www.flickr.com" target="_blank" rel="noopener noreferrer"><img src={flickr_logo} alt="flickr" id="imgLogo" /></a>
-                        <a href="http://www.instagram.com" target="_blank" rel="noopener noreferrer"><img src={instagram_logo} alt="insta" id="imgLogo" /></a>
-                        <a href="http://www.youtube.com" target="_blank" rel="noopener noreferrer"><img src={youtube_logo} alt="youtube" id="imgLogo" /></a>
-                <div className="row justify-content-center">
-                        <h5>Kontakt: </h5>
-                        <span><b>Tlf: </b>91782159 </span><br/>
-                        <span><b>E-post: </b>redaksjonen@kalvskinnetNews.com </span>
-                </div>
-            </div>
-            {*/
         )
 
     }

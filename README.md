@@ -3,7 +3,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Project developed in the subject TDAT2003 Systemutvikling 2. Development of a community newspaper page where uses can create, read, change and comment on articles. 
 
 
-###Requirements###
+### `Requirements`
+
+
 In order to run the app you need to have Node installed on your computer
 You should be able to run the following command after installation:
 
@@ -15,7 +17,7 @@ $ npm --version
 1.3.21
 ```
 
-###Install
+### `Install`
 ```
 git clone https://gitlab.stud.idi.ntnu.no/maxts/miniprosjekt
 cd server
@@ -25,31 +27,17 @@ npm install
 ```
 
 
-###Start & watch
+### `Start & watch`
 ```
 cd client
 npm start
 ```
 
 
-###Languages & tools
-HTML
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-In order to run the app 
-cd client
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `Languages & tools`
+*  HTML
+*  Javascript
+    - React JS
+*  CSS 
+    
 

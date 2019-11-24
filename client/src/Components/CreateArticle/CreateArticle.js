@@ -73,27 +73,27 @@ class CreateArticle extends Component<Props, State> {
                 <h1>Registrer ny artikkel </h1>
                 <form>
                     <div className="form-group">
-                        <label>Overskrift: </label>
+                        <label id={"labels"}>Overskrift: </label>
                         <input type="text" className="form-control"
                                id="fname" placeholder="Skriv inn overskrift"
                                name="headline" onChange={this.handleChange} required/>
                     </div>
                     <div className="form-group">
-                        <label>Ingress: </label>
+                        <label id={"labels"}>Ingress: </label>
                         <textarea className="form-control" id="lname" rows="2"
                                   placeholder="Skriv inn ingressen" name="ingress" onChange={this.handleChange}
                                   required/>
                     </div>
 
                     <div className="form-group">
-                        <label>Innhold:</label>
+                        <label id={"labels"}>Innhold:</label>
                         <textarea className="form-control" id="lname" rows="4"
                                   placeholder="Skriv inn innholdet" name="contents" onChange={this.handleChange}
                                   required/>
                     </div>
 
                     <div className="form-group">
-                        <label>Bilde:</label>
+                        <label id={"labels"}>Bilde:</label>
                         <input type="text" className="form-control"
                                id="fname" placeholder="Skriv inn bilde-URL"
                                name="image" onChange={this.handleChange} required/>
@@ -101,14 +101,14 @@ class CreateArticle extends Component<Props, State> {
                     <div className="form-group">
                         <Row>
                             <Column>
-                                <label>Kategori: </label>
+                                <label id={"labels"}>Kategori: </label>
                             </Column>
                         </Row>
                         <Row>
                             <Column>
                                 <select className="btn btn-secondary" name="category" value={this.state.category}
                                         onChange={this.handleChange}>
-                                    <option defaultValue hidden>Velg en kategori</option>
+                                    <option defaultValue hidden id={"labels"}>Velg en kategori</option>
                                     {this.state.categories.map((categories) => {
                                         return (
                                             <option key = {categories.id} value={categories.id}>{categories.name}</option>
@@ -120,7 +120,7 @@ class CreateArticle extends Component<Props, State> {
                         <div className="form-group">
                             <Row>
                                 <Column>
-                                    <label>Forfatter</label>
+                                    <label id={"labels"}>Forfatter</label>
                                 </Column>
                             </Row>
                             <Row>
@@ -136,7 +136,7 @@ class CreateArticle extends Component<Props, State> {
                     <div className="form-group">
                         <Row>
                             <Column>
-                                <label>Førsteside?: </label>
+                                <label id={"labels"}>Førsteside?: </label>
                             </Column>
                         </Row>
                         <Row>

@@ -1,7 +1,6 @@
 // @flow
 
 import Axios from "axios";
-let ipadress : string = "10.24.78.189";
 
 export class Category {
     id : number;
@@ -15,11 +14,11 @@ export class Category {
 
 class CategoryService {
     getAll() : Promise<Category[]> {
-        return Axios.get("http://" + ipadress + ":8080/categories");
+        return Axios.get("http://localhost:8080/categories");
     }
 
     getOne(id : number) : Promise<Category[]> {
-        return Axios.get("http://" + ipadress + ":8080/categories/" + id);
+        return Axios.get("http://localhost:8080/categories/" + id);
     }
 }
 

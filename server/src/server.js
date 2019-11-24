@@ -9,8 +9,7 @@ let bodyParser = require("body-parser");
 app.use(bodyParser.json()); // for å tolke JSON
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000"); //
-    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000"); //update to match the domain you will make the request from
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE"); //Fikk en feilmelding der jeg ikke hadde lov til å bruke DELETE-metoden
     next();

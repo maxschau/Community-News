@@ -2,7 +2,6 @@
 
 import Axios from "axios";
 //Axios.interceptors.response.use(response => response.data);
-let ipadress : string = "10.24.78.189";
 
 
 export class Comment {
@@ -22,11 +21,11 @@ export class Comment {
 export class CommentsService {
     
     getCommentsByArticle(id : number) : Promise<Comment[]> {
-        return Axios.get("http://" + ipadress + ":8080/comments/" + id);
+        return Axios.get("http://localhost:8080/comments/" + id);
     }
     
 
     createComment(comment : Comment) : Promise<void> {
-        return Axios.post("http://" + ipadress + ":8080/comments", comment);
+        return Axios.post("http://localhost:8080/comments", comment);
     }
 }

@@ -3,7 +3,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Project developed in the subject TDAT2003 Systemutvikling 2. Development of a community newspaper page where uses can create, read, change and comment on articles. 
 
 
-###Requirements
+###Requirements###
 In order to run the app you need to have Node installed on your computer
 You should be able to run the following command after installation:
 
